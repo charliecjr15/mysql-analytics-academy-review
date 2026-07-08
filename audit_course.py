@@ -115,8 +115,8 @@ for segment_number, segment in enumerate(segments, 1):
         source_topic_total += len(titles)
         if body.count('class="textbook-subsection"') != len(titles):
             errors.append(f"S{segment_number}L{lesson_number}: source-topic count does not match rendered subsections")
-if source_topic_total != 356:
-    errors.append(f"expected 354 original/enriched topics plus two join supplements, found {source_topic_total}")
+if source_topic_total != 360:
+    errors.append(f"expected 357 original/enriched topics plus two join supplements and one setup supplement, found {source_topic_total}")
 if teaching_context_count != lesson_total:
     errors.append(f"expected learning context on all {lesson_total} lessons, found {teaching_context_count}")
 if query_teaching_count < 60:
@@ -301,6 +301,17 @@ else:
 
 for required in ("RIGHT JOIN", "A self join", "NOT EXISTS", "CROSS JOIN", "WITH product_sales", "ROW_NUMBER()", "DENSE_RANK()", "LAG(", "LEAD(", "ROWS BETWEEN UNBOUNDED PRECEDING", "TIMESTAMPDIFF", "NULLIF", "Net revenue"):
     if required not in all_html: errors.append(f"required advanced concept {required} is missing")
+
+walkthrough_coverage = {
+    "SOURCE setup command": ("SOURCE ",),
+    "boolean quality counts": ("SUM(quantity IS NULL)",),
+    "DATE cast": ("DATE(",),
+    "DATE_SUB interval": ("DATE_SUB",),
+    "refund timing definition": ("refunds in the month", "return happened"),
+}
+for label, terms in walkthrough_coverage.items():
+    if any(term in walkthrough_text for term in terms) and not any(term in all_html for term in terms):
+        errors.append(f"walkthrough uses {label}, but the course does not teach it")
 
 if errors:
     print("COURSE AUDIT FAILED")

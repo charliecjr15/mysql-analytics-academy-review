@@ -57,7 +57,19 @@ ORDER BY order_date;
 
 Formatting changes the result display, not the stored DATE value.
 
-5. Measuring time with DATEDIFF
+5. Casting datetimes to dates with DATE
+
+DATE extracts the date portion from a date or datetime value.
+
+SELECT
+    order_date,
+    DATE(order_date) AS order_day
+FROM orders
+ORDER BY order_date;
+
+This is useful when a timestamp includes hours, minutes, and seconds but the report needs calendar-day grain. Be careful in filters: applying DATE() to a column inside WHERE can make an index less useful. For date-range filters, compare the raw column to start and end boundaries when possible.
+
+6. Measuring time with DATEDIFF
 
 DATEDIFF returns the number of days between two dates.
 
@@ -69,7 +81,7 @@ FROM orders;
 
 The later date is the first argument. Reversing the arguments produces a negative result.
 
-6. Measuring larger intervals with TIMESTAMPDIFF
+7. Measuring larger intervals with TIMESTAMPDIFF
 
 TIMESTAMPDIFF measures the difference between two date or datetime values in a unit you choose.
 
@@ -82,7 +94,18 @@ FROM orders;
 
 The unit comes first. Unlike DATEDIFF, TIMESTAMPDIFF can measure units such as DAY, MONTH, YEAR, HOUR, or MINUTE. It is useful for ages, customer tenure, and time-between-event questions.
 
-7. Cleaning text with TRIM
+8. Finding rolling windows with DATE_SUB
+
+DATE_SUB subtracts an interval from a date.
+
+SELECT
+    MAX(order_date) AS latest_order_date,
+    DATE_SUB(MAX(order_date), INTERVAL 45 DAY) AS window_start_date
+FROM orders;
+
+Analysts use this pattern for questions such as "customers with no completed purchase in the latest 45 days." The interval unit can be DAY, MONTH, YEAR, HOUR, or another supported MySQL interval unit.
+
+9. Cleaning text with TRIM
 
 TRIM removes leading and trailing spaces.
 
@@ -93,7 +116,7 @@ FROM products;
 
 TRIM does not normally remove repeated spaces inside a string.
 
-8. Standardizing letter case
+10. Standardizing letter case
 
 LOWER and UPPER create consistent comparison or display values.
 
@@ -105,7 +128,7 @@ FROM products;
 
 Do not permanently change stored text merely for presentation unless the business rule requires it.
 
-9. Combining text with CONCAT
+11. Combining text with CONCAT
 
 CONCAT joins values into one string.
 
@@ -117,7 +140,7 @@ ORDER BY product_id;
 
 If any CONCAT argument is NULL, MySQL returns NULL. CONCAT_WS can skip NULL arguments.
 
-10. Handling missing display values
+12. Handling missing display values
 
 COALESCE returns the first non-NULL value.
 
@@ -128,7 +151,7 @@ FROM products;
 
 COALESCE is for missing values. An empty string is not NULL and must be handled separately.
 
-11. Avoiding divide-by-zero with NULLIF
+13. Avoiding divide-by-zero with NULLIF
 
 NULLIF returns NULL when its two arguments are equal. Analysts often use it to prevent divide-by-zero errors in percentage calculations.
 
@@ -140,11 +163,13 @@ FROM orders;
 
 If SUM(quantity) is 0, NULLIF(SUM(quantity), 0) returns NULL instead of 0. Dividing by NULL returns NULL, which is safer than producing an error or a misleading number.
 
-12. Gross, net, refunds, and inventory rules
+14. Gross, net, refunds, and inventory rules
 
 Some project metrics are business definitions, not new SQL syntax.
 
 Gross revenue usually means revenue before refunds or other adjustments. Net revenue usually means revenue after subtracting agreed adjustments such as refunds. Inventory risk is a stock rule, such as on_hand_quantity below reorder_point.
+
+Refund timing is also a definition. Some teams subtract refunds in the month the return happened. Other teams subtract refunds from the original sale month. Neither choice is automatically correct; the report must state which rule it uses.
 
 Before writing a query, ask the business owner:
 
@@ -156,7 +181,7 @@ Inventory risk\tBelow reorder point, zero stock, or days of supply?
 
 Once the definition is clear, the SQL is built from tools you already know: joins, filters, aggregates, CASE labels, CTEs, and window functions.
 
-13. Building a monthly category report
+15. Building a monthly category report
 
 SELECT
     DATE_FORMAT(o.order_date, '%Y-%m') AS sales_month,
@@ -175,11 +200,11 @@ ORDER BY sales_month, revenue DESC;
 
 CASE can classify an aggregate because grouping is completed before the grouped SELECT expression is evaluated.
 
-14. Common mistakes
+16. Common mistakes
 
-Common mistakes include placing broad CASE conditions before narrow ones, confusing display formatting with stored values, filtering dates by formatted text, forgetting that CONCAT returns NULL when an argument is NULL, treating empty strings as NULL, dividing by zero in ratio calculations, and using gross or net revenue without defining which adjustments are included.
+Common mistakes include placing broad CASE conditions before narrow ones, confusing display formatting with stored values, filtering dates by formatted text, applying DATE() in WHERE when a raw range would be more index-friendly, forgetting that CONCAT returns NULL when an argument is NULL, treating empty strings as NULL, dividing by zero in ratio calculations, and using gross or net revenue without defining which adjustments are included.
 
-15. Practice Questions
+17. Practice Questions
 
 Practice 1: Label order rows by size
 
@@ -238,14 +263,16 @@ JOIN orders AS o ON o.product_id = p.product_id
 GROUP BY p.product_id, p.product_name
 ORDER BY revenue DESC;
 
-16. Segment 10 cheat sheet
+18. Segment 10 cheat sheet
 
 Goal\tFunction
 Create business labels\tCASE ... WHEN ... END
 Extract date parts\tYEAR(), MONTH(), DAY()
+Cast datetime to date\tDATE()
 Create date labels\tDATE_FORMAT()
 Measure days\tDATEDIFF()
 Measure flexible intervals\tTIMESTAMPDIFF()
+Build rolling date windows\tDATE_SUB(..., INTERVAL ...)
 Remove outside spaces\tTRIM()
 Standardize case\tLOWER(), UPPER()
 Combine text\tCONCAT(), CONCAT_WS()

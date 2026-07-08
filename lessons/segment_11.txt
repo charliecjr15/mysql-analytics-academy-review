@@ -15,7 +15,21 @@ FROM products;
 
 COUNT(column) ignores NULL; COUNT(*) counts rows.
 
-2. Find NULL values
+2. Count quality failures with boolean expressions
+
+In MySQL, a true condition can behave like 1 and a false condition can behave like 0 inside SUM. That makes compact quality profiles possible.
+
+SELECT
+    COUNT(*) AS item_rows,
+    SUM(quantity IS NULL) AS null_quantity_rows,
+    SUM(quantity <= 0) AS non_positive_quantity_rows,
+    SUM(unit_price IS NULL) AS null_price_rows,
+    SUM(unit_price < 0) AS negative_price_rows
+FROM orders;
+
+Read each SUM as "count rows where this condition is true." This is useful for profiling, but CASE is more portable across database systems if you later move outside MySQL.
+
+3. Find NULL values
 
 SELECT *
 FROM products
@@ -25,7 +39,7 @@ WHERE product_name IS NULL
 
 Use IS NULL, not = NULL.
 
-3. Find blanks and whitespace
+4. Find blanks and whitespace
 
 SELECT
     product_id,
@@ -37,7 +51,7 @@ WHERE TRIM(COALESCE(product_name, '')) = ''
 
 This catches NULL, empty strings, and strings containing only spaces.
 
-4. Find inconsistent categories
+5. Find inconsistent categories
 
 SELECT
     category,
@@ -48,7 +62,7 @@ ORDER BY category;
 
 Review distinct values before deciding how they should be standardized.
 
-5. Detect duplicate business values
+6. Detect duplicate business values
 
 SELECT
     LOWER(TRIM(product_name)) AS normalized_name,
@@ -59,7 +73,7 @@ HAVING COUNT(*) > 1;
 
 The normalized expression helps detect spelling differences caused only by case or outside spaces.
 
-6. Validate numeric ranges
+7. Validate numeric ranges
 
 SELECT *
 FROM products
@@ -72,7 +86,7 @@ WHERE quantity <= 0
 
 Validity rules come from the business. Write them down before cleaning.
 
-7. Preview an UPDATE
+8. Preview an UPDATE
 
 Run a SELECT with the same WHERE condition before changing rows.
 
@@ -85,7 +99,7 @@ WHERE LOWER(TRIM(category)) IN ('coffee', 'coffees');
 
 Confirm the target rows first.
 
-8. Update safely inside a transaction
+9. Update safely inside a transaction
 
 START TRANSACTION;
 
@@ -99,7 +113,7 @@ ROLLBACK;
 
 Use COMMIT instead of ROLLBACK only after validating the changed rows. Transaction support depends on the table's storage engine; InnoDB supports it.
 
-9. Preserve raw data with a staging table
+10. Preserve raw data with a staging table
 
 DROP TABLE IF EXISTS products_staging;
 
@@ -109,7 +123,7 @@ FROM products;
 
 A staging copy supports experimentation, but CREATE TABLE ... AS SELECT does not copy every index or constraint automatically.
 
-10. Add preventive constraints
+11. Add preventive constraints
 
 ALTER TABLE products
 ADD CONSTRAINT chk_product_price_positive CHECK (price > 0);
@@ -119,7 +133,7 @@ ADD CONSTRAINT chk_order_quantity_positive CHECK (quantity > 0);
 
 Clean existing violations before adding constraints.
 
-11. Build a data-quality report
+12. Build a data-quality report
 
 SELECT
     'products missing category' AS quality_check,
@@ -135,7 +149,7 @@ WHERE quantity <= 0;
 
 UNION ALL stacks compatible result sets without removing duplicates.
 
-12. Think in data-quality dimensions
+13. Think in data-quality dimensions
 
 A professional cleaning review is not one generic question: "is the data clean?" It is several smaller questions.
 
@@ -150,7 +164,7 @@ Distribution\tDoes the shape look plausible?\tCompare min, max, average, and cat
 
 Do not try to clean everything at once. Identify which dimension failed, write the rule, then write the SQL that proves the failure.
 
-13. Raw, staging, and clean layers
+14. Raw, staging, and clean layers
 
 Keep three mental layers:
 
@@ -177,7 +191,7 @@ FROM products_staging;
 
 This creates a clean version without pretending the raw data never had problems.
 
-14. Turn rules into tests
+15. Turn rules into tests
 
 Data-quality tools often use a few generic test ideas. You can write the same thinking in plain SQL.
 
@@ -207,7 +221,7 @@ WHERE category NOT IN ('Coffee', 'Tea', 'Pastry', 'Dessert');
 
 A good test query returns the rows or count that failed. Zero failures is the target, but a nonzero result is useful evidence, not a reason to hide the issue.
 
-15. Test relationships between tables
+16. Test relationships between tables
 
 A relationship test asks:
 
@@ -227,7 +241,7 @@ If this returns rows, those order rows reference products that do not exist in t
 
 If the table has a real foreign key, MySQL can prevent this issue. If you are cleaning imported files before constraints exist, you still need the test query.
 
-16. Deduplicate safely
+17. Deduplicate safely
 
 Duplicate handling requires a survivor rule. Do not delete duplicates just because COUNT(*) is greater than one.
 
@@ -257,7 +271,7 @@ WHERE duplicate_rank > 1;
 
 This query only identifies possible duplicate rows. The ORDER BY chooses the survivor. If the survivor rule is wrong, the cleaning rule is wrong.
 
-17. Keep a cleaning log
+18. Keep a cleaning log
 
 A cleaning log explains what changed and why. It protects your future self and lets another analyst review your decisions.
 
@@ -286,7 +300,7 @@ WHERE LOWER(TRIM(category)) IN ('coffee', 'coffees', 'tea', 'teas');
 
 The log does not replace the SQL script. It summarizes the decision, affected population, and reason.
 
-18. Reconcile before trusting analysis
+19. Reconcile before trusting analysis
 
 After cleaning, compare important totals against the source. Cleaning should explain changes, not silently change the business story.
 
@@ -312,7 +326,7 @@ FROM orders;
 
 In this small teaching database those totals should match. In a real dataset, any difference must be explained by a documented rule, such as excluding cancelled orders.
 
-19. Freshness and distribution checks
+20. Freshness and distribution checks
 
 Freshness asks whether the data is current enough for the decision.
 
@@ -335,11 +349,11 @@ ORDER BY category;
 
 Freshness and distribution checks do not always prove a value is wrong. They tell you where to investigate.
 
-20. Common mistakes
+21. Common mistakes
 
-Do not update data before profiling it, clean without a written rule, delete duplicates without identifying the correct survivor, assume a backup copied constraints, or commit before validating affected rows.
+Do not update data before profiling it, clean without a written rule, confuse NULL with blank text, treat boolean SUM checks as portable to every SQL database, delete duplicates without identifying the correct survivor, assume a backup copied constraints, or commit before validating affected rows.
 
-21. Practice Questions
+22. Practice Questions
 
 Practice 1: Find missing or blank categories
 
@@ -412,7 +426,7 @@ LEFT JOIN products AS p
     ON p.product_id = o.product_id
 WHERE p.product_id IS NULL;
 
-22. Segment 11 cheat sheet
+23. Segment 11 cheat sheet
 
 Task\tPattern
 Count missing values\tCOUNT(*) - COUNT(column)

@@ -1332,16 +1332,16 @@ TEXTBOOK_UNITS = [
     ],
     [
         ("Turning Facts into Business Categories",1,3,"CASE applies ordered business rules inside a query. We use it both to label individual rows and to count conditional populations within an aggregate."),
-        ("Working with Dates, Text, and Safe Ratios",4,11,"Dates, text, and NULL-aware expressions often require transformation before reporting. We extract calendar parts, format labels, measure intervals, standardize text, combine fields, handle missing display values, and protect ratio calculations."),
-        ("Project Metric Definitions",12,14,"A useful report combines transformations without obscuring their meaning. We connect gross revenue, net revenue, refunds, inventory rules, monthly reporting, and common mistakes to explicit business definitions."),
-        ("Functions Lab and Chapter Summary",15,20,"The exercises combine CASE, weekday reporting, cleaned labels, and grouped revenue bands. Use the summary to distinguish formatting from permanent data cleaning."),
+        ("Working with Dates, Text, and Safe Ratios",4,13,"Dates, text, and NULL-aware expressions often require transformation before reporting. We extract calendar parts, format labels, measure intervals, build rolling windows, standardize text, combine fields, handle missing display values, and protect ratio calculations."),
+        ("Project Metric Definitions",14,16,"A useful report combines transformations without obscuring their meaning. We connect gross revenue, net revenue, refunds, inventory rules, monthly reporting, and common mistakes to explicit business definitions."),
+        ("Functions Lab and Chapter Summary",17,22,"The exercises combine CASE, weekday reporting, cleaned labels, and grouped revenue bands. Use the summary to distinguish formatting from permanent data cleaning."),
     ],
     [
-        ("Profiling Data Before Changing It",1,7,"Cleaning begins with evidence. We measure completeness, blanks, inconsistent categories, duplicates, and invalid numeric ranges before defining any correction."),
-        ("Safe Corrections and Preventive Rules",8,11,"A correction should be previewed, reversible, and validated. Transactions, staging tables, constraints, and quality reports turn one-time cleanup into a controlled process."),
-        ("Quality Rules, Tests, and Relationships",12,15,"Professional data cleaning converts business rules into repeatable tests: completeness, uniqueness, accepted values, relationship integrity, freshness, and distribution."),
-        ("Deduplication, Audit Logs, and Reconciliation",16,20,"Cleaning decisions must be explainable. We mark duplicate candidates with survivor rules, log changes, reconcile totals, and avoid destructive shortcuts."),
-        ("Data Quality Lab and Chapter Summary",21,28,"These exercises ask you to detect issues and preview transformations without destroying source evidence. Use the checklist as an ordered cleaning workflow."),
+        ("Profiling Data Before Changing It",1,8,"Cleaning begins with evidence. We measure completeness, boolean quality failures, blanks, inconsistent categories, duplicates, and invalid numeric ranges before defining any correction."),
+        ("Safe Corrections and Preventive Rules",9,12,"A correction should be previewed, reversible, and validated. Transactions, staging tables, constraints, and quality reports turn one-time cleanup into a controlled process."),
+        ("Quality Rules, Tests, and Relationships",13,16,"Professional data cleaning converts business rules into repeatable tests: completeness, uniqueness, accepted values, relationship integrity, freshness, and distribution."),
+        ("Deduplication, Audit Logs, and Reconciliation",17,21,"Cleaning decisions must be explainable. We mark duplicate candidates with survivor rules, log changes, reconcile totals, and avoid destructive shortcuts."),
+        ("Data Quality Lab and Chapter Summary",22,29,"These exercises ask you to detect issues and preview transformations without destroying source evidence. Use the checklist as an ordered cleaning workflow."),
     ],
     [
         ("Views as Saved Query Interfaces",1,5,"A standard view stores a SELECT definition, not a copy of its result. We create, query, filter, group, and safely replace a reusable reporting interface."),
@@ -1385,8 +1385,25 @@ def consolidate_textbook_units(segments):
         consolidated.append({"title":segment["title"],"desc":segment["desc"],"lessons":units})
     return consolidated
 
+def add_walkthrough_bridge_notes(segments):
+    """Cover practical commands used by the larger project walkthrough."""
+    setup_note = (
+        '<section class="textbook-subsection" data-source-title="Running a complete setup script">'
+        '<h3>Running a complete setup script</h3>'
+        '<p>Some MySQL tools let you execute a saved SQL file from the prompt with '
+        '<code>SOURCE path/to/file.sql;</code>. The command runs the statements in the file in order.</p>'
+        '<p>Use <code>SOURCE</code> for reproducible setup scripts, then run <code>USE database_name;</code> '
+        'so later queries point at the intended database. If your editor does not support <code>SOURCE</code>, '
+        'open the script, select all of it, and execute it manually.</p>'
+        '</section>'
+    )
+    target = segments[1]["lessons"][3]
+    target["body"] = target["body"].replace("</div>", setup_note + "</div>", 1)
+    target.setdefault("source_titles", []).append("Running a complete setup script")
+
 segments = [parse_source(path, transcript, *meta) for path, transcript, meta in zip(SOURCES, TRANSCRIPTS,META)]
 segments = consolidate_textbook_units(segments)
+add_walkthrough_bridge_notes(segments)
 add_segment_visuals(segments)
 add_assessments_and_projects(segments)
 add_expected_results(segments)
