@@ -236,6 +236,9 @@ else:
 career_page = ROOT / "career-center.html"
 capstone_setup = ROOT / "capstone" / "capstone_setup.sql"
 capstone_solution = ROOT / "capstone" / "reference_solution.sql"
+project_dataset = ROOT / "project_data" / "retail_project_setup.sql"
+project_readme = ROOT / "project_data" / "README.md"
+project_starters = ROOT / "project_data" / "starter_questions.sql"
 if not career_page.is_file():
     errors.append("missing learner-facing career center")
 else:
@@ -270,6 +273,24 @@ else:
     solution_text = capstone_solution.read_text(encoding="utf-8")
     for required in ("clean_order_items_v", "DENSE_RANK()", "AVG(sm.revenue) OVER", "NOT EXISTS", "LAG(revenue)", "completed_sales_v", "QA reconciliation", "EXPLAIN", "CREATE INDEX"):
         if required not in solution_text: errors.append(f"capstone solution is missing {required}")
+if not project_dataset.is_file():
+    errors.append("missing larger project dataset setup")
+else:
+    project_text = project_dataset.read_text(encoding="utf-8")
+    for required in ("CREATE DATABASE metromart_project", "CREATE TABLE stores", "CREATE TABLE employees", "CREATE TABLE customers", "CREATE TABLE orders", "CREATE TABLE order_items", "CREATE TABLE returns", "CREATE TABLE inventory_snapshots", "CREATE TABLE customer_feedback", "raw_customer_import", "cte_max_recursion_depth", "WHERE n < 1800", "WHERE n < 5400"):
+        if required not in project_text: errors.append(f"project dataset is missing {required}")
+if not project_readme.is_file():
+    errors.append("missing larger project dataset README")
+else:
+    readme_text = project_readme.read_text(encoding="utf-8")
+    for required in ("MetroMart Project Dataset", "Practice Coverage", "Suggested Project Brief", "Important Business Rules"):
+        if required not in readme_text: errors.append(f"project dataset README is missing {required}")
+if not project_starters.is_file():
+    errors.append("missing larger project starter questions")
+else:
+    starters_text = project_starters.read_text(encoding="utf-8")
+    for required in ("GROUP BY", "HAVING", "LEFT JOIN", "WITH product_month", "DENSE_RANK()", "CREATE OR REPLACE VIEW completed_valid_sales_v", "EXPLAIN", "CREATE INDEX idx_orders_status_date_store"):
+        if required not in starters_text: errors.append(f"project starter questions are missing {required}")
 
 for required in ("RIGHT JOIN", "A self join", "NOT EXISTS", "CROSS JOIN", "WITH product_sales", "ROW_NUMBER()", "DENSE_RANK()", "LAG(", "LEAD(", "ROWS BETWEEN UNBOUNDED PRECEDING"):
     if required not in all_html: errors.append(f"required advanced concept {required} is missing")
