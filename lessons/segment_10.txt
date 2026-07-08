@@ -1,0 +1,210 @@
+Segment 10 — CASE, Date, and Text Functions
+
+Real business data needs labels, calendar groupings, and cleaned text. This segment teaches the functions analysts use to turn stored values into reporting dimensions.
+
+1. CASE creates business categories
+
+CASE evaluates conditions from top to bottom and returns the value from the first true condition.
+
+SELECT
+    product_name,
+    price,
+    CASE
+        WHEN price >= 3.000 THEN 'Premium'
+        WHEN price >= 2.000 THEN 'Standard'
+        ELSE 'Value'
+    END AS price_band
+FROM products
+ORDER BY price DESC;
+
+Order the conditions from most restrictive to least restrictive. CASE stops after its first match.
+
+2. CASE inside an aggregate
+
+Conditional aggregation counts or sums only rows that meet a condition.
+
+SELECT
+    SUM(CASE WHEN quantity >= 3 THEN 1 ELSE 0 END) AS large_order_rows,
+    SUM(CASE WHEN quantity < 3 THEN 1 ELSE 0 END) AS smaller_order_rows
+FROM orders;
+
+Each CASE produces 1 or 0 for every row; SUM adds those flags.
+
+3. Extracting calendar parts
+
+YEAR, MONTH, and DAY extract calendar components from a date.
+
+SELECT
+    order_date,
+    YEAR(order_date) AS order_year,
+    MONTH(order_date) AS order_month,
+    DAY(order_date) AS order_day
+FROM orders
+ORDER BY order_date;
+
+These functions are useful for labeling, but date ranges are often better for filtering because indexes can be used more effectively.
+
+4. Formatting dates for reports
+
+DATE_FORMAT converts a date into a display label.
+
+SELECT
+    order_date,
+    DATE_FORMAT(order_date, '%Y-%m') AS sales_month,
+    DATE_FORMAT(order_date, '%W') AS weekday_name
+FROM orders
+ORDER BY order_date;
+
+Formatting changes the result display, not the stored DATE value.
+
+5. Measuring time with DATEDIFF
+
+DATEDIFF returns the number of days between two dates.
+
+SELECT
+    MIN(order_date) AS first_order_date,
+    MAX(order_date) AS last_order_date,
+    DATEDIFF(MAX(order_date), MIN(order_date)) AS days_between
+FROM orders;
+
+The later date is the first argument. Reversing the arguments produces a negative result.
+
+6. Cleaning text with TRIM
+
+TRIM removes leading and trailing spaces.
+
+SELECT
+    product_name,
+    TRIM(product_name) AS cleaned_product_name
+FROM products;
+
+TRIM does not normally remove repeated spaces inside a string.
+
+7. Standardizing letter case
+
+LOWER and UPPER create consistent comparison or display values.
+
+SELECT
+    product_name,
+    LOWER(product_name) AS lowercase_name,
+    UPPER(category) AS uppercase_category
+FROM products;
+
+Do not permanently change stored text merely for presentation unless the business rule requires it.
+
+8. Combining text with CONCAT
+
+CONCAT joins values into one string.
+
+SELECT
+    product_id,
+    CONCAT(product_name, ' — ', category) AS product_label
+FROM products
+ORDER BY product_id;
+
+If any CONCAT argument is NULL, MySQL returns NULL. CONCAT_WS can skip NULL arguments.
+
+9. Handling missing display values
+
+COALESCE returns the first non-NULL value.
+
+SELECT
+    product_name,
+    COALESCE(category, 'Uncategorized') AS display_category
+FROM products;
+
+COALESCE is for missing values. An empty string is not NULL and must be handled separately.
+
+10. Building a monthly category report
+
+SELECT
+    DATE_FORMAT(o.order_date, '%Y-%m') AS sales_month,
+    p.category,
+    SUM(o.quantity) AS items_sold,
+    SUM(o.quantity * o.unit_price) AS revenue,
+    CASE
+        WHEN SUM(o.quantity * o.unit_price) >= 20 THEN 'High'
+        WHEN SUM(o.quantity * o.unit_price) >= 10 THEN 'Medium'
+        ELSE 'Low'
+    END AS performance_band
+FROM orders AS o
+JOIN products AS p ON p.product_id = o.product_id
+GROUP BY DATE_FORMAT(o.order_date, '%Y-%m'), p.category
+ORDER BY sales_month, revenue DESC;
+
+CASE can classify an aggregate because grouping is completed before the grouped SELECT expression is evaluated.
+
+11. Common mistakes
+
+Common mistakes include placing broad CASE conditions before narrow ones, confusing display formatting with stored values, filtering dates by formatted text, forgetting that CONCAT returns NULL when an argument is NULL, and treating empty strings as NULL.
+
+12. Practice Questions
+
+Practice 1: Label order rows by size
+
+Return order_id and quantity. Label quantities of 3 or more Large and the rest Regular.
+
+Answer:
+
+SELECT
+    order_id,
+    quantity,
+    CASE WHEN quantity >= 3 THEN 'Large' ELSE 'Regular' END AS order_size
+FROM orders
+ORDER BY order_id;
+
+Practice 2: Revenue by weekday
+
+Return weekday name and revenue, ordered by revenue descending.
+
+Answer:
+
+SELECT
+    DATE_FORMAT(order_date, '%W') AS weekday_name,
+    SUM(quantity * unit_price) AS revenue
+FROM orders
+GROUP BY DATE_FORMAT(order_date, '%W')
+ORDER BY revenue DESC;
+
+Practice 3: Clean product labels
+
+Create an uppercase label combining trimmed product_name and category.
+
+Answer:
+
+SELECT
+    product_id,
+    UPPER(CONCAT(TRIM(product_name), ' — ', TRIM(category))) AS product_label
+FROM products
+ORDER BY product_id;
+
+Practice 4: Product revenue bands
+
+Calculate revenue by product and label revenue of at least 9.000 High, at least 5.000 Medium, otherwise Low.
+
+Answer:
+
+SELECT
+    p.product_name,
+    SUM(o.quantity * o.unit_price) AS revenue,
+    CASE
+        WHEN SUM(o.quantity * o.unit_price) >= 9.000 THEN 'High'
+        WHEN SUM(o.quantity * o.unit_price) >= 5.000 THEN 'Medium'
+        ELSE 'Low'
+    END AS revenue_band
+FROM products AS p
+JOIN orders AS o ON o.product_id = p.product_id
+GROUP BY p.product_id, p.product_name
+ORDER BY revenue DESC;
+
+13. Segment 10 cheat sheet
+
+Goal\tFunction
+Create business labels\tCASE ... WHEN ... END
+Extract date parts\tYEAR(), MONTH(), DAY()
+Create date labels\tDATE_FORMAT()
+Measure days\tDATEDIFF()
+Remove outside spaces\tTRIM()
+Standardize case\tLOWER(), UPPER()
+Combine text\tCONCAT(), CONCAT_WS()
+Replace NULL for display\tCOALESCE()

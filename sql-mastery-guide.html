@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A practical SQL mastery guide for data analysts using Query Grounds.">
+  <title>SQL Mastery Guide - Query Grounds</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="source.css">
+  <link rel="stylesheet" href="academy.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">QG</span>
+      <span><strong>Query<span>Grounds</span></strong><small>Return to course</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Primary navigation">
+      <a href="index.html#workspace">SQL course</a>
+      <a href="setup/README.md">Setup</a>
+      <a class="active" href="sql-mastery-guide.html">Mastery guide</a>
+      <a href="career-center.html">Career path</a>
+    </nav>
+  </header>
+
+  <main class="career-page mastery-page">
+    <section class="career-hero">
+      <p class="eyebrow">SQL MASTERY MAP</p>
+      <h1>Learn SQL like an analyst,<br><em>not a syntax collector.</em></h1>
+      <p>This guide folds in the strongest themes from the saved SQL and data analyst videos: build foundations, practice real querying, understand database design, validate work, and finish with projects that prove skill.</p>
+    </section>
+
+    <nav class="career-nav" aria-label="Mastery guide sections">
+      <a href="#mindset">Mindset</a>
+      <a href="#path">Learning path</a>
+      <a href="#concepts">Concepts</a>
+      <a href="#projects">Projects</a>
+      <a href="#mistakes">Mistakes</a>
+      <a href="#practice">Practice loop</a>
+    </nav>
+
+    <section id="mindset" class="career-section">
+      <p class="eyebrow">WHAT CHANGED</p>
+      <h2>The course should teach judgment, not only commands</h2>
+      <div class="assessment-grid">
+        <article class="assessment-card">
+          <span>ANALYST WORKFLOW</span>
+          <h3>Start with the question</h3>
+          <p>Before writing SQL, define the business decision, metric formula, grain, filters, date window, and expected output. Good analysts do not ask the database vague questions.</p>
+        </article>
+        <article class="assessment-card">
+          <span>DATABASE THINKING</span>
+          <h3>Understand the model</h3>
+          <p>Tables, keys, relationships, and constraints explain why a query works. Learners should be able to sketch how orders, products, stores, and customers relate before joining them.</p>
+        </article>
+        <article class="assessment-card">
+          <span>PROOF</span>
+          <h3>Validate every result</h3>
+          <p>A query that runs can still be wrong. Check row counts, join cardinality, NULL behavior, excluded statuses, and reconciliation totals before trusting a result.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="path" class="career-section">
+      <p class="eyebrow">ZERO TO JOB-READY</p>
+      <h2>The recommended order</h2>
+      <table class="data-table">
+        <thead><tr><th>Stage</th><th>Focus</th><th>Query Grounds chapters</th><th>Proof of skill</th></tr></thead>
+        <tbody>
+          <tr><td>1. Foundations</td><td>Databases, tables, SELECT, WHERE, ORDER BY, LIMIT</td><td>1-2</td><td>Can inspect a table and return only the rows and columns requested.</td></tr>
+          <tr><td>2. Metrics</td><td>COUNT, SUM, AVG, GROUP BY, HAVING</td><td>3-5</td><td>Can build KPI reports without confusing rows, units, and revenue.</td></tr>
+          <tr><td>3. Relationships</td><td>Keys, joins, set operators, relationship checks</td><td>6-7 plus Career Center</td><td>Can explain INNER vs LEFT JOIN and detect doubled revenue.</td></tr>
+          <tr><td>4. Analyst SQL</td><td>CTEs, windows, CASE, dates, text, NULL handling</td><td>8-10</td><td>Can create rankings, trends, labels, and period comparisons.</td></tr>
+          <tr><td>5. Trustworthy data</td><td>Profiling, cleaning, safe updates, views, QA</td><td>11-12</td><td>Can preserve raw data and produce a documented reporting layer.</td></tr>
+          <tr><td>6. Scale and delivery</td><td>Indexes, EXPLAIN, performance, portfolio projects</td><td>13 plus Capstone</td><td>Can justify an optimization and present a reproducible project.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="concepts" class="career-section">
+      <p class="eyebrow">CONCEPT COVERAGE</p>
+      <h2>What each major SQL topic is for</h2>
+      <div class="assessment-grid">
+        <article class="assessment-card"><span>DDL</span><h3>Define structures</h3><p><code>CREATE</code>, <code>ALTER</code>, and <code>DROP</code> shape databases and tables. Analysts need enough DDL to understand schemas, create practice tables, and read setup scripts safely.</p></article>
+        <article class="assessment-card"><span>DML</span><h3>Change rows carefully</h3><p><code>INSERT</code>, <code>UPDATE</code>, and <code>DELETE</code> require previews, transactions, and narrow conditions. In real work, write access is controlled and mistakes can affect downstream reports.</p></article>
+        <article class="assessment-card"><span>SET OPERATORS</span><h3>Stack result sets</h3><p><code>UNION ALL</code> is usually best when combining compatible populations. Use <code>UNION</code> only when the business rule truly requires duplicate removal.</p></article>
+        <article class="assessment-card"><span>FUNCTIONS</span><h3>Prepare values for reporting</h3><p>String, numeric, date, NULL, and CASE functions turn raw columns into labels, periods, validated measures, and readable report fields.</p></article>
+        <article class="assessment-card"><span>WINDOWS</span><h3>Analyze without collapsing rows</h3><p>Window functions handle rank, running totals, moving comparisons, prior-period values, and percent-of-total calculations while preserving row-level context.</p></article>
+        <article class="assessment-card"><span>ADVANCED OBJECTS</span><h3>Know what exists</h3><p>Views are useful for reporting layers. Temporary tables and CTAS can support staged analysis. Stored procedures, triggers, and partitions are important to recognize, but they are not always part of junior analyst work.</p></article>
+      </div>
+    </section>
+
+    <section id="projects" class="career-section">
+      <p class="eyebrow">PROJECT LADDER</p>
+      <h2>Use projects to connect the pieces</h2>
+      <ol class="project-checklist">
+        <li><strong>Beginner report:</strong> product, category, and daily sales KPIs from one clean schema.</li>
+        <li><strong>EDA project:</strong> profile a new dataset, document quality issues, clean a copy, and answer business questions.</li>
+        <li><strong>Reporting layer:</strong> create one or more views with documented grain and metric definitions.</li>
+        <li><strong>Performance note:</strong> compare an inefficient filter with a sargable version using EXPLAIN evidence.</li>
+        <li><strong>Portfolio capstone:</strong> combine cleaning, joins, CTEs, windows, QA, and written recommendations in a reproducible repository.</li>
+      </ol>
+      <div class="callout"><strong>Project rule</strong>A portfolio project is not finished until another person can run it from setup, reproduce the result, and understand the business conclusion.</div>
+    </section>
+
+    <section id="mistakes" class="career-section">
+      <p class="eyebrow">COMMON FAILURE POINTS</p>
+      <h2>Avoid these traps</h2>
+      <div class="assessment-grid">
+        <article class="assessment-card"><span>MEMORIZATION</span><h3>Learning syntax without purpose</h3><p>Every command should answer: what rows, what grain, what metric, and what validation proves it?</p></article>
+        <article class="assessment-card"><span>JOIN RISK</span><h3>Trusting joins too early</h3><p>Always check row counts before and after joins. Duplicated dimension rows or many-to-many joins can silently inflate revenue.</p></article>
+        <article class="assessment-card"><span>NULLS</span><h3>Treating missing values as ordinary text</h3><p><code>NULL</code>, blank strings, and zero mean different things. Profile them separately and document the business meaning.</p></article>
+        <article class="assessment-card"><span>DATES</span><h3>Using vague time filters</h3><p>Prefer explicit ranges. For timestamp data, use half-open ranges such as <code>&gt;= '2026-06-01'</code> and <code>&lt; '2026-07-01'</code>.</p></article>
+        <article class="assessment-card"><span>UPDATES</span><h3>Changing data without a rollback path</h3><p>Preview with SELECT, change inside a transaction where supported, validate, then commit only when the evidence is correct.</p></article>
+        <article class="assessment-card"><span>PERFORMANCE</span><h3>Adding indexes blindly</h3><p>Indexes speed some reads but cost storage and write work. Use EXPLAIN and identical-result checks before claiming improvement.</p></article>
+      </div>
+    </section>
+
+    <section id="practice" class="career-section">
+      <p class="eyebrow">PRACTICE LOOP</p>
+      <h2>How to study each lesson</h2>
+      <ol class="project-checklist">
+        <li>Read the business question and write the expected grain in plain English.</li>
+        <li>Predict which tables and columns are needed before opening the solution.</li>
+        <li>Write the query from scratch, then compare with the lesson version.</li>
+        <li>Run a validation query: row count, total, duplicate check, or NULL check.</li>
+        <li>Explain the result in one business sentence and one technical sentence.</li>
+        <li>Change one requirement, such as date range or grouping level, and adapt the SQL.</li>
+      </ol>
+      <a class="primary career-return" href="index.html#workspace">Return to course <span>-></span></a>
+    </section>
+  </main>
+</body>
+</html>

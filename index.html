@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A practical, interactive MySQL course for aspiring data analysts.">
+  <title>Query Grounds — MySQL for Data Analytics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="source.css">
+  <link rel="stylesheet" href="academy.css">
+</head>
+<body>
+  <a class="skip-link" href="#lessonContent">Skip to lesson</a>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Query Grounds home">
+      <span class="brand-mark">QG</span>
+      <span><strong>Query<span>Grounds</span></strong><small>SQL Academy</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Primary navigation">
+      <a class="active" href="#workspace">SQL course</a>
+      <a href="setup/README.md">Setup</a>
+      <a href="sql-mastery-guide.html">Mastery guide</a>
+      <a href="career-center.html">Career path</a>
+    </nav>
+    <div class="top-actions">
+      <button class="curriculum-toggle" id="curriculumToggle" aria-label="Open curriculum" aria-expanded="false">☰ <span>Curriculum</span></button>
+      <div class="streak"><span>◆</span><strong id="xpValue">0</strong> XP</div>
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle color theme">◐</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="hero-badge">✓ Beginner to job-ready · MySQL 8</p>
+        <h1>Learn SQL by<br><em>using SQL.</em></h1>
+        <p class="hero-text">A complete analyst curriculum built around one realistic business database. Read the idea, inspect the query, verify its result, then solve it yourself.</p>
+        <div class="hero-stats" aria-label="Course statistics"><span><strong>13</strong> chapters</span><span><strong id="courseLessonCount">98</strong> textbook sections</span><span><strong>13</strong> projects</span></div>
+        <div class="hero-actions">
+          <button class="primary" id="continueBtn">Continue learning <span>→</span></button>
+          <a class="text-link" href="#roadmap">Explore curriculum ↓</a>
+        </div>
+      </div>
+      <div class="query-card" aria-label="SQL query example">
+        <div class="query-head"><span><i></i><i></i><i></i></span><small>daily_revenue.sql</small><b>MYSQL</b></div>
+        <pre><code><span class="kw">SELECT</span>
+  order_date,
+  <span class="fn">SUM</span>(quantity * unit_price)
+    <span class="kw">AS</span> revenue
+<span class="kw">FROM</span> orders
+<span class="kw">GROUP BY</span> order_date
+<span class="kw">ORDER BY</span> revenue <span class="kw">DESC</span>;</code></pre>
+        <div class="result-mini">
+          <span>order_date</span><span>revenue</span>
+          <b>2026-06-20</b><b>13.000</b>
+          <b>2026-06-22</b><b>12.500</b>
+          <b>2026-06-21</b><b>12.050</b>
+        </div>
+      </div>
+    </section>
+
+    <section class="dashboard" id="roadmap">
+      <div class="section-heading">
+        <div><p class="eyebrow">THE COMPLETE PATH</p><h2>From your first SELECT to job-ready analysis.</h2></div>
+        <div class="progress-summary"><strong id="progressPercent">0%</strong><span>course complete</span></div>
+      </div>
+      <div class="progress-track"><span id="progressBar"></span></div>
+      <div class="roadmap" id="roadmapList"></div>
+    </section>
+
+    <section class="workspace" id="workspace">
+      <aside class="lesson-nav">
+        <div class="nav-title"><span>SQL TEXTBOOK</span><strong id="courseScope">13 chapters · 98 sections</strong></div>
+        <div class="current-segment" aria-live="polite"><span id="segmentKicker">CHAPTER 1</span><strong id="segmentTitle">MySQL Basics</strong></div>
+        <nav id="lessonTabs" aria-label="Lesson sections"></nav>
+        <button class="reset-btn" id="resetProgress">Reset course progress</button>
+      </aside>
+
+      <article class="lesson-panel">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="#roadmap">SQL</a><span>›</span><button id="breadcrumbSegment">Chapter 1</button><span>›</span><strong id="breadcrumbLesson">Section</strong></nav>
+        <div class="lesson-topline">
+          <div><span class="lesson-number" id="lessonNumber">01</span><span class="reading-time" id="readingTime">5 MIN LESSON</span></div>
+          <button class="complete-btn" id="completeLesson">Mark complete <span>✓</span></button>
+        </div>
+        <div id="lessonContent" class="lesson-content"></div>
+        <div class="lesson-footer">
+          <button class="secondary" id="prevLesson">← Previous</button>
+          <button class="primary" id="nextLesson">Next lesson <span>→</span></button>
+        </div>
+      </article>
+      <aside class="lesson-toc" aria-label="On this lesson">
+        <strong>ON THIS LESSON</strong>
+        <nav id="lessonToc"></nav>
+        <a class="toc-career" href="sql-mastery-guide.html">SQL mastery guide -></a>
+        <a class="toc-career" href="career-center.html">Career readiness →</a>
+      </aside>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="source-lessons.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

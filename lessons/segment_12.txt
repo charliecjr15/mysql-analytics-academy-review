@@ -1,0 +1,184 @@
+Segment 12 — Views and Reusable Reporting
+
+Views save query definitions under stable names. They help analysts reuse trusted logic without copying long joins and calculations into every report.
+
+1. What is a view?
+
+A standard view stores a SELECT definition, not a separate copy of its result rows.
+
+CREATE VIEW order_details AS
+SELECT
+    o.order_id,
+    o.order_date,
+    p.product_name,
+    p.category,
+    o.quantity,
+    o.unit_price,
+    o.quantity * o.unit_price AS revenue
+FROM orders AS o
+JOIN products AS p ON p.product_id = o.product_id;
+
+2. Query a view
+
+SELECT *
+FROM order_details
+ORDER BY order_id;
+
+The view behaves like a table in SELECT queries, while MySQL uses its saved definition to retrieve current underlying data.
+
+3. Filter and group a view
+
+SELECT
+    category,
+    SUM(quantity) AS items_sold,
+    SUM(revenue) AS revenue
+FROM order_details
+WHERE order_date BETWEEN '2026-06-20' AND '2026-06-22'
+GROUP BY category
+ORDER BY revenue DESC;
+
+Views can become a clean reporting layer above normalized tables.
+
+4. Replace a view definition
+
+CREATE OR REPLACE VIEW order_details AS
+SELECT
+    o.order_id,
+    o.order_date,
+    p.product_id,
+    p.product_name,
+    p.category,
+    o.quantity,
+    o.unit_price,
+    o.quantity * o.unit_price AS revenue
+FROM orders AS o
+JOIN products AS p ON p.product_id = o.product_id;
+
+Replacing a view changes future queries that depend on its columns, so treat its structure as an interface.
+
+5. Create a KPI view
+
+CREATE VIEW daily_sales AS
+SELECT
+    order_date,
+    COUNT(*) AS order_rows,
+    SUM(quantity) AS items_sold,
+    SUM(quantity * unit_price) AS revenue
+FROM orders
+GROUP BY order_date;
+
+The view stores reusable daily grain.
+
+6. Build reports from views
+
+SELECT
+    order_date,
+    revenue,
+    SUM(revenue) OVER (ORDER BY order_date) AS running_revenue
+FROM daily_sales
+ORDER BY order_date;
+
+A reporting query can add window calculations above a grouped view.
+
+7. View grain and naming
+
+Every view should have a documented grain. order_details has one row per order line; daily_sales has one row per date.
+
+SELECT
+    COUNT(*) AS daily_rows,
+    MIN(order_date) AS first_date,
+    MAX(order_date) AS last_date
+FROM daily_sales;
+
+8. Views and security
+
+A view can expose approved columns while hiding sensitive columns.
+
+CREATE VIEW product_catalog AS
+SELECT
+    product_id,
+    product_name,
+    category,
+    price
+FROM products;
+
+Actual security still requires appropriate database privileges.
+
+9. CTE versus view
+
+A CTE exists for one statement and is useful for query-specific steps. A view persists as a reusable database object and is useful for shared reporting logic.
+
+WITH coffee_orders AS (
+    SELECT * FROM order_details WHERE category = 'Coffee'
+)
+SELECT SUM(revenue) AS coffee_revenue
+FROM coffee_orders;
+
+10. View limitations
+
+Views do not automatically guarantee faster queries, their dependencies must remain compatible, complex views can hide expensive work, and some views are not directly updatable. Use EXPLAIN on queries that read views.
+
+11. Drop a view safely
+
+DROP VIEW IF EXISTS daily_sales;
+
+Dropping a view removes its saved definition but does not delete rows from the underlying tables.
+
+12. Practice Questions
+
+Practice 1: Create a product sales view
+
+Answer:
+
+CREATE VIEW product_sales AS
+SELECT
+    p.product_id,
+    p.product_name,
+    p.category,
+    COALESCE(SUM(o.quantity), 0) AS items_sold,
+    COALESCE(SUM(o.quantity * o.unit_price), 0) AS revenue
+FROM products AS p
+LEFT JOIN orders AS o ON o.product_id = p.product_id
+GROUP BY p.product_id, p.product_name, p.category;
+
+Practice 2: Query high-revenue products
+
+Answer:
+
+SELECT *
+FROM product_sales
+WHERE revenue >= 6.000
+ORDER BY revenue DESC;
+
+Practice 3: Create a category KPI view
+
+Answer:
+
+CREATE VIEW category_sales AS
+SELECT
+    p.category,
+    SUM(o.quantity) AS items_sold,
+    SUM(o.quantity * o.unit_price) AS revenue
+FROM products AS p
+JOIN orders AS o ON o.product_id = p.product_id
+GROUP BY p.category;
+
+Practice 4: Compare each category with total revenue
+
+Answer:
+
+SELECT
+    category,
+    revenue,
+    ROUND(100 * revenue / SUM(revenue) OVER (), 2) AS revenue_percent
+FROM category_sales
+ORDER BY revenue DESC;
+
+13. Segment 12 cheat sheet
+
+Goal\tStatement
+Create reusable query\tCREATE VIEW name AS SELECT ...
+Change a view\tCREATE OR REPLACE VIEW
+Read a view\tSELECT ... FROM view_name
+Remove a view\tDROP VIEW IF EXISTS
+One-query intermediate result\tWITH ... AS (...)

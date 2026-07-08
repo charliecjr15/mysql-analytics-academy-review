@@ -1,0 +1,429 @@
+Segment 11 — Data Cleaning and Validation
+
+Analysis is only trustworthy when source values are complete, consistent, and valid. This segment uses diagnostic queries first and controlled corrections second.
+
+1. Profile before changing data
+
+Start by measuring the table.
+
+SELECT
+    COUNT(*) AS row_count,
+    COUNT(product_name) AS names_present,
+    COUNT(*) - COUNT(product_name) AS names_missing,
+    COUNT(DISTINCT category) AS distinct_categories
+FROM products;
+
+COUNT(column) ignores NULL; COUNT(*) counts rows.
+
+2. Find NULL values
+
+SELECT *
+FROM products
+WHERE product_name IS NULL
+   OR category IS NULL
+   OR price IS NULL;
+
+Use IS NULL, not = NULL.
+
+3. Find blanks and whitespace
+
+SELECT
+    product_id,
+    product_name,
+    category
+FROM products
+WHERE TRIM(COALESCE(product_name, '')) = ''
+   OR TRIM(COALESCE(category, '')) = '';
+
+This catches NULL, empty strings, and strings containing only spaces.
+
+4. Find inconsistent categories
+
+SELECT
+    category,
+    COUNT(*) AS product_count
+FROM products
+GROUP BY category
+ORDER BY category;
+
+Review distinct values before deciding how they should be standardized.
+
+5. Detect duplicate business values
+
+SELECT
+    LOWER(TRIM(product_name)) AS normalized_name,
+    COUNT(*) AS duplicate_count
+FROM products
+GROUP BY LOWER(TRIM(product_name))
+HAVING COUNT(*) > 1;
+
+The normalized expression helps detect spelling differences caused only by case or outside spaces.
+
+6. Validate numeric ranges
+
+SELECT *
+FROM products
+WHERE price <= 0;
+
+SELECT *
+FROM orders
+WHERE quantity <= 0
+   OR unit_price < 0;
+
+Validity rules come from the business. Write them down before cleaning.
+
+7. Preview an UPDATE
+
+Run a SELECT with the same WHERE condition before changing rows.
+
+SELECT
+    product_id,
+    category AS old_category,
+    'Coffee' AS new_category
+FROM products
+WHERE LOWER(TRIM(category)) IN ('coffee', 'coffees');
+
+Confirm the target rows first.
+
+8. Update safely inside a transaction
+
+START TRANSACTION;
+
+UPDATE products
+SET category = 'Coffee'
+WHERE LOWER(TRIM(category)) IN ('coffee', 'coffees');
+
+SELECT * FROM products;
+
+ROLLBACK;
+
+Use COMMIT instead of ROLLBACK only after validating the changed rows. Transaction support depends on the table's storage engine; InnoDB supports it.
+
+9. Preserve raw data with a staging table
+
+DROP TABLE IF EXISTS products_staging;
+
+CREATE TABLE products_staging AS
+SELECT *
+FROM products;
+
+A staging copy supports experimentation, but CREATE TABLE ... AS SELECT does not copy every index or constraint automatically.
+
+10. Add preventive constraints
+
+ALTER TABLE products
+ADD CONSTRAINT chk_product_price_positive CHECK (price > 0);
+
+ALTER TABLE orders
+ADD CONSTRAINT chk_order_quantity_positive CHECK (quantity > 0);
+
+Clean existing violations before adding constraints.
+
+11. Build a data-quality report
+
+SELECT
+    'products missing category' AS quality_check,
+    COUNT(*) AS issue_count
+FROM products
+WHERE category IS NULL OR TRIM(category) = ''
+UNION ALL
+SELECT
+    'orders with invalid quantity',
+    COUNT(*)
+FROM orders
+WHERE quantity <= 0;
+
+UNION ALL stacks compatible result sets without removing duplicates.
+
+12. Think in data-quality dimensions
+
+A professional cleaning review is not one generic question: "is the data clean?" It is several smaller questions.
+
+Dimension\tQuestion\tExample SQL habit
+Completeness\tAre required values present?\tCount NULLs and blanks
+Uniqueness\tShould this value appear once?\tGROUP BY the business key
+Validity\tIs the value allowed?\tCheck ranges and accepted values
+Consistency\tDo labels and formats agree?\tTRIM, LOWER, mapping tables
+Integrity\tDo relationships connect?\tFind missing parent keys
+Freshness\tIs the data recent enough?\tCheck latest expected date
+Distribution\tDoes the shape look plausible?\tCompare min, max, average, and category counts
+
+Do not try to clean everything at once. Identify which dimension failed, write the rule, then write the SQL that proves the failure.
+
+13. Raw, staging, and clean layers
+
+Keep three mental layers:
+
+Layer\tPurpose\tRule
+raw\tUntouched import\tNever overwrite it
+staging\tProfiling and experiments\tAllowed to transform and test
+clean\tTrusted analytical table or view\tOnly approved rules enter here
+
+Example:
+
+DROP TABLE IF EXISTS products_clean;
+
+CREATE TABLE products_clean AS
+SELECT
+    product_id,
+    TRIM(product_name) AS product_name,
+    CASE
+        WHEN LOWER(TRIM(category)) IN ('coffee', 'coffees') THEN 'Coffee'
+        WHEN LOWER(TRIM(category)) IN ('tea', 'teas') THEN 'Tea'
+        ELSE TRIM(category)
+    END AS category,
+    price
+FROM products_staging;
+
+This creates a clean version without pretending the raw data never had problems.
+
+14. Turn rules into tests
+
+Data-quality tools often use a few generic test ideas. You can write the same thinking in plain SQL.
+
+Test idea\tBusiness meaning
+not_null\tRequired field is present
+unique\tA key appears only once
+accepted_values\tOnly approved labels appear
+relationships\tA child value exists in the parent table
+
+Example quality tests:
+
+SELECT 'product_id not null' AS test_name, COUNT(*) AS failures
+FROM products_clean
+WHERE product_id IS NULL
+UNION ALL
+SELECT 'product_id unique', COUNT(*) AS failures
+FROM (
+    SELECT product_id
+    FROM products_clean
+    GROUP BY product_id
+    HAVING COUNT(*) > 1
+) AS duplicate_ids
+UNION ALL
+SELECT 'category accepted values', COUNT(*) AS failures
+FROM products_clean
+WHERE category NOT IN ('Coffee', 'Tea', 'Pastry', 'Dessert');
+
+A good test query returns the rows or count that failed. Zero failures is the target, but a nonzero result is useful evidence, not a reason to hide the issue.
+
+15. Test relationships between tables
+
+A relationship test asks:
+
+Does every child row point to a real parent row?
+
+For orders and products:
+
+SELECT
+    o.order_id,
+    o.product_id
+FROM orders AS o
+LEFT JOIN products AS p
+    ON p.product_id = o.product_id
+WHERE p.product_id IS NULL;
+
+If this returns rows, those order rows reference products that do not exist in the product table. That threatens joins, revenue by product, and product-level dashboards.
+
+If the table has a real foreign key, MySQL can prevent this issue. If you are cleaning imported files before constraints exist, you still need the test query.
+
+16. Deduplicate safely
+
+Duplicate handling requires a survivor rule. Do not delete duplicates just because COUNT(*) is greater than one.
+
+Ask:
+
+- What makes two rows duplicates?
+- Which row should survive?
+- What evidence proves the deleted row is not a legitimate separate record?
+
+Use ROW_NUMBER to mark candidates before deleting anything:
+
+WITH ranked_products AS (
+    SELECT
+        product_id,
+        product_name,
+        category,
+        price,
+        ROW_NUMBER() OVER (
+            PARTITION BY LOWER(TRIM(product_name))
+            ORDER BY product_id
+        ) AS duplicate_rank
+    FROM products_clean
+)
+SELECT *
+FROM ranked_products
+WHERE duplicate_rank > 1;
+
+This query only identifies possible duplicate rows. The ORDER BY chooses the survivor. If the survivor rule is wrong, the cleaning rule is wrong.
+
+17. Keep a cleaning log
+
+A cleaning log explains what changed and why. It protects your future self and lets another analyst review your decisions.
+
+CREATE TABLE IF NOT EXISTS cleaning_log (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    table_name VARCHAR(100),
+    rule_name VARCHAR(100),
+    issue_count_before INT,
+    action_taken VARCHAR(255),
+    checked_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO cleaning_log (
+    table_name,
+    rule_name,
+    issue_count_before,
+    action_taken
+)
+SELECT
+    'products_clean',
+    'standardize category labels',
+    COUNT(*),
+    'Mapped coffee/coffees to Coffee and tea/teas to Tea'
+FROM products_staging
+WHERE LOWER(TRIM(category)) IN ('coffee', 'coffees', 'tea', 'teas');
+
+The log does not replace the SQL script. It summarizes the decision, affected population, and reason.
+
+18. Reconcile before trusting analysis
+
+After cleaning, compare important totals against the source. Cleaning should explain changes, not silently change the business story.
+
+SELECT
+    'raw products' AS check_name,
+    COUNT(*) AS row_count
+FROM products
+UNION ALL
+SELECT
+    'clean products',
+    COUNT(*)
+FROM products_clean;
+
+For sales data, reconcile revenue before and after cleaning:
+
+SELECT
+    SUM(quantity * unit_price) AS source_revenue
+FROM orders;
+
+SELECT
+    SUM(quantity * unit_price) AS clean_revenue
+FROM orders;
+
+In this small teaching database those totals should match. In a real dataset, any difference must be explained by a documented rule, such as excluding cancelled orders.
+
+19. Freshness and distribution checks
+
+Freshness asks whether the data is current enough for the decision.
+
+SELECT
+    MAX(order_date) AS latest_order_date,
+    DATEDIFF(CURRENT_DATE, MAX(order_date)) AS days_since_latest_order
+FROM orders;
+
+Distribution checks ask whether values look plausible.
+
+SELECT
+    category,
+    COUNT(*) AS product_count,
+    MIN(price) AS min_price,
+    MAX(price) AS max_price,
+    ROUND(AVG(price), 3) AS avg_price
+FROM products_clean
+GROUP BY category
+ORDER BY category;
+
+Freshness and distribution checks do not always prove a value is wrong. They tell you where to investigate.
+
+20. Common mistakes
+
+Do not update data before profiling it, clean without a written rule, delete duplicates without identifying the correct survivor, assume a backup copied constraints, or commit before validating affected rows.
+
+21. Practice Questions
+
+Practice 1: Find missing or blank categories
+
+Answer:
+
+SELECT *
+FROM products
+WHERE category IS NULL
+   OR TRIM(category) = '';
+
+Practice 2: Find possible duplicate product names
+
+Answer:
+
+SELECT
+    LOWER(TRIM(product_name)) AS normalized_name,
+    COUNT(*) AS duplicate_count
+FROM products
+GROUP BY LOWER(TRIM(product_name))
+HAVING COUNT(*) > 1;
+
+Practice 3: Preview trimmed product names
+
+Answer:
+
+SELECT
+    product_id,
+    product_name AS original_name,
+    TRIM(product_name) AS cleaned_name
+FROM products
+WHERE product_name <> TRIM(product_name);
+
+Practice 4: Report invalid order values
+
+Answer:
+
+SELECT
+    order_id,
+    quantity,
+    unit_price,
+    CASE
+        WHEN quantity <= 0 THEN 'Invalid quantity'
+        WHEN unit_price < 0 THEN 'Invalid price'
+        ELSE 'Valid'
+    END AS validation_result
+FROM orders
+WHERE quantity <= 0 OR unit_price < 0;
+
+Practice 5: Find products outside accepted categories
+
+Answer:
+
+SELECT
+    product_id,
+    product_name,
+    category
+FROM products_clean
+WHERE category NOT IN ('Coffee', 'Tea', 'Pastry', 'Dessert')
+   OR category IS NULL;
+
+Practice 6: Find relationship failures between orders and products
+
+Answer:
+
+SELECT
+    o.order_id,
+    o.product_id
+FROM orders AS o
+LEFT JOIN products AS p
+    ON p.product_id = o.product_id
+WHERE p.product_id IS NULL;
+
+22. Segment 11 cheat sheet
+
+Task\tPattern
+Count missing values\tCOUNT(*) - COUNT(column)
+Find NULL\tIS NULL
+Find blank text\tTRIM(COALESCE(column, '')) = ''
+Find duplicates\tGROUP BY ... HAVING COUNT(*) > 1
+Choose duplicate survivor\tROW_NUMBER() OVER (PARTITION BY ... ORDER BY ...)
+Preview changes\tSELECT with the intended WHERE
+Test changes safely\tSTART TRANSACTION ... ROLLBACK
+Prevent bad values\tCHECK, NOT NULL, keys
+Test accepted values\tWHERE column NOT IN (...)
+Test relationships\tLEFT JOIN parent ... WHERE parent.key IS NULL
+Track cleaning decisions\tcleaning_log table
+Reconcile after cleaning\tCompare counts and totals before analysis

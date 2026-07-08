@@ -1,0 +1,392 @@
+Segment 8 — Subqueries and CTEs
+
+Complex analysis often needs more than one logical step. In this segment, you will learn how to use the result of one query inside another query without creating temporary tables manually.
+
+1. Why intermediate results matter
+
+Suppose the business asks:
+
+Which products earned more revenue than the average product?
+
+You must first calculate revenue by product, then calculate the average of those product totals, and finally compare each product with that average. Subqueries and common table expressions let SQL express those steps clearly.
+
+2. What is a subquery?
+
+A subquery is a query nested inside another SQL statement.
+
+The inner query runs to produce a value or set of rows. The outer query uses that result.
+
+SELECT product_name, price
+FROM products
+WHERE price > (
+    SELECT AVG(price)
+    FROM products
+);
+
+The inner query returns the average menu price. The outer query returns products priced above it.
+
+3. Scalar subqueries
+
+A scalar subquery must return exactly one value. Aggregate functions without GROUP BY are commonly used because they return one row.
+
+SELECT
+    product_name,
+    price,
+    (SELECT ROUND(AVG(price), 3) FROM products) AS average_menu_price
+FROM products
+ORDER BY price DESC;
+
+The average is repeated beside each product so every row can be compared with the benchmark.
+
+4. Subqueries with IN
+
+IN accepts a list of values, so its subquery may return several rows.
+
+Question: Which products have appeared in orders?
+
+SELECT product_id, product_name
+FROM products
+WHERE product_id IN (
+    SELECT product_id
+    FROM orders
+)
+ORDER BY product_id;
+
+DISTINCT is optional inside this subquery because IN only tests membership.
+
+5. EXISTS
+
+EXISTS checks whether the subquery finds at least one matching row.
+
+SELECT p.product_id, p.product_name
+FROM products AS p
+WHERE EXISTS (
+    SELECT 1
+    FROM orders AS o
+    WHERE o.product_id = p.product_id
+)
+ORDER BY p.product_id;
+
+SELECT 1 is conventional: EXISTS only cares whether a row exists, not which columns it contains.
+
+6. NOT EXISTS
+
+NOT EXISTS is a safe way to find missing relationships.
+
+Question: Which products have never sold?
+
+SELECT p.product_id, p.product_name
+FROM products AS p
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM orders AS o
+    WHERE o.product_id = p.product_id
+)
+ORDER BY p.product_id;
+
+With the original six products, this returns no data rows because every product has at least one sale.
+
+7. Correlated subqueries
+
+A correlated subquery refers to the current row of the outer query. It runs logically once for each outer row.
+
+SELECT
+    p.product_name,
+    p.price
+FROM products AS p
+WHERE p.price > (
+    SELECT AVG(p2.price)
+    FROM products AS p2
+    WHERE p2.category = p.category
+)
+ORDER BY p.product_name;
+
+This finds products priced above the average price of their own category. Correlated subqueries are useful, but a join or CTE can sometimes be easier to read and faster to optimize.
+
+8. Derived tables in FROM
+
+A subquery in FROM behaves like a temporary result table and must have an alias.
+
+SELECT
+    product_sales.product_name,
+    product_sales.revenue
+FROM (
+    SELECT
+        p.product_name,
+        SUM(o.quantity * o.unit_price) AS revenue
+    FROM products AS p
+    JOIN orders AS o ON o.product_id = p.product_id
+    GROUP BY p.product_id, p.product_name
+) AS product_sales
+WHERE product_sales.revenue > 5.000
+ORDER BY product_sales.revenue DESC;
+
+The outer query can filter the aggregate result without using HAVING because the derived table already contains detail rows representing products.
+
+9. Introduction to CTEs
+
+CTE means common table expression. A CTE gives a name to a query result for the duration of one statement.
+
+WITH product_sales AS (
+    SELECT
+        p.product_id,
+        p.product_name,
+        SUM(o.quantity * o.unit_price) AS revenue
+    FROM products AS p
+    JOIN orders AS o ON o.product_id = p.product_id
+    GROUP BY p.product_id, p.product_name
+)
+SELECT product_name, revenue
+FROM product_sales
+ORDER BY revenue DESC;
+
+The WITH clause comes before the main SELECT.
+
+10. Filtering a CTE
+
+Separating calculation from filtering makes multi-step logic easier to audit.
+
+WITH product_sales AS (
+    SELECT
+        p.product_id,
+        p.product_name,
+        SUM(o.quantity * o.unit_price) AS revenue
+    FROM products AS p
+    JOIN orders AS o ON o.product_id = p.product_id
+    GROUP BY p.product_id, p.product_name
+)
+SELECT product_name, revenue
+FROM product_sales
+WHERE revenue >= 6.000
+ORDER BY revenue DESC;
+
+Expected result:
+
+product_name\trevenue
+Iced Latte\t16.500
+Cold Brew\t9.000
+Croissant\t6.000
+
+11. Multiple CTEs
+
+Separate CTEs can represent separate analytical steps. Separate them with commas and write WITH only once.
+
+WITH product_sales AS (
+    SELECT
+        product_id,
+        SUM(quantity * unit_price) AS revenue
+    FROM orders
+    GROUP BY product_id
+),
+average_sales AS (
+    SELECT AVG(revenue) AS average_product_revenue
+    FROM product_sales
+)
+SELECT
+    p.product_name,
+    ps.revenue,
+    ROUND(a.average_product_revenue, 3) AS average_product_revenue
+FROM product_sales AS ps
+JOIN products AS p ON p.product_id = ps.product_id
+CROSS JOIN average_sales AS a
+WHERE ps.revenue > a.average_product_revenue
+ORDER BY ps.revenue DESC;
+
+Expected result:
+
+product_name\trevenue\taverage_product_revenue
+Iced Latte\t16.500\t7.633
+Cold Brew\t9.000\t7.633
+
+12. Why CROSS JOIN works here
+
+average_sales contains exactly one row. CROSS JOIN attaches that single benchmark row to every product_sales row.
+
+If the benchmark CTE returned several rows, a CROSS JOIN would multiply the results. Always verify the grain and expected row count of every CTE before joining it.
+
+13. CTEs do not store data
+
+A CTE exists only while its statement runs. It does not create a permanent table and cannot be queried by a later statement.
+
+WITH daily_sales AS (
+    SELECT
+        order_date,
+        SUM(quantity * unit_price) AS revenue
+    FROM orders
+    GROUP BY order_date
+)
+SELECT *
+FROM daily_sales;
+
+Running SELECT * FROM daily_sales; afterward will fail because the CTE is out of scope.
+
+14. Subquery or CTE?
+
+Use a scalar subquery for one short benchmark. Use EXISTS for relationship checks. Use a CTE when the intermediate result needs a clear name, multiple logical steps, or easier debugging.
+
+Neither form is automatically faster. MySQL's optimizer and the actual execution plan determine performance. Start with correct, readable SQL and measure when performance matters.
+
+15. NULL and NOT IN
+
+NOT IN can produce surprising results if its subquery contains NULL. A comparison with NULL is unknown rather than true or false.
+
+For missing-relationship checks, prefer NOT EXISTS:
+
+SELECT p.product_id, p.product_name
+FROM products AS p
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM orders AS o
+    WHERE o.product_id = p.product_id
+);
+
+This expresses the business question directly and handles NULL behavior safely.
+
+16. Final analyst report
+
+Question: Which products produced above-average revenue, and how far above average were they?
+
+WITH product_sales AS (
+    SELECT
+        p.product_id,
+        p.product_name,
+        SUM(o.quantity) AS items_sold,
+        SUM(o.quantity * o.unit_price) AS revenue
+    FROM products AS p
+    JOIN orders AS o ON o.product_id = p.product_id
+    GROUP BY p.product_id, p.product_name
+),
+benchmark AS (
+    SELECT AVG(revenue) AS avg_revenue
+    FROM product_sales
+)
+SELECT
+    ps.product_name,
+    ps.items_sold,
+    ps.revenue,
+    ROUND(ps.revenue - b.avg_revenue, 3) AS amount_above_average
+FROM product_sales AS ps
+CROSS JOIN benchmark AS b
+WHERE ps.revenue > b.avg_revenue
+ORDER BY ps.revenue DESC;
+
+Expected result:
+
+product_name\titems_sold\trevenue\tamount_above_average
+Iced Latte\t6\t16.500\t8.867
+Cold Brew\t3\t9.000\t1.367
+
+17. Common mistakes
+
+Common errors include returning several rows from a scalar subquery, forgetting an alias for a derived table, referencing a CTE after its statement ends, using NOT IN without considering NULL, and losing track of the grain of an intermediate result.
+
+Debug complex SQL one layer at a time. Run each inner query or CTE independently and verify its columns, row count, and grain before adding the next step.
+
+18. Practice Questions
+
+Practice 1: Products above average price
+
+Find products priced above the overall average menu price. Return product_name, price, and the average price benchmark.
+
+Answer:
+
+SELECT
+    product_name,
+    price,
+    ROUND((SELECT AVG(price) FROM products), 3) AS average_menu_price
+FROM products
+WHERE price > (
+    SELECT AVG(price)
+    FROM products
+)
+ORDER BY price DESC, product_name;
+
+Practice 2: Products with no orders
+
+Find products with no matching orders using NOT EXISTS. Return product_id and product_name.
+
+Answer:
+
+SELECT
+    p.product_id,
+    p.product_name
+FROM products AS p
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM orders AS o
+    WHERE o.product_id = p.product_id
+)
+ORDER BY p.product_id;
+
+Practice 3: Days above average revenue
+
+Build a daily_sales CTE and return only days whose revenue is above average daily revenue.
+
+Answer:
+
+WITH daily_sales AS (
+    SELECT
+        order_date,
+        SUM(quantity * unit_price) AS daily_revenue
+    FROM orders
+    GROUP BY order_date
+),
+average_daily_sales AS (
+    SELECT AVG(daily_revenue) AS average_daily_revenue
+    FROM daily_sales
+)
+SELECT
+    ds.order_date,
+    ds.daily_revenue,
+    ROUND(a.average_daily_revenue, 3) AS average_daily_revenue
+FROM daily_sales AS ds
+CROSS JOIN average_daily_sales AS a
+WHERE ds.daily_revenue > a.average_daily_revenue
+ORDER BY ds.daily_revenue DESC;
+
+Practice 4: Product share of category revenue
+
+Build product_sales and category_sales CTEs. Return each product's revenue, its category revenue, and the product's percentage of category revenue.
+
+Answer:
+
+WITH product_sales AS (
+    SELECT
+        p.product_id,
+        p.product_name,
+        p.category,
+        SUM(o.quantity * o.unit_price) AS product_revenue
+    FROM products AS p
+    JOIN orders AS o
+        ON o.product_id = p.product_id
+    GROUP BY p.product_id, p.product_name, p.category
+),
+category_sales AS (
+    SELECT
+        category,
+        SUM(product_revenue) AS category_revenue
+    FROM product_sales
+    GROUP BY category
+)
+SELECT
+    ps.product_name,
+    ps.category,
+    ps.product_revenue,
+    cs.category_revenue,
+    ROUND(100 * ps.product_revenue / cs.category_revenue, 2) AS category_revenue_percent
+FROM product_sales AS ps
+JOIN category_sales AS cs
+    ON cs.category = ps.category
+ORDER BY ps.category, ps.product_revenue DESC;
+
+19. Segment 8 cheat sheet
+
+Core patterns:
+
+Goal\tPattern
+One benchmark value\tScalar subquery
+Test whether matches exist\tEXISTS
+Find missing matches\tNOT EXISTS
+Name an intermediate result\tWITH ... AS (...)
+Use several stages\tMultiple comma-separated CTEs
+Inspect a nested result\tRun the inner query independently

@@ -1,0 +1,8635 @@
+{
+  "1:ba5206257eef88b0e1446b29e01144cde1565caaba76b0c81d588bb9b076842b": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "category",
+      "quantity",
+      "unit_price",
+      "order_date"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2",
+        "2.750",
+        "2026-06-20"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "1",
+        "3.000",
+        "2026-06-20"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "3",
+        "1.500",
+        "2026-06-20"
+      ],
+      [
+        "4",
+        "Brownie",
+        "Dessert",
+        "2",
+        "1.750",
+        "2026-06-21"
+      ],
+      [
+        "5",
+        "Iced Latte",
+        "Coffee",
+        "1",
+        "2.750",
+        "2026-06-21"
+      ],
+      [
+        "6",
+        "Matcha Latte",
+        "Tea",
+        "2",
+        "2.900",
+        "2026-06-21"
+      ],
+      [
+        "7",
+        "Americano",
+        "Coffee",
+        "4",
+        "1.250",
+        "2026-06-22"
+      ],
+      [
+        "8",
+        "Cold Brew",
+        "Coffee",
+        "2",
+        "3.000",
+        "2026-06-22"
+      ],
+      [
+        "9",
+        "Croissant",
+        "Pastry",
+        "1",
+        "1.500",
+        "2026-06-22"
+      ],
+      [
+        "10",
+        "Iced Latte",
+        "Coffee",
+        "3",
+        "2.750",
+        "2026-06-23"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "1:15cac188762b778d65a17a833b831f3a73d640a57521a5e30f78ef95111cd5c5": {
+    "kind": "rows",
+    "columns": [
+      "product_name"
+    ],
+    "rows": [
+      [
+        "Iced Latte"
+      ],
+      [
+        "Cold Brew"
+      ],
+      [
+        "Croissant"
+      ],
+      [
+        "Brownie"
+      ],
+      [
+        "Matcha Latte"
+      ],
+      [
+        "Americano"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "1:348308efa203547e1376383db80f80dbdcbf9bbd025e40bc4f9256b3db2ad2b4": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "2.750"
+      ],
+      [
+        "Cold Brew",
+        "3.000"
+      ],
+      [
+        "Croissant",
+        "1.500"
+      ],
+      [
+        "Brownie",
+        "1.750"
+      ],
+      [
+        "Matcha Latte",
+        "2.900"
+      ],
+      [
+        "Americano",
+        "1.250"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "1:36972ce336b479ff124883f8599b04883dc1cb6f1af5393b5fabc179b6eea77c": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "price"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2.750"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "3.000"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "1.500"
+      ],
+      [
+        "4",
+        "Brownie",
+        "Dessert",
+        "1.750"
+      ],
+      [
+        "5",
+        "Matcha Latte",
+        "Tea",
+        "2.900"
+      ],
+      [
+        "6",
+        "Americano",
+        "Coffee",
+        "1.250"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "1:914699fa7015860cea25889da57a73fb5d894afd86ccd39be877eee4bdde396e": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "category",
+      "price"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "Coffee",
+        "2.750"
+      ],
+      [
+        "Cold Brew",
+        "Coffee",
+        "3.000"
+      ],
+      [
+        "Croissant",
+        "Pastry",
+        "1.500"
+      ],
+      [
+        "Brownie",
+        "Dessert",
+        "1.750"
+      ],
+      [
+        "Matcha Latte",
+        "Tea",
+        "2.900"
+      ],
+      [
+        "Americano",
+        "Coffee",
+        "1.250"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "1:7438b064865ea6d915df2b0c6d55906cd35c8b8e84dcd84d9e74684b508dee55": {
+    "kind": "error",
+    "message": "ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table' at line 2"
+  },
+  "1:fe1500e66aab2eaff862965a86da9a1f98acdfcf49671a691afd54cd2c107a46": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "2.750"
+      ],
+      [
+        "Cold Brew",
+        "3.000"
+      ],
+      [
+        "Americano",
+        "1.250"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "1:5e3c1e1116075d70b4894dbb7a3e56d996dcc6d320745a42261174391dbfd8a5": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "2.750"
+      ],
+      [
+        "Cold Brew",
+        "3.000"
+      ],
+      [
+        "Matcha Latte",
+        "2.900"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "1:3d8798b5b1253e1a7963f32c4c3a5e7bec83e14448b926a125b192c193e10b94": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price"
+    ],
+    "rows": [
+      [
+        "Americano",
+        "1.250"
+      ],
+      [
+        "Croissant",
+        "1.500"
+      ],
+      [
+        "Brownie",
+        "1.750"
+      ],
+      [
+        "Iced Latte",
+        "2.750"
+      ],
+      [
+        "Matcha Latte",
+        "2.900"
+      ],
+      [
+        "Cold Brew",
+        "3.000"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "1:f3290bace9e9210e14d9ed3a3b5b1d56adab30014e4131130dcc10c05fb370f2": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price"
+    ],
+    "rows": [
+      [
+        "Cold Brew",
+        "3.000"
+      ],
+      [
+        "Matcha Latte",
+        "2.900"
+      ],
+      [
+        "Iced Latte",
+        "2.750"
+      ],
+      [
+        "Brownie",
+        "1.750"
+      ],
+      [
+        "Croissant",
+        "1.500"
+      ],
+      [
+        "Americano",
+        "1.250"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "1:4c8a187a6361c2f1debfb9b103d8fe30701e082c5e2783da7afe7136264b2673": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price"
+    ],
+    "rows": [
+      [
+        "Cold Brew",
+        "3.000"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "1:220247e3b9203dfb1870072b39f1fdf2645a9581869c31265e7c304e84a0d48d": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price"
+    ],
+    "rows": [
+      [
+        "Cold Brew",
+        "3.000"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "1:7a0608a19a91897b1deeda78658f77d61962faad2b475b8d0c2c64b2ee9accc0": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "category",
+      "price"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "Coffee",
+        "2.750"
+      ],
+      [
+        "Cold Brew",
+        "Coffee",
+        "3.000"
+      ],
+      [
+        "Americano",
+        "Coffee",
+        "1.250"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "1:d4b43677f96fbf7fe854bd9b105181162ff9b4170b57f13c581e09ea35e90ce9": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price"
+    ],
+    "rows": [
+      [
+        "Croissant",
+        "1.500"
+      ],
+      [
+        "Brownie",
+        "1.750"
+      ],
+      [
+        "Americano",
+        "1.250"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "1:25836a370a759e5f7ab97f5da7100b1757a66f38f58c8220c23b83cda3c089d5": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price"
+    ],
+    "rows": [
+      [
+        "Cold Brew",
+        "3.000"
+      ],
+      [
+        "Iced Latte",
+        "2.750"
+      ]
+    ],
+    "row_count": 2,
+    "truncated": false
+  },
+  "1:3d3b498ad2c0f05dbde30241fb46259e4b52c109919ea11c473934b064646fb6": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "category",
+      "price"
+    ],
+    "rows": [
+      [
+        "Cold Brew",
+        "Coffee",
+        "3.000"
+      ],
+      [
+        "Iced Latte",
+        "Coffee",
+        "2.750"
+      ],
+      [
+        "Americano",
+        "Coffee",
+        "1.250"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "2:498930b31963437d9f1dc6969ca75a5a0e3ae3ee2e7caed97f9787b9fcc61bce": {
+    "kind": "rows",
+    "columns": [
+      "Field",
+      "Type",
+      "Null",
+      "Key",
+      "Default",
+      "Extra"
+    ],
+    "rows": [
+      [
+        "product_id",
+        "int",
+        "NO",
+        "PRI",
+        "NULL",
+        ""
+      ],
+      [
+        "product_name",
+        "varchar(100)",
+        "NO",
+        "",
+        "NULL",
+        ""
+      ],
+      [
+        "category",
+        "varchar(50)",
+        "NO",
+        "",
+        "NULL",
+        ""
+      ],
+      [
+        "price",
+        "decimal(6,3)",
+        "NO",
+        "",
+        "NULL",
+        ""
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "2:36972ce336b479ff124883f8599b04883dc1cb6f1af5393b5fabc179b6eea77c": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "price"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2.750"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "3.000"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "1.500"
+      ],
+      [
+        "4",
+        "Brownie",
+        "Dessert",
+        "1.750"
+      ],
+      [
+        "5",
+        "Matcha Latte",
+        "Tea",
+        "2.900"
+      ],
+      [
+        "6",
+        "Americano",
+        "Coffee",
+        "1.250"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "2:348308efa203547e1376383db80f80dbdcbf9bbd025e40bc4f9256b3db2ad2b4": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "2.750"
+      ],
+      [
+        "Cold Brew",
+        "3.000"
+      ],
+      [
+        "Croissant",
+        "1.500"
+      ],
+      [
+        "Brownie",
+        "1.750"
+      ],
+      [
+        "Matcha Latte",
+        "2.900"
+      ],
+      [
+        "Americano",
+        "1.250"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "2:7a0608a19a91897b1deeda78658f77d61962faad2b475b8d0c2c64b2ee9accc0": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "category",
+      "price"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "Coffee",
+        "2.750"
+      ],
+      [
+        "Cold Brew",
+        "Coffee",
+        "3.000"
+      ],
+      [
+        "Americano",
+        "Coffee",
+        "1.250"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "2:bd78ce0d1f1b90757ead2faf50ae474a127f20c06f322d2f71846ce4a6463c38": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "2.750"
+      ],
+      [
+        "Cold Brew",
+        "3.000"
+      ],
+      [
+        "Matcha Latte",
+        "2.900"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "2:3c1631c7e9c381dc1b4209703a4f9374ec6eb6dae35f6ab0e7bf76982178a427": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price"
+    ],
+    "rows": [
+      [
+        "Americano",
+        "1.250"
+      ],
+      [
+        "Croissant",
+        "1.500"
+      ],
+      [
+        "Brownie",
+        "1.750"
+      ],
+      [
+        "Iced Latte",
+        "2.750"
+      ],
+      [
+        "Matcha Latte",
+        "2.900"
+      ],
+      [
+        "Cold Brew",
+        "3.000"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "2:f3290bace9e9210e14d9ed3a3b5b1d56adab30014e4131130dcc10c05fb370f2": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price"
+    ],
+    "rows": [
+      [
+        "Cold Brew",
+        "3.000"
+      ],
+      [
+        "Matcha Latte",
+        "2.900"
+      ],
+      [
+        "Iced Latte",
+        "2.750"
+      ],
+      [
+        "Brownie",
+        "1.750"
+      ],
+      [
+        "Croissant",
+        "1.500"
+      ],
+      [
+        "Americano",
+        "1.250"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "2:b269bc61e81ac9e26d8cdf799bb1b72775d0b12b586b89047e7f1ec35c38d013": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price"
+    ],
+    "rows": [
+      [
+        "Cold Brew",
+        "3.000"
+      ],
+      [
+        "Matcha Latte",
+        "2.900"
+      ],
+      [
+        "Iced Latte",
+        "2.750"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "2:a14ac79e4534823b50559837dc29c019ed08466fb05e623f838d9e5d94ca2a53": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "category",
+      "price"
+    ],
+    "rows": [
+      [
+        "Brownie",
+        "Dessert",
+        "1.750"
+      ],
+      [
+        "Croissant",
+        "Pastry",
+        "1.500"
+      ],
+      [
+        "Americano",
+        "Coffee",
+        "1.250"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "2:2eca002cf5d54b2403185c7ba92eb90c60d45d974e1994b93e42067d139e36f5": {
+    "kind": "error",
+    "message": "ERROR 1054 (42S22) at line 1: Unknown column 'Coffee' in 'where clause'"
+  },
+  "2:edb21b4984072724fd437779647df5b4e135fdb975bfbcbca560e63cdf06b61b": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "price"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2.750"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "3.000"
+      ],
+      [
+        "6",
+        "Americano",
+        "Coffee",
+        "1.250"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "2:76d860bf0f78822a507a8914756b0304b2bfe4e98a7947a678b9611352d9ac41": {
+    "kind": "error",
+    "message": "ERROR 1054 (42S22) at line 1: Unknown column 'productname' in 'field list'"
+  },
+  "2:15cac188762b778d65a17a833b831f3a73d640a57521a5e30f78ef95111cd5c5": {
+    "kind": "rows",
+    "columns": [
+      "product_name"
+    ],
+    "rows": [
+      [
+        "Iced Latte"
+      ],
+      [
+        "Cold Brew"
+      ],
+      [
+        "Croissant"
+      ],
+      [
+        "Brownie"
+      ],
+      [
+        "Matcha Latte"
+      ],
+      [
+        "Americano"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "2:f631798947dc699596d455a5883adb1150ac6f3e6a23e85de2291ab9cf13fed8": {
+    "kind": "error",
+    "message": "ERROR 1146 (42S02) at line 1: Table 'coffee_shop.product' doesn't exist"
+  },
+  "3:ba5206257eef88b0e1446b29e01144cde1565caaba76b0c81d588bb9b076842b": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "category",
+      "quantity",
+      "unit_price",
+      "order_date"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2",
+        "2.750",
+        "2026-06-20"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "1",
+        "3.000",
+        "2026-06-20"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "3",
+        "1.500",
+        "2026-06-20"
+      ],
+      [
+        "4",
+        "Brownie",
+        "Dessert",
+        "2",
+        "1.750",
+        "2026-06-21"
+      ],
+      [
+        "5",
+        "Iced Latte",
+        "Coffee",
+        "1",
+        "2.750",
+        "2026-06-21"
+      ],
+      [
+        "6",
+        "Matcha Latte",
+        "Tea",
+        "2",
+        "2.900",
+        "2026-06-21"
+      ],
+      [
+        "7",
+        "Americano",
+        "Coffee",
+        "4",
+        "1.250",
+        "2026-06-22"
+      ],
+      [
+        "8",
+        "Cold Brew",
+        "Coffee",
+        "2",
+        "3.000",
+        "2026-06-22"
+      ],
+      [
+        "9",
+        "Croissant",
+        "Pastry",
+        "1",
+        "1.500",
+        "2026-06-22"
+      ],
+      [
+        "10",
+        "Iced Latte",
+        "Coffee",
+        "3",
+        "2.750",
+        "2026-06-23"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "3:45b4b4e814b4cb7d92edc03ef9e5ba8798fee0308627de7f1a63a38cf61c8d98": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "quantity",
+      "unit_price",
+      "quantity * unit_price"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "2",
+        "2.750",
+        "5.500"
+      ],
+      [
+        "Cold Brew",
+        "1",
+        "3.000",
+        "3.000"
+      ],
+      [
+        "Croissant",
+        "3",
+        "1.500",
+        "4.500"
+      ],
+      [
+        "Brownie",
+        "2",
+        "1.750",
+        "3.500"
+      ],
+      [
+        "Iced Latte",
+        "1",
+        "2.750",
+        "2.750"
+      ],
+      [
+        "Matcha Latte",
+        "2",
+        "2.900",
+        "5.800"
+      ],
+      [
+        "Americano",
+        "4",
+        "1.250",
+        "5.000"
+      ],
+      [
+        "Cold Brew",
+        "2",
+        "3.000",
+        "6.000"
+      ],
+      [
+        "Croissant",
+        "1",
+        "1.500",
+        "1.500"
+      ],
+      [
+        "Iced Latte",
+        "3",
+        "2.750",
+        "8.250"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "3:8e53c645baf93b8f13f49fae0219a7b045a928f290e9a69cb2f59606ba6e1cfc": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "quantity",
+      "unit_price",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "2",
+        "2.750",
+        "5.500"
+      ],
+      [
+        "Cold Brew",
+        "1",
+        "3.000",
+        "3.000"
+      ],
+      [
+        "Croissant",
+        "3",
+        "1.500",
+        "4.500"
+      ],
+      [
+        "Brownie",
+        "2",
+        "1.750",
+        "3.500"
+      ],
+      [
+        "Iced Latte",
+        "1",
+        "2.750",
+        "2.750"
+      ],
+      [
+        "Matcha Latte",
+        "2",
+        "2.900",
+        "5.800"
+      ],
+      [
+        "Americano",
+        "4",
+        "1.250",
+        "5.000"
+      ],
+      [
+        "Cold Brew",
+        "2",
+        "3.000",
+        "6.000"
+      ],
+      [
+        "Croissant",
+        "1",
+        "1.500",
+        "1.500"
+      ],
+      [
+        "Iced Latte",
+        "3",
+        "2.750",
+        "8.250"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "3:53665d0120271db044514e00778d2febf722fb3b979bdf453ed1c993485aaa76": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "5.500"
+      ],
+      [
+        "Cold Brew",
+        "3.000"
+      ],
+      [
+        "Croissant",
+        "4.500"
+      ],
+      [
+        "Brownie",
+        "3.500"
+      ],
+      [
+        "Iced Latte",
+        "2.750"
+      ],
+      [
+        "Matcha Latte",
+        "5.800"
+      ],
+      [
+        "Americano",
+        "5.000"
+      ],
+      [
+        "Cold Brew",
+        "6.000"
+      ],
+      [
+        "Croissant",
+        "1.500"
+      ],
+      [
+        "Iced Latte",
+        "8.250"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "3:753d2ae60096dfe8b3534738b28d83eb324d45ac3602dbe090ebce14bfce02bc": {
+    "kind": "rows",
+    "columns": [
+      "total_revenue"
+    ],
+    "rows": [
+      [
+        "45.800"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "3:33b0dfc93624ffe3d4ca79933a886531a490037492ef885ffc15a1acda0fb81c": {
+    "kind": "rows",
+    "columns": [
+      "total_order_rows"
+    ],
+    "rows": [
+      [
+        "10"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "3:944c7a8ef060424712f9e3e0c6a6599b1b8abf20667b9f191fadcc8d8e7a7a18": {
+    "kind": "rows",
+    "columns": [
+      "total_items_sold"
+    ],
+    "rows": [
+      [
+        "21"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "3:ec0f07d3650504711484fc9271d770069dfeb632869a52af6bbed4710c84d27d": {
+    "kind": "rows",
+    "columns": [
+      "average_order_revenue"
+    ],
+    "rows": [
+      [
+        "4.5800000"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "3:99cd2276cb693dbf6ca976b6fc16cc033f4d834a3f2477665594dbca382ab410": {
+    "kind": "rows",
+    "columns": [
+      "average_order_revenue"
+    ],
+    "rows": [
+      [
+        "4.580"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "3:15af51960a49c340cafb1e8e61dfe2c092d424b2a467e9e9c4d7ab008dadfaaf": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "quantity",
+      "unit_price",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "10",
+        "Iced Latte",
+        "3",
+        "2.750",
+        "8.250"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "3:662e55e2e50d83ce3efa14d95d26f3e24074ab73b7529b24508fda44ff745ba7": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "quantity",
+      "unit_price",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "9",
+        "Croissant",
+        "1",
+        "1.500",
+        "1.500"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "3:e17557d55750bccf4964b014131eccf2609f53f6c451052bed81e10986757f0e": {
+    "kind": "rows",
+    "columns": [
+      "coffee_revenue"
+    ],
+    "rows": [
+      [
+        "30.500"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "3:7f231048d01c6ea2463c55d04b80bc0afffb97bb2efff8c3310907d69e5b1a6f": {
+    "kind": "rows",
+    "columns": [
+      "non_coffee_revenue"
+    ],
+    "rows": [
+      [
+        "15.300"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "3:029eff43d61e48bf25423d2a9c0fb47be69c05bcf485d16b94ad6cb76f73cbf1": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "category",
+      "quantity"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2"
+      ],
+      [
+        "7",
+        "Americano",
+        "Coffee",
+        "4"
+      ],
+      [
+        "8",
+        "Cold Brew",
+        "Coffee",
+        "2"
+      ],
+      [
+        "10",
+        "Iced Latte",
+        "Coffee",
+        "3"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "3:a2453eae2bac174234ce5595fc83bfd25c691013543e57b13d0588d27003ec17": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "category"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee"
+      ],
+      [
+        "5",
+        "Iced Latte",
+        "Coffee"
+      ],
+      [
+        "6",
+        "Matcha Latte",
+        "Tea"
+      ],
+      [
+        "7",
+        "Americano",
+        "Coffee"
+      ],
+      [
+        "8",
+        "Cold Brew",
+        "Coffee"
+      ],
+      [
+        "10",
+        "Iced Latte",
+        "Coffee"
+      ]
+    ],
+    "row_count": 7,
+    "truncated": false
+  },
+  "3:4329a774d1b2592158163e0867af45d9383c8f3fe40b062403df01058379e08d": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "category"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee"
+      ],
+      [
+        "5",
+        "Iced Latte",
+        "Coffee"
+      ],
+      [
+        "6",
+        "Matcha Latte",
+        "Tea"
+      ],
+      [
+        "7",
+        "Americano",
+        "Coffee"
+      ],
+      [
+        "8",
+        "Cold Brew",
+        "Coffee"
+      ],
+      [
+        "10",
+        "Iced Latte",
+        "Coffee"
+      ]
+    ],
+    "row_count": 7,
+    "truncated": false
+  },
+  "3:1e6517a1ffd14ca46e0fb64ca8c381e273c740655d680f998295e95fac4cf591": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "category",
+      "quantity",
+      "unit_price",
+      "order_date"
+    ],
+    "rows": [
+      [
+        "7",
+        "Americano",
+        "Coffee",
+        "4",
+        "1.250",
+        "2026-06-22"
+      ],
+      [
+        "8",
+        "Cold Brew",
+        "Coffee",
+        "2",
+        "3.000",
+        "2026-06-22"
+      ],
+      [
+        "9",
+        "Croissant",
+        "Pastry",
+        "1",
+        "1.500",
+        "2026-06-22"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "3:b78cacbdb4ce37aee1526ffff9d40187a252001cd924b1fda8098773d142e944": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "category",
+      "quantity",
+      "unit_price",
+      "order_date"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2",
+        "2.750",
+        "2026-06-20"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "1",
+        "3.000",
+        "2026-06-20"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "3",
+        "1.500",
+        "2026-06-20"
+      ],
+      [
+        "4",
+        "Brownie",
+        "Dessert",
+        "2",
+        "1.750",
+        "2026-06-21"
+      ],
+      [
+        "5",
+        "Iced Latte",
+        "Coffee",
+        "1",
+        "2.750",
+        "2026-06-21"
+      ],
+      [
+        "6",
+        "Matcha Latte",
+        "Tea",
+        "2",
+        "2.900",
+        "2026-06-21"
+      ],
+      [
+        "7",
+        "Americano",
+        "Coffee",
+        "4",
+        "1.250",
+        "2026-06-22"
+      ],
+      [
+        "8",
+        "Cold Brew",
+        "Coffee",
+        "2",
+        "3.000",
+        "2026-06-22"
+      ],
+      [
+        "9",
+        "Croissant",
+        "Pastry",
+        "1",
+        "1.500",
+        "2026-06-22"
+      ]
+    ],
+    "row_count": 9,
+    "truncated": false
+  },
+  "3:5641b766de28b89f3c8bb57643f731197ff5935b5814e3639b800c2c3f20b5c0": {
+    "kind": "rows",
+    "columns": [
+      "revenue_june_20_to_22"
+    ],
+    "rows": [
+      [
+        "37.550"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "3:302844c81955d79c81cdc585658f9bcf420faf18154a3d27bf0280f0e4306acb": {
+    "kind": "rows",
+    "columns": [
+      "total_order_rows",
+      "total_items_sold",
+      "total_revenue",
+      "avg_order_revenue"
+    ],
+    "rows": [
+      [
+        "10",
+        "21",
+        "45.800",
+        "4.580"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "3:c4d0f231b163f383e10e08c316f0bec6d2fc3e4b5b90f38ca81e5dae043348fe": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "quantity",
+      "order_date"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "2",
+        "2026-06-20"
+      ],
+      [
+        "Cold Brew",
+        "1",
+        "2026-06-20"
+      ],
+      [
+        "Croissant",
+        "3",
+        "2026-06-20"
+      ],
+      [
+        "Brownie",
+        "2",
+        "2026-06-21"
+      ],
+      [
+        "Iced Latte",
+        "1",
+        "2026-06-21"
+      ],
+      [
+        "Matcha Latte",
+        "2",
+        "2026-06-21"
+      ],
+      [
+        "Americano",
+        "4",
+        "2026-06-22"
+      ],
+      [
+        "Cold Brew",
+        "2",
+        "2026-06-22"
+      ],
+      [
+        "Croissant",
+        "1",
+        "2026-06-22"
+      ],
+      [
+        "Iced Latte",
+        "3",
+        "2026-06-23"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "3:e4c8e56720dba0ffca4d1733e74aba931ddead96bf0359934e87173796c9592a": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "quantity",
+      "unit_price",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "2",
+        "2.750",
+        "5.500"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "1",
+        "3.000",
+        "3.000"
+      ],
+      [
+        "3",
+        "Croissant",
+        "3",
+        "1.500",
+        "4.500"
+      ],
+      [
+        "4",
+        "Brownie",
+        "2",
+        "1.750",
+        "3.500"
+      ],
+      [
+        "5",
+        "Iced Latte",
+        "1",
+        "2.750",
+        "2.750"
+      ],
+      [
+        "6",
+        "Matcha Latte",
+        "2",
+        "2.900",
+        "5.800"
+      ],
+      [
+        "7",
+        "Americano",
+        "4",
+        "1.250",
+        "5.000"
+      ],
+      [
+        "8",
+        "Cold Brew",
+        "2",
+        "3.000",
+        "6.000"
+      ],
+      [
+        "9",
+        "Croissant",
+        "1",
+        "1.500",
+        "1.500"
+      ],
+      [
+        "10",
+        "Iced Latte",
+        "3",
+        "2.750",
+        "8.250"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "3:92cd2d864dcee2d76bc17b77e5e4bf28e16a49836fe69de5461a7c8293dc6c03": {
+    "kind": "rows",
+    "columns": [
+      "avg_order_revenue"
+    ],
+    "rows": [
+      [
+        "4.580"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "3:0f6bc0e7d7b391f104ce98b1684d518937b4321572f39f64e1181baa246c1d07": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "category",
+      "quantity",
+      "unit_price",
+      "order_date"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2",
+        "2.750",
+        "2026-06-20"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "1",
+        "3.000",
+        "2026-06-20"
+      ],
+      [
+        "5",
+        "Iced Latte",
+        "Coffee",
+        "1",
+        "2.750",
+        "2026-06-21"
+      ],
+      [
+        "7",
+        "Americano",
+        "Coffee",
+        "4",
+        "1.250",
+        "2026-06-22"
+      ],
+      [
+        "8",
+        "Cold Brew",
+        "Coffee",
+        "2",
+        "3.000",
+        "2026-06-22"
+      ],
+      [
+        "10",
+        "Iced Latte",
+        "Coffee",
+        "3",
+        "2.750",
+        "2026-06-23"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "3:0699935d6893721a3b017b3631244e48b85f6e37350562bd662c780ccd615235": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "category",
+      "quantity",
+      "unit_price",
+      "order_date"
+    ],
+    "rows": [
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "3",
+        "1.500",
+        "2026-06-20"
+      ],
+      [
+        "7",
+        "Americano",
+        "Coffee",
+        "4",
+        "1.250",
+        "2026-06-22"
+      ],
+      [
+        "10",
+        "Iced Latte",
+        "Coffee",
+        "3",
+        "2.750",
+        "2026-06-23"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "3:46810421b25f343c97cd081164fb09189c6b7a56ec42b56827c23bbcd08d191b": {
+    "kind": "rows",
+    "columns": [
+      "revenue_june_22"
+    ],
+    "rows": [
+      [
+        "12.500"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "3:2dcd3e8687a26f36b6bfa881925a098669013ab815bb140d25b2959c37e6df4a": {
+    "kind": "rows",
+    "columns": [
+      "coffee_revenue_june_20_to_22"
+    ],
+    "rows": [
+      [
+        "22.250"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "3:a460970119207641382a005507c95cc16a43041f6f2f4a7dba7582593da8d44e": {
+    "kind": "error",
+    "message": "ERROR 1054 (42S22) at line 1: Unknown column 'product' in 'field list'"
+  },
+  "3:bc742de202cea835333965cf842b894b6d73f93838c6262c1fc7256e7752f38e": {
+    "kind": "rows",
+    "columns": [
+      "product_name"
+    ],
+    "rows": [
+      [
+        "Iced Latte"
+      ],
+      [
+        "Cold Brew"
+      ],
+      [
+        "Croissant"
+      ],
+      [
+        "Brownie"
+      ],
+      [
+        "Iced Latte"
+      ],
+      [
+        "Matcha Latte"
+      ],
+      [
+        "Americano"
+      ],
+      [
+        "Cold Brew"
+      ],
+      [
+        "Croissant"
+      ],
+      [
+        "Iced Latte"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "3:65f1c4905d544ee6cf2445727be68a3217c769043215d6521458c0bbccde5ef0": {
+    "kind": "rows",
+    "columns": [
+      "total_revenue"
+    ],
+    "rows": [
+      [
+        "5.500"
+      ],
+      [
+        "3.000"
+      ],
+      [
+        "4.500"
+      ],
+      [
+        "3.500"
+      ],
+      [
+        "2.750"
+      ],
+      [
+        "5.800"
+      ],
+      [
+        "5.000"
+      ],
+      [
+        "6.000"
+      ],
+      [
+        "1.500"
+      ],
+      [
+        "8.250"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "3:df0ec2995956cf2dadf1a17cc99f21f253cc0a0b7ae22449555a9035953736fd": {
+    "kind": "rows",
+    "columns": [
+      "total_revenue"
+    ],
+    "rows": [
+      [
+        "45.800"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "4:753d2ae60096dfe8b3534738b28d83eb324d45ac3602dbe090ebce14bfce02bc": {
+    "kind": "rows",
+    "columns": [
+      "total_revenue"
+    ],
+    "rows": [
+      [
+        "45.800"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "4:8ed72b45a8cc7014df1cc29ff61000f2e61c5d8e1799b7addc6783e3e6e54d02": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "30.500"
+      ],
+      [
+        "Pastry",
+        "6.000"
+      ],
+      [
+        "Dessert",
+        "3.500"
+      ],
+      [
+        "Tea",
+        "5.800"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "4:3778f18f5fe80081cd66bfab995e4077184f3f272b7aba78c1622261bb4ee4e8": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "16.500"
+      ],
+      [
+        "Cold Brew",
+        "9.000"
+      ],
+      [
+        "Croissant",
+        "6.000"
+      ],
+      [
+        "Brownie",
+        "3.500"
+      ],
+      [
+        "Matcha Latte",
+        "5.800"
+      ],
+      [
+        "Americano",
+        "5.000"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "4:620dc4f401b6a9bb4a89dc4e2399ca2e9710002a0193600898b8ee6a90d6598d": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "16.500"
+      ],
+      [
+        "Cold Brew",
+        "9.000"
+      ],
+      [
+        "Croissant",
+        "6.000"
+      ],
+      [
+        "Matcha Latte",
+        "5.800"
+      ],
+      [
+        "Americano",
+        "5.000"
+      ],
+      [
+        "Brownie",
+        "3.500"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "4:5db243571b77d524ced1916121d4cc0e017ad88e1e94908ad96a41d8784aeff8": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "16.500"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "4:a11b595780330607bc8beebd372668dffc08f0f38214c88e811ca74006d14a99": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "items_sold"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "6"
+      ],
+      [
+        "Croissant",
+        "4"
+      ],
+      [
+        "Americano",
+        "4"
+      ],
+      [
+        "Cold Brew",
+        "3"
+      ],
+      [
+        "Brownie",
+        "2"
+      ],
+      [
+        "Matcha Latte",
+        "2"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "4:7615a6a8fbb7eddce0a5f46da299c5768b7882e5876babcef8659445d71458d4": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "30.500"
+      ],
+      [
+        "Pastry",
+        "6.000"
+      ],
+      [
+        "Tea",
+        "5.800"
+      ],
+      [
+        "Dessert",
+        "3.500"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "4:93eb05601c16aff7013d3773002f05d606eec23bcba5d61a83eb252f436a4bb3": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "items_sold"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "13"
+      ],
+      [
+        "Pastry",
+        "4"
+      ],
+      [
+        "Dessert",
+        "2"
+      ],
+      [
+        "Tea",
+        "2"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "4:d25ed6da472cd07ce46f2cdf7d5c5d40be4628dea0baadd4f8cc9f75ec3da49e": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "order_rows"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "3"
+      ],
+      [
+        "2026-06-21",
+        "3"
+      ],
+      [
+        "2026-06-22",
+        "3"
+      ],
+      [
+        "2026-06-23",
+        "1"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "4:1e027c6ae764cd8dc0204c15a624ca4bfaacf9ccd9fe48bfbe0c4aaa3fe4502e": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "items_sold"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "6"
+      ],
+      [
+        "2026-06-21",
+        "5"
+      ],
+      [
+        "2026-06-22",
+        "7"
+      ],
+      [
+        "2026-06-23",
+        "3"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "4:659870897e1975f9f203799824aa552a3088d3a85b8960ea428270befc9dc28f": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "13.000"
+      ],
+      [
+        "2026-06-21",
+        "12.050"
+      ],
+      [
+        "2026-06-22",
+        "12.500"
+      ],
+      [
+        "2026-06-23",
+        "8.250"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "4:cdf1c750e75291429d12109ca6bc88352f78928234a40899f3ef862af74012a0": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "13.000"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "4:6adbf3441e6540b299446e7ba949553fbd60b577b363432bfb369c4ab5345f25": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "items_sold",
+      "revenue",
+      "avg_order_revenue"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "6",
+        "16.500",
+        "5.500"
+      ],
+      [
+        "Cold Brew",
+        "3",
+        "9.000",
+        "4.500"
+      ],
+      [
+        "Croissant",
+        "4",
+        "6.000",
+        "3.000"
+      ],
+      [
+        "Matcha Latte",
+        "2",
+        "5.800",
+        "5.800"
+      ],
+      [
+        "Americano",
+        "4",
+        "5.000",
+        "5.000"
+      ],
+      [
+        "Brownie",
+        "2",
+        "3.500",
+        "3.500"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "4:55499a5c4937e89e01e92b10410d2bcf27e1a5cc85fa8792207d6e9494c9b359": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "items_sold"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "13"
+      ],
+      [
+        "Pastry",
+        "4"
+      ],
+      [
+        "Dessert",
+        "2"
+      ],
+      [
+        "Tea",
+        "2"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "4:9651664191670c8f84c380370b2bf824701889142c94f3b995934941962a7aea": {
+    "kind": "error",
+    "message": "ERROR 1055 (42000) at line 1: Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffee_shop.orders.product_name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"
+  },
+  "4:b6bd55da33b2ddedc14ba15f44059bcf0c55fb43b61475390b4ff607391de9e6": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "product_name",
+      "items_sold"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "Iced Latte",
+        "6"
+      ],
+      [
+        "Coffee",
+        "Americano",
+        "4"
+      ],
+      [
+        "Coffee",
+        "Cold Brew",
+        "3"
+      ],
+      [
+        "Dessert",
+        "Brownie",
+        "2"
+      ],
+      [
+        "Pastry",
+        "Croissant",
+        "4"
+      ],
+      [
+        "Tea",
+        "Matcha Latte",
+        "2"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "4:0b298c8279c76c302e57dc6cd6104c532027353c8963c393fad7f33b55d2c3b7": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "product_name",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "Iced Latte",
+        "16.500"
+      ],
+      [
+        "Coffee",
+        "Cold Brew",
+        "9.000"
+      ],
+      [
+        "Coffee",
+        "Americano",
+        "5.000"
+      ],
+      [
+        "Dessert",
+        "Brownie",
+        "3.500"
+      ],
+      [
+        "Pastry",
+        "Croissant",
+        "6.000"
+      ],
+      [
+        "Tea",
+        "Matcha Latte",
+        "5.800"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "4:f436a74be33ea7814f081d141ceecee2c0527a1683e13e5ea5f1d988c873dc8b": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "16.500"
+      ],
+      [
+        "Cold Brew",
+        "9.000"
+      ],
+      [
+        "Americano",
+        "5.000"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "4:19fd53bed644b224422d80398958de3f8817f77bafe797a2c3a55799230fa03f": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "order_rows",
+      "items_sold",
+      "revenue",
+      "avg_order_revenue"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "6",
+        "13",
+        "30.500",
+        "5.083"
+      ],
+      [
+        "Pastry",
+        "2",
+        "4",
+        "6.000",
+        "3.000"
+      ],
+      [
+        "Tea",
+        "1",
+        "2",
+        "5.800",
+        "5.800"
+      ],
+      [
+        "Dessert",
+        "1",
+        "2",
+        "3.500",
+        "3.500"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "4:90834b8ffa520c278a4d79b9a9b3f1d7cd49e539c386fee4da438657541707f3": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "items_sold"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "6"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "4:041f9f5a987adb867c7536ba8b36e51fd8c259d43696445e41d2893bc1f250ed": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "order_rows"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "6"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "4:414755eb4f89799413a6245e8deb793ac7c15c8dee699734d2db4d47ae8d4b0c": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "items_sold"
+    ],
+    "rows": [
+      [
+        "2026-06-22",
+        "7"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "4:9ca7b2882c0f0c6df7cb9299cfa09e9c117cf93fcb4491acbc2a2da25c8212ad": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "22.250"
+      ],
+      [
+        "Pastry",
+        "6.000"
+      ],
+      [
+        "Tea",
+        "5.800"
+      ],
+      [
+        "Dessert",
+        "3.500"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "4:f4a6a154355ee7d96048a302c00987d7b0a8c125795cb7931ee46533f9dd6fd1": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "order_rows",
+      "units_sold",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "6",
+        "13",
+        "30.500"
+      ],
+      [
+        "Pastry",
+        "2",
+        "4",
+        "6.000"
+      ],
+      [
+        "Tea",
+        "1",
+        "2",
+        "5.800"
+      ],
+      [
+        "Dessert",
+        "1",
+        "2",
+        "3.500"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "5:8e4f9cab10b06ebf6a04e04aecdc93364a828579ddea05c1ffa56ee71b5ef3c3": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "items_sold"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "6"
+      ],
+      [
+        "Cold Brew",
+        "3"
+      ],
+      [
+        "Croissant",
+        "4"
+      ],
+      [
+        "Brownie",
+        "2"
+      ],
+      [
+        "Matcha Latte",
+        "2"
+      ],
+      [
+        "Americano",
+        "4"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "5:51874a239f0ae28212a207bc43313f878869891b3c8fd2ed5bb909b74f31b483": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "items_sold"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "6"
+      ],
+      [
+        "Croissant",
+        "4"
+      ],
+      [
+        "Americano",
+        "4"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "5:a81d486c6da864d838376f89f50c3f006e182679fe708b50bba59b1cd3f4bb85": {
+    "kind": "error",
+    "message": "ERROR 1111 (HY000) at line 1: Invalid use of group function"
+  },
+  "5:3d73090a93db9bc8fcf2f921199aeb12348200de2a615999d627efd33f09e6b5": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "16.500"
+      ],
+      [
+        "Cold Brew",
+        "9.000"
+      ],
+      [
+        "Croissant",
+        "6.000"
+      ],
+      [
+        "Matcha Latte",
+        "5.800"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "5:b8032b6262db6d9a8a0abfe37acb739ea3a710ce52647d80b90995c18243bce3": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "16.500"
+      ],
+      [
+        "Cold Brew",
+        "9.000"
+      ],
+      [
+        "Croissant",
+        "6.000"
+      ],
+      [
+        "Matcha Latte",
+        "5.800"
+      ],
+      [
+        "Americano",
+        "5.000"
+      ]
+    ],
+    "row_count": 5,
+    "truncated": false
+  },
+  "5:4aa209ab3d0f4e5e7f652e0109e95429875a28ccab0b6502c502531e6ae30a50": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "30.500"
+      ],
+      [
+        "Pastry",
+        "6.000"
+      ],
+      [
+        "Tea",
+        "5.800"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "5:e55bd3c781b6292a694d14b0db6e31018e4fc5b673df5e02ce260939d51901cc": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "order_rows"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "3"
+      ],
+      [
+        "2026-06-21",
+        "3"
+      ],
+      [
+        "2026-06-22",
+        "3"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "5:de76f8f6f538d8533531de25d4f1948c86825aa0f18603f4e2bd9503ab8b3d10": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "13.000"
+      ],
+      [
+        "2026-06-22",
+        "12.500"
+      ],
+      [
+        "2026-06-21",
+        "12.050"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "5:797fe3f5e0ed4d3017b9dd7fd1cb1b01f97411a2d0e0f9c93551496e982b1e58": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "16.500"
+      ],
+      [
+        "Cold Brew",
+        "9.000"
+      ]
+    ],
+    "row_count": 2,
+    "truncated": false
+  },
+  "5:89079055baf2bfd69226120bbc08e14ff10d33e4463ca95e743a221a6a3d95ad": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "22.250"
+      ],
+      [
+        "Pastry",
+        "6.000"
+      ],
+      [
+        "Tea",
+        "5.800"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "5:c3bc11a9c0b1ae08e84f9670d56a60a793326af18b336af1b68d7531b12de3e8": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "items_sold",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "6",
+        "16.500"
+      ],
+      [
+        "Cold Brew",
+        "3",
+        "9.000"
+      ],
+      [
+        "Croissant",
+        "4",
+        "6.000"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "5:e8ccd4cb551f00ac18ebc60b9fdf4e1808f11dafb0199077861532104e672c0c": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "items_sold",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "6",
+        "16.500"
+      ],
+      [
+        "Cold Brew",
+        "3",
+        "9.000"
+      ]
+    ],
+    "row_count": 2,
+    "truncated": false
+  },
+  "5:a60b83cbc19fa5f64e33d8f45685fd014326933974d51016b43f96f58fda3314": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "30.500"
+      ],
+      [
+        "Pastry",
+        "6.000"
+      ],
+      [
+        "Tea",
+        "5.800"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "5:7cdd6f38ae78dfae6bbd8f7d30623d7536c526b5398267b5891bc991538c53d2": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "30.500"
+      ],
+      [
+        "Pastry",
+        "6.000"
+      ],
+      [
+        "Tea",
+        "5.800"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "5:aaf602c9c63340ba84109eee85fc5dda596696ad01218af5283f0fa1c848205e": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "order_rows",
+      "items_sold",
+      "revenue",
+      "avg_order_revenue"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "6",
+        "13",
+        "30.500",
+        "5.083"
+      ],
+      [
+        "Pastry",
+        "2",
+        "4",
+        "6.000",
+        "3.000"
+      ]
+    ],
+    "row_count": 2,
+    "truncated": false
+  },
+  "5:2cc97e59beb26bcd3b7be83586eb849c349ccddc9fa5b622bba4e9e732647827": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "items_sold"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "6"
+      ],
+      [
+        "Croissant",
+        "4"
+      ],
+      [
+        "Americano",
+        "4"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "5:108c4cb5d61eafd3b2c912fe5bd8df7957ac90e431dfb8f39569c0003309eff5": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "30.500"
+      ],
+      [
+        "Pastry",
+        "6.000"
+      ],
+      [
+        "Tea",
+        "5.800"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "5:3c13b5103aac489f2edab067ba1865d813157d1a5601bdbdcef26b4319923f25": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "items_sold"
+    ],
+    "rows": [
+      [
+        "2026-06-22",
+        "7"
+      ],
+      [
+        "2026-06-20",
+        "6"
+      ]
+    ],
+    "row_count": 2,
+    "truncated": false
+  },
+  "5:4b1b795b477919417457b2692008a8a111eec3d54e9c2b6fd4def643d5b380bd": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "items_sold"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "6"
+      ],
+      [
+        "Americano",
+        "4"
+      ],
+      [
+        "Cold Brew",
+        "3"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "5:10051de9f96e1f71a9ef09f041b14cbae060b71d259395e739256ad8b34c47eb": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "units_sold",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "10",
+        "22.250"
+      ],
+      [
+        "Pastry",
+        "4",
+        "6.000"
+      ]
+    ],
+    "row_count": 2,
+    "truncated": false
+  },
+  "6:0320c2bf13d05d0b4011c88f9db6bcf27118f08436a93b37b90402078017342a": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "category",
+      "quantity",
+      "unit_price",
+      "order_date",
+      "product_id",
+      "product_name",
+      "category",
+      "price"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2",
+        "2.750",
+        "2026-06-20",
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2.750"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "1",
+        "3.000",
+        "2026-06-20",
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "3.000"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "3",
+        "1.500",
+        "2026-06-20",
+        "3",
+        "Croissant",
+        "Pastry",
+        "1.500"
+      ],
+      [
+        "4",
+        "Brownie",
+        "Dessert",
+        "2",
+        "1.750",
+        "2026-06-21",
+        "4",
+        "Brownie",
+        "Dessert",
+        "1.750"
+      ],
+      [
+        "5",
+        "Iced Latte",
+        "Coffee",
+        "1",
+        "2.750",
+        "2026-06-21",
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2.750"
+      ],
+      [
+        "6",
+        "Matcha Latte",
+        "Tea",
+        "2",
+        "2.900",
+        "2026-06-21",
+        "5",
+        "Matcha Latte",
+        "Tea",
+        "2.900"
+      ],
+      [
+        "7",
+        "Americano",
+        "Coffee",
+        "4",
+        "1.250",
+        "2026-06-22",
+        "6",
+        "Americano",
+        "Coffee",
+        "1.250"
+      ],
+      [
+        "8",
+        "Cold Brew",
+        "Coffee",
+        "2",
+        "3.000",
+        "2026-06-22",
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "3.000"
+      ],
+      [
+        "9",
+        "Croissant",
+        "Pastry",
+        "1",
+        "1.500",
+        "2026-06-22",
+        "3",
+        "Croissant",
+        "Pastry",
+        "1.500"
+      ],
+      [
+        "10",
+        "Iced Latte",
+        "Coffee",
+        "3",
+        "2.750",
+        "2026-06-23",
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2.750"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "6:ca567583b6855779dc38461cd4514ac73a934a80ca2868fd36be0fec39ab4491": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "quantity",
+      "unit_price",
+      "product_id",
+      "price"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "2",
+        "2.750",
+        "1",
+        "2.750"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "1",
+        "3.000",
+        "2",
+        "3.000"
+      ],
+      [
+        "3",
+        "Croissant",
+        "3",
+        "1.500",
+        "3",
+        "1.500"
+      ],
+      [
+        "4",
+        "Brownie",
+        "2",
+        "1.750",
+        "4",
+        "1.750"
+      ],
+      [
+        "5",
+        "Iced Latte",
+        "1",
+        "2.750",
+        "1",
+        "2.750"
+      ],
+      [
+        "6",
+        "Matcha Latte",
+        "2",
+        "2.900",
+        "5",
+        "2.900"
+      ],
+      [
+        "7",
+        "Americano",
+        "4",
+        "1.250",
+        "6",
+        "1.250"
+      ],
+      [
+        "8",
+        "Cold Brew",
+        "2",
+        "3.000",
+        "2",
+        "3.000"
+      ],
+      [
+        "9",
+        "Croissant",
+        "1",
+        "1.500",
+        "3",
+        "1.500"
+      ],
+      [
+        "10",
+        "Iced Latte",
+        "3",
+        "2.750",
+        "1",
+        "2.750"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "6:723798157d4069d4b73459474831f7ba9fb1d95e38e19deeadd99fa5c6baf178": {
+    "kind": "error",
+    "message": "ERROR 1052 (23000) at line 1: Column 'product_name' in field list is ambiguous"
+  },
+  "6:c42111bd140be25ff7f425b27bce720724d52435b4b7cf073be85ef2b351c85e": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "quantity",
+      "unit_price",
+      "product_id",
+      "price"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "2",
+        "2.750",
+        "1",
+        "2.750"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "1",
+        "3.000",
+        "2",
+        "3.000"
+      ],
+      [
+        "3",
+        "Croissant",
+        "3",
+        "1.500",
+        "3",
+        "1.500"
+      ],
+      [
+        "4",
+        "Brownie",
+        "2",
+        "1.750",
+        "4",
+        "1.750"
+      ],
+      [
+        "5",
+        "Iced Latte",
+        "1",
+        "2.750",
+        "1",
+        "2.750"
+      ],
+      [
+        "6",
+        "Matcha Latte",
+        "2",
+        "2.900",
+        "5",
+        "2.900"
+      ],
+      [
+        "7",
+        "Americano",
+        "4",
+        "1.250",
+        "6",
+        "1.250"
+      ],
+      [
+        "8",
+        "Cold Brew",
+        "2",
+        "3.000",
+        "2",
+        "3.000"
+      ],
+      [
+        "9",
+        "Croissant",
+        "1",
+        "1.500",
+        "3",
+        "1.500"
+      ],
+      [
+        "10",
+        "Iced Latte",
+        "3",
+        "2.750",
+        "1",
+        "2.750"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "6:92016648116155f49fb4c047e884c0601944dd27d633ecba55a4ec74add45657": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "product_id"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "1"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "2"
+      ],
+      [
+        "3",
+        "Croissant",
+        "3"
+      ],
+      [
+        "4",
+        "Brownie",
+        "4"
+      ],
+      [
+        "5",
+        "Iced Latte",
+        "1"
+      ],
+      [
+        "6",
+        "Matcha Latte",
+        "5"
+      ],
+      [
+        "7",
+        "Americano",
+        "6"
+      ],
+      [
+        "8",
+        "Cold Brew",
+        "2"
+      ],
+      [
+        "9",
+        "Croissant",
+        "3"
+      ],
+      [
+        "10",
+        "Iced Latte",
+        "1"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "6:225ae5eae4b4c088e4854d944b29a8284e5893d534d133b302ab87fd3d49bc3e": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "product_id"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "1"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "2"
+      ],
+      [
+        "3",
+        "Croissant",
+        "3"
+      ],
+      [
+        "4",
+        "Brownie",
+        "4"
+      ],
+      [
+        "5",
+        "Iced Latte",
+        "1"
+      ],
+      [
+        "6",
+        "Matcha Latte",
+        "5"
+      ],
+      [
+        "7",
+        "Americano",
+        "6"
+      ],
+      [
+        "8",
+        "Cold Brew",
+        "2"
+      ],
+      [
+        "9",
+        "Croissant",
+        "3"
+      ],
+      [
+        "10",
+        "Iced Latte",
+        "1"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "6:4c16dc535d7a99f336c9051507572c56d3f57dd95e373c9cd1021f1d2f5dc025": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_id",
+      "product_name",
+      "quantity",
+      "unit_price",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "1",
+        "1",
+        "Iced Latte",
+        "2",
+        "2.750",
+        "5.500"
+      ],
+      [
+        "2",
+        "2",
+        "Cold Brew",
+        "1",
+        "3.000",
+        "3.000"
+      ],
+      [
+        "3",
+        "3",
+        "Croissant",
+        "3",
+        "1.500",
+        "4.500"
+      ],
+      [
+        "4",
+        "4",
+        "Brownie",
+        "2",
+        "1.750",
+        "3.500"
+      ],
+      [
+        "5",
+        "1",
+        "Iced Latte",
+        "1",
+        "2.750",
+        "2.750"
+      ],
+      [
+        "6",
+        "5",
+        "Matcha Latte",
+        "2",
+        "2.900",
+        "5.800"
+      ],
+      [
+        "7",
+        "6",
+        "Americano",
+        "4",
+        "1.250",
+        "5.000"
+      ],
+      [
+        "8",
+        "2",
+        "Cold Brew",
+        "2",
+        "3.000",
+        "6.000"
+      ],
+      [
+        "9",
+        "3",
+        "Croissant",
+        "1",
+        "1.500",
+        "1.500"
+      ],
+      [
+        "10",
+        "1",
+        "Iced Latte",
+        "3",
+        "2.750",
+        "8.250"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "6:58f613e89e60e387ab3c11b37a9740e0710133134ea153779a3fadd7cd5096d6": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "items_sold",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "6",
+        "16.500"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "3",
+        "9.000"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "4",
+        "6.000"
+      ],
+      [
+        "5",
+        "Matcha Latte",
+        "Tea",
+        "2",
+        "5.800"
+      ],
+      [
+        "6",
+        "Americano",
+        "Coffee",
+        "4",
+        "5.000"
+      ],
+      [
+        "4",
+        "Brownie",
+        "Dessert",
+        "2",
+        "3.500"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "6:a3f0bc1ef6c1fb965b51d7468334d0c49a557f1bf64e9eb33ae7a63007f9379d": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "items_sold"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "6"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "3"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "4"
+      ],
+      [
+        "4",
+        "Brownie",
+        "Dessert",
+        "2"
+      ],
+      [
+        "5",
+        "Matcha Latte",
+        "Tea",
+        "2"
+      ],
+      [
+        "6",
+        "Americano",
+        "Coffee",
+        "4"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "6:6276ccdba9a539efc2e2c3ad588945ee0c21370a398e40590c7cb9389f016d47": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "items_sold"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "6"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "3"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "4"
+      ],
+      [
+        "4",
+        "Brownie",
+        "Dessert",
+        "2"
+      ],
+      [
+        "5",
+        "Matcha Latte",
+        "Tea",
+        "2"
+      ],
+      [
+        "6",
+        "Americano",
+        "Coffee",
+        "4"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "6:d1e36062c07b66a7c6b143e1a4b54d3ce9e73f242b24e85bea1504693bf9f826": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "30.500"
+      ],
+      [
+        "Pastry",
+        "6.000"
+      ],
+      [
+        "Tea",
+        "5.800"
+      ],
+      [
+        "Dessert",
+        "3.500"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "6:5cf5e7ab561e2ae8e0c26339020963d2d72a130cf11b9a31b0eea851616f5e28": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "items_sold"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "6"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "6:96cafa700638e15082a49c9f871e26a5b61ccdd9923eacf0a3dd76611eca3a98": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "16.500"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "6:2392f676bc1c2b689b59093994a5da0f7700c35c07c653cf27ebaa064d22f52d": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "13.000"
+      ],
+      [
+        "2026-06-21",
+        "12.050"
+      ],
+      [
+        "2026-06-22",
+        "12.500"
+      ],
+      [
+        "2026-06-23",
+        "8.250"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "6:bdf00b593ac80abf69bdc375677081623adb299b4ab8900a44b25faf59ea26bb": {
+    "kind": "rows",
+    "columns": [],
+    "rows": [],
+    "row_count": 0
+  },
+  "6:7e1d0c69b72246a348caa725a93c581c34534178938409f6c744dd80f1e26e25": {
+    "kind": "error",
+    "message": "ERROR 1146 (42S02) at line 1: Table 'coffee_shop.left_table' doesn't exist"
+  },
+  "6:bb80f0847ae6f0e369dfffd810a9d48409cf19a862fa0a46d232d2c2bd540c26": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "quantity",
+      "product_id",
+      "price"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "2",
+        "1",
+        "2.750"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "1",
+        "2",
+        "3.000"
+      ],
+      [
+        "3",
+        "Croissant",
+        "3",
+        "3",
+        "1.500"
+      ],
+      [
+        "4",
+        "Brownie",
+        "2",
+        "4",
+        "1.750"
+      ],
+      [
+        "5",
+        "Iced Latte",
+        "1",
+        "1",
+        "2.750"
+      ],
+      [
+        "6",
+        "Matcha Latte",
+        "2",
+        "5",
+        "2.900"
+      ],
+      [
+        "7",
+        "Americano",
+        "4",
+        "6",
+        "1.250"
+      ],
+      [
+        "8",
+        "Cold Brew",
+        "2",
+        "2",
+        "3.000"
+      ],
+      [
+        "9",
+        "Croissant",
+        "1",
+        "3",
+        "1.500"
+      ],
+      [
+        "10",
+        "Iced Latte",
+        "3",
+        "1",
+        "2.750"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "6:d4af70347c5a775612445dfeb5d7815938f62733c1a72d9715855227545772f3": {
+    "kind": "rows",
+    "columns": [],
+    "rows": [],
+    "row_count": 0
+  },
+  "6:ed873535f1cc9410b29a2b3d6df9f79d03b5760fd2de003a00331cb211788d99": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "order_id",
+      "quantity"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "1",
+        "2"
+      ],
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "5",
+        "1"
+      ],
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "10",
+        "3"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "2",
+        "1"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "8",
+        "2"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "3",
+        "3"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "9",
+        "1"
+      ],
+      [
+        "4",
+        "Brownie",
+        "Dessert",
+        "4",
+        "2"
+      ],
+      [
+        "5",
+        "Matcha Latte",
+        "Tea",
+        "6",
+        "2"
+      ],
+      [
+        "6",
+        "Americano",
+        "Coffee",
+        "7",
+        "4"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "6:8bb82987e3ed2d21223aa6afe3d6ef948e647a04b070b21b2292f9997fab27d6": {
+    "kind": "rows",
+    "columns": [],
+    "rows": [],
+    "row_count": 0
+  },
+  "6:908c767fe4594f5dd85c15d29b46295472cb5d895ccd26dd2bf4f6c0d32ecd28": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "price",
+      "items_sold",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2.750",
+        "6",
+        "16.500"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "3.000",
+        "3",
+        "9.000"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "1.500",
+        "4",
+        "6.000"
+      ],
+      [
+        "5",
+        "Matcha Latte",
+        "Tea",
+        "2.900",
+        "2",
+        "5.800"
+      ],
+      [
+        "6",
+        "Americano",
+        "Coffee",
+        "1.250",
+        "4",
+        "5.000"
+      ],
+      [
+        "4",
+        "Brownie",
+        "Dessert",
+        "1.750",
+        "2",
+        "3.500"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "6:3f842bb08820384da05e6959901e03696fd3410af853dd51528a317c940029ba": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "16.500"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "9.000"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "6.000"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "6:b40f1e90bae1678337a49f17de6850f647e26f6a3ff379b600a7e6bbb97b2da1": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "order_rows",
+      "items_sold",
+      "revenue",
+      "avg_order_revenue"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "3",
+        "6",
+        "16.500",
+        "5.500"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "2",
+        "3",
+        "9.000",
+        "4.500"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "2",
+        "4",
+        "6.000",
+        "3.000"
+      ],
+      [
+        "5",
+        "Matcha Latte",
+        "Tea",
+        "1",
+        "2",
+        "5.800",
+        "5.800"
+      ],
+      [
+        "6",
+        "Americano",
+        "Coffee",
+        "1",
+        "4",
+        "5.000",
+        "5.000"
+      ],
+      [
+        "4",
+        "Brownie",
+        "Dessert",
+        "1",
+        "2",
+        "3.500",
+        "3.500"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "6:39aff33133616011c88335af6ec14b158bba60a786c0d299481fb3dfc997d416": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "category",
+      "quantity",
+      "unit_price",
+      "order_date",
+      "product_id",
+      "product_name",
+      "category",
+      "price"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2",
+        "2.750",
+        "2026-06-20",
+        "6",
+        "Americano",
+        "Coffee",
+        "1.250"
+      ],
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2",
+        "2.750",
+        "2026-06-20",
+        "5",
+        "Matcha Latte",
+        "Tea",
+        "2.900"
+      ],
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2",
+        "2.750",
+        "2026-06-20",
+        "4",
+        "Brownie",
+        "Dessert",
+        "1.750"
+      ],
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2",
+        "2.750",
+        "2026-06-20",
+        "3",
+        "Croissant",
+        "Pastry",
+        "1.500"
+      ],
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2",
+        "2.750",
+        "2026-06-20",
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "3.000"
+      ],
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2",
+        "2.750",
+        "2026-06-20",
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2.750"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "1",
+        "3.000",
+        "2026-06-20",
+        "6",
+        "Americano",
+        "Coffee",
+        "1.250"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "1",
+        "3.000",
+        "2026-06-20",
+        "5",
+        "Matcha Latte",
+        "Tea",
+        "2.900"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "1",
+        "3.000",
+        "2026-06-20",
+        "4",
+        "Brownie",
+        "Dessert",
+        "1.750"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "1",
+        "3.000",
+        "2026-06-20",
+        "3",
+        "Croissant",
+        "Pastry",
+        "1.500"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "1",
+        "3.000",
+        "2026-06-20",
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "3.000"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "1",
+        "3.000",
+        "2026-06-20",
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2.750"
+      ]
+    ],
+    "row_count": 60,
+    "truncated": true
+  },
+  "6:80b84d4838ad26e69cb787e30b197a1d1c13a89a28ec022e50f286115d873c39": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "category",
+      "quantity",
+      "unit_price",
+      "order_date",
+      "product_id",
+      "product_name",
+      "category",
+      "price"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2",
+        "2.750",
+        "2026-06-20",
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2.750"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "1",
+        "3.000",
+        "2026-06-20",
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "3.000"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "3",
+        "1.500",
+        "2026-06-20",
+        "3",
+        "Croissant",
+        "Pastry",
+        "1.500"
+      ],
+      [
+        "4",
+        "Brownie",
+        "Dessert",
+        "2",
+        "1.750",
+        "2026-06-21",
+        "4",
+        "Brownie",
+        "Dessert",
+        "1.750"
+      ],
+      [
+        "5",
+        "Iced Latte",
+        "Coffee",
+        "1",
+        "2.750",
+        "2026-06-21",
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2.750"
+      ],
+      [
+        "6",
+        "Matcha Latte",
+        "Tea",
+        "2",
+        "2.900",
+        "2026-06-21",
+        "5",
+        "Matcha Latte",
+        "Tea",
+        "2.900"
+      ],
+      [
+        "7",
+        "Americano",
+        "Coffee",
+        "4",
+        "1.250",
+        "2026-06-22",
+        "6",
+        "Americano",
+        "Coffee",
+        "1.250"
+      ],
+      [
+        "8",
+        "Cold Brew",
+        "Coffee",
+        "2",
+        "3.000",
+        "2026-06-22",
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "3.000"
+      ],
+      [
+        "9",
+        "Croissant",
+        "Pastry",
+        "1",
+        "1.500",
+        "2026-06-22",
+        "3",
+        "Croissant",
+        "Pastry",
+        "1.500"
+      ],
+      [
+        "10",
+        "Iced Latte",
+        "Coffee",
+        "3",
+        "2.750",
+        "2026-06-23",
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2.750"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "6:da910fd2686d7bec86ffe49f57c8bd6a1cdcc4b3aed1f4d9759a7fd20431047f": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "price"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "2.750"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "3.000"
+      ],
+      [
+        "3",
+        "Croissant",
+        "1.500"
+      ],
+      [
+        "4",
+        "Brownie",
+        "1.750"
+      ],
+      [
+        "5",
+        "Iced Latte",
+        "2.750"
+      ],
+      [
+        "6",
+        "Matcha Latte",
+        "2.900"
+      ],
+      [
+        "7",
+        "Americano",
+        "1.250"
+      ],
+      [
+        "8",
+        "Cold Brew",
+        "3.000"
+      ],
+      [
+        "9",
+        "Croissant",
+        "1.500"
+      ],
+      [
+        "10",
+        "Iced Latte",
+        "2.750"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "6:ff3fd2272badd7aedf2f566ac7b267bd849a08289e76879503b054db7bc37230": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "price"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "2.750"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "3.000"
+      ],
+      [
+        "3",
+        "Croissant",
+        "1.500"
+      ],
+      [
+        "4",
+        "Brownie",
+        "1.750"
+      ],
+      [
+        "5",
+        "Iced Latte",
+        "2.750"
+      ],
+      [
+        "6",
+        "Matcha Latte",
+        "2.900"
+      ],
+      [
+        "7",
+        "Americano",
+        "1.250"
+      ],
+      [
+        "8",
+        "Cold Brew",
+        "3.000"
+      ],
+      [
+        "9",
+        "Croissant",
+        "1.500"
+      ],
+      [
+        "10",
+        "Iced Latte",
+        "2.750"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "6:9f4c046866a59272db41fec5434939546c4409e8531d3e38b2fb9d6620fe3837": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_id",
+      "product_name",
+      "quantity",
+      "order_date"
+    ],
+    "rows": [
+      [
+        "1",
+        "1",
+        "Iced Latte",
+        "2",
+        "2026-06-20"
+      ],
+      [
+        "2",
+        "2",
+        "Cold Brew",
+        "1",
+        "2026-06-20"
+      ],
+      [
+        "3",
+        "3",
+        "Croissant",
+        "3",
+        "2026-06-20"
+      ],
+      [
+        "4",
+        "4",
+        "Brownie",
+        "2",
+        "2026-06-21"
+      ],
+      [
+        "5",
+        "1",
+        "Iced Latte",
+        "1",
+        "2026-06-21"
+      ],
+      [
+        "6",
+        "5",
+        "Matcha Latte",
+        "2",
+        "2026-06-21"
+      ],
+      [
+        "7",
+        "6",
+        "Americano",
+        "4",
+        "2026-06-22"
+      ],
+      [
+        "8",
+        "2",
+        "Cold Brew",
+        "2",
+        "2026-06-22"
+      ],
+      [
+        "9",
+        "3",
+        "Croissant",
+        "1",
+        "2026-06-22"
+      ],
+      [
+        "10",
+        "1",
+        "Iced Latte",
+        "3",
+        "2026-06-23"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "6:7e2b0f26547291b73a0eafb87a5b278f3c20d2b1df7579b8547eb5e920b5e03c": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_name",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "16.500"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "9.000"
+      ],
+      [
+        "3",
+        "Croissant",
+        "6.000"
+      ],
+      [
+        "5",
+        "Matcha Latte",
+        "5.800"
+      ],
+      [
+        "6",
+        "Americano",
+        "5.000"
+      ],
+      [
+        "4",
+        "Brownie",
+        "3.500"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "6:9851791e4187876eea4dd6a7ed05e903d24a9431783a15cb415ab3a7ca6f4eb7": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "order_id"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "1"
+      ],
+      [
+        "Iced Latte",
+        "5"
+      ],
+      [
+        "Iced Latte",
+        "10"
+      ],
+      [
+        "Cold Brew",
+        "2"
+      ],
+      [
+        "Cold Brew",
+        "8"
+      ],
+      [
+        "Croissant",
+        "3"
+      ],
+      [
+        "Croissant",
+        "9"
+      ],
+      [
+        "Brownie",
+        "4"
+      ],
+      [
+        "Matcha Latte",
+        "6"
+      ],
+      [
+        "Americano",
+        "7"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "6:2e5eeb3482a9fad3f8f9fe264cd02e94c947264aa6c9867bb8f50332af1b68bf": {
+    "kind": "rows",
+    "columns": [
+      "employee",
+      "manager"
+    ],
+    "rows": [
+      [
+        "Maya",
+        "NULL"
+      ],
+      [
+        "Omar",
+        "Maya"
+      ],
+      [
+        "Layla",
+        "Maya"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "7:36972ce336b479ff124883f8599b04883dc1cb6f1af5393b5fabc179b6eea77c": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "price"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2.750"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "3.000"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "1.500"
+      ],
+      [
+        "4",
+        "Brownie",
+        "Dessert",
+        "1.750"
+      ],
+      [
+        "5",
+        "Matcha Latte",
+        "Tea",
+        "2.900"
+      ],
+      [
+        "6",
+        "Americano",
+        "Coffee",
+        "1.250"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "7:ba5206257eef88b0e1446b29e01144cde1565caaba76b0c81d588bb9b076842b": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_id",
+      "quantity",
+      "unit_price",
+      "order_date"
+    ],
+    "rows": [
+      [
+        "1",
+        "1",
+        "2",
+        "2.750",
+        "2026-06-20"
+      ],
+      [
+        "2",
+        "2",
+        "1",
+        "3.000",
+        "2026-06-20"
+      ],
+      [
+        "3",
+        "3",
+        "3",
+        "1.500",
+        "2026-06-20"
+      ],
+      [
+        "4",
+        "4",
+        "2",
+        "1.750",
+        "2026-06-21"
+      ],
+      [
+        "5",
+        "1",
+        "1",
+        "2.750",
+        "2026-06-21"
+      ],
+      [
+        "6",
+        "5",
+        "2",
+        "2.900",
+        "2026-06-21"
+      ],
+      [
+        "7",
+        "6",
+        "4",
+        "1.250",
+        "2026-06-22"
+      ],
+      [
+        "8",
+        "2",
+        "2",
+        "3.000",
+        "2026-06-22"
+      ],
+      [
+        "9",
+        "3",
+        "1",
+        "1.500",
+        "2026-06-22"
+      ],
+      [
+        "10",
+        "1",
+        "3",
+        "2.750",
+        "2026-06-23"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "7:5d3617af84167a91fb48c7a4a35651f6e208b05ae275786b20d6719710cda292": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "category",
+      "quantity",
+      "unit_price",
+      "revenue",
+      "order_date"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2",
+        "2.750",
+        "5.500",
+        "2026-06-20"
+      ],
+      [
+        "5",
+        "Iced Latte",
+        "Coffee",
+        "1",
+        "2.750",
+        "2.750",
+        "2026-06-21"
+      ],
+      [
+        "10",
+        "Iced Latte",
+        "Coffee",
+        "3",
+        "2.750",
+        "8.250",
+        "2026-06-23"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "1",
+        "3.000",
+        "3.000",
+        "2026-06-20"
+      ],
+      [
+        "8",
+        "Cold Brew",
+        "Coffee",
+        "2",
+        "3.000",
+        "6.000",
+        "2026-06-22"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "3",
+        "1.500",
+        "4.500",
+        "2026-06-20"
+      ],
+      [
+        "9",
+        "Croissant",
+        "Pastry",
+        "1",
+        "1.500",
+        "1.500",
+        "2026-06-22"
+      ],
+      [
+        "4",
+        "Brownie",
+        "Dessert",
+        "2",
+        "1.750",
+        "3.500",
+        "2026-06-21"
+      ],
+      [
+        "6",
+        "Matcha Latte",
+        "Tea",
+        "2",
+        "2.900",
+        "5.800",
+        "2026-06-21"
+      ],
+      [
+        "7",
+        "Americano",
+        "Coffee",
+        "4",
+        "1.250",
+        "5.000",
+        "2026-06-22"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "7:ce270ea0fbf757be57f61b64d3ceae1dcd212625b84ae651ddb9d9533a8c586e": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "items_sold",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "6",
+        "16.500"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "3",
+        "9.000"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "4",
+        "6.000"
+      ],
+      [
+        "5",
+        "Matcha Latte",
+        "Tea",
+        "2",
+        "5.800"
+      ],
+      [
+        "6",
+        "Americano",
+        "Coffee",
+        "4",
+        "5.000"
+      ],
+      [
+        "4",
+        "Brownie",
+        "Dessert",
+        "2",
+        "3.500"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "7:2fdecf084d3e710e282b7e55ba69002cb69e83d69442a77cadf3fe6bde5cfc44": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "items_sold",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "13",
+        "30.500"
+      ],
+      [
+        "Pastry",
+        "4",
+        "6.000"
+      ],
+      [
+        "Tea",
+        "2",
+        "5.800"
+      ],
+      [
+        "Dessert",
+        "2",
+        "3.500"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "7:bfc0447d4d88703fd340f4889909ea6327819ae8a3d9842a4420164743fd6e8c": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "13.000"
+      ],
+      [
+        "2026-06-21",
+        "12.050"
+      ],
+      [
+        "2026-06-22",
+        "12.500"
+      ],
+      [
+        "2026-06-23",
+        "8.250"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "7:918d5b70f3bcabbce5717fb3bb8c27a8fd885cfd5646b03c31565dad5c99bff7": {
+    "kind": "rows",
+    "columns": [],
+    "rows": [],
+    "row_count": 0
+  },
+  "7:f423dbc1de655260d253fd88330d7f3df4aa62b37358b4d600be9e59503141f9": {
+    "kind": "rows",
+    "columns": [],
+    "rows": [],
+    "row_count": 0
+  },
+  "7:94ac976208baadbe1058291e2aca0cee2881abdee45db02d48fab30a346aff74": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "price",
+      "items_sold",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2.750",
+        "6",
+        "16.500"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "3.000",
+        "3",
+        "9.000"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "1.500",
+        "4",
+        "6.000"
+      ],
+      [
+        "5",
+        "Matcha Latte",
+        "Tea",
+        "2.900",
+        "2",
+        "5.800"
+      ],
+      [
+        "6",
+        "Americano",
+        "Coffee",
+        "1.250",
+        "4",
+        "5.000"
+      ],
+      [
+        "4",
+        "Brownie",
+        "Dessert",
+        "1.750",
+        "2",
+        "3.500"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "7:72a6a5061a2ff95daad0e6e65c1ec78dc39a7a1446d059fd828154cf414e3d7b": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_name",
+      "quantity",
+      "unit_price",
+      "revenue",
+      "order_date"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "2",
+        "2.750",
+        "5.500",
+        "2026-06-20"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "1",
+        "3.000",
+        "3.000",
+        "2026-06-20"
+      ],
+      [
+        "3",
+        "Croissant",
+        "3",
+        "1.500",
+        "4.500",
+        "2026-06-20"
+      ],
+      [
+        "4",
+        "Brownie",
+        "2",
+        "1.750",
+        "3.500",
+        "2026-06-21"
+      ],
+      [
+        "5",
+        "Iced Latte",
+        "1",
+        "2.750",
+        "2.750",
+        "2026-06-21"
+      ],
+      [
+        "6",
+        "Matcha Latte",
+        "2",
+        "2.900",
+        "5.800",
+        "2026-06-21"
+      ],
+      [
+        "7",
+        "Americano",
+        "4",
+        "1.250",
+        "5.000",
+        "2026-06-22"
+      ],
+      [
+        "8",
+        "Cold Brew",
+        "2",
+        "3.000",
+        "6.000",
+        "2026-06-22"
+      ],
+      [
+        "9",
+        "Croissant",
+        "1",
+        "1.500",
+        "1.500",
+        "2026-06-22"
+      ],
+      [
+        "10",
+        "Iced Latte",
+        "3",
+        "2.750",
+        "8.250",
+        "2026-06-23"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "7:d5dc9cf1a571ee7cbe0b7e24af348217b281037f70b4bfa11253e5a634a25315": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "16.500"
+      ],
+      [
+        "Cold Brew",
+        "9.000"
+      ],
+      [
+        "Croissant",
+        "6.000"
+      ],
+      [
+        "Matcha Latte",
+        "5.800"
+      ],
+      [
+        "Americano",
+        "5.000"
+      ],
+      [
+        "Brownie",
+        "3.500"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "7:4d8d4e37e0fa7ffe567070515296069de316c4d05b38ed00e0f5ec0fdccd81c2": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "30.500"
+      ],
+      [
+        "Pastry",
+        "6.000"
+      ],
+      [
+        "Tea",
+        "5.800"
+      ],
+      [
+        "Dessert",
+        "3.500"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "8:ce8b3c08824193d5c6fff734661745bc9ef2e8c285957ef721f997eadbfc0960": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "2.750"
+      ],
+      [
+        "Cold Brew",
+        "3.000"
+      ],
+      [
+        "Matcha Latte",
+        "2.900"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "8:9b07883de36b936775b79323b3a6e707715a833720e3749ce8effacb776a72e6": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price",
+      "average_menu_price"
+    ],
+    "rows": [
+      [
+        "Cold Brew",
+        "3.000",
+        "2.192"
+      ],
+      [
+        "Matcha Latte",
+        "2.900",
+        "2.192"
+      ],
+      [
+        "Iced Latte",
+        "2.750",
+        "2.192"
+      ],
+      [
+        "Brownie",
+        "1.750",
+        "2.192"
+      ],
+      [
+        "Croissant",
+        "1.500",
+        "2.192"
+      ],
+      [
+        "Americano",
+        "1.250",
+        "2.192"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "8:e206597eac082ed2122ce8bc9ba0f91a2eee8368c706e879127e4b2824d641db": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_name"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte"
+      ],
+      [
+        "2",
+        "Cold Brew"
+      ],
+      [
+        "3",
+        "Croissant"
+      ],
+      [
+        "4",
+        "Brownie"
+      ],
+      [
+        "5",
+        "Matcha Latte"
+      ],
+      [
+        "6",
+        "Americano"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "8:1615c0178f2bf92a5d3b1e10b0102b83094615e48c9641df8e54feeb63c0cc4d": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_name"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte"
+      ],
+      [
+        "2",
+        "Cold Brew"
+      ],
+      [
+        "3",
+        "Croissant"
+      ],
+      [
+        "4",
+        "Brownie"
+      ],
+      [
+        "5",
+        "Matcha Latte"
+      ],
+      [
+        "6",
+        "Americano"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "8:87749a300d34fb6c1d81e72756747be87db2b3f926e6f0833e52551ad28b81b5": {
+    "kind": "rows",
+    "columns": [],
+    "rows": [],
+    "row_count": 0
+  },
+  "8:7ada05a9f061ff00c9f37efa83039aca0daccc4dc194b6abc08a60c1358a5730": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price"
+    ],
+    "rows": [
+      [
+        "Cold Brew",
+        "3.000"
+      ],
+      [
+        "Iced Latte",
+        "2.750"
+      ]
+    ],
+    "row_count": 2,
+    "truncated": false
+  },
+  "8:0086d03ea950b4ddb11c8124a98cc88f86e390a2dc4d373981c1af2eaccf552c": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "16.500"
+      ],
+      [
+        "Cold Brew",
+        "9.000"
+      ],
+      [
+        "Croissant",
+        "6.000"
+      ],
+      [
+        "Matcha Latte",
+        "5.800"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "8:9c7044e87f3294c0224be5ac7dd35292b07ca35c26bbf17c08770ea64f0b7b5e": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "16.500"
+      ],
+      [
+        "Cold Brew",
+        "9.000"
+      ],
+      [
+        "Croissant",
+        "6.000"
+      ],
+      [
+        "Matcha Latte",
+        "5.800"
+      ],
+      [
+        "Americano",
+        "5.000"
+      ],
+      [
+        "Brownie",
+        "3.500"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "8:bf3fd452b7c582783bf39d9d487d8249162a62c5706c87e8f24e374d2a196840": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "16.500"
+      ],
+      [
+        "Cold Brew",
+        "9.000"
+      ],
+      [
+        "Croissant",
+        "6.000"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "8:d9a1b902069d813d8bcf7781f831700cecf3fcde9c1223209e6b8ef414ddf7b1": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "revenue",
+      "average_product_revenue"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "16.500",
+        "7.633"
+      ],
+      [
+        "Cold Brew",
+        "9.000",
+        "7.633"
+      ]
+    ],
+    "row_count": 2,
+    "truncated": false
+  },
+  "8:09413a28e551c1f6b5428d7ae75577d90d17da4c22da307e0a5ecd3029d5b301": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "13.000"
+      ],
+      [
+        "2026-06-21",
+        "12.050"
+      ],
+      [
+        "2026-06-22",
+        "12.500"
+      ],
+      [
+        "2026-06-23",
+        "8.250"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "8:2138c0ab1d0c78c1da425211efe446251210f26c207d8dd6c9bd5c06ee074cc3": {
+    "kind": "rows",
+    "columns": [],
+    "rows": [],
+    "row_count": 0
+  },
+  "8:9e500f2ccb835e792096c50e4bff9f39c2c0bbfe2be533517f813d95485be85b": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "items_sold",
+      "revenue",
+      "amount_above_average"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "6",
+        "16.500",
+        "8.867"
+      ],
+      [
+        "Cold Brew",
+        "3",
+        "9.000",
+        "1.367"
+      ]
+    ],
+    "row_count": 2,
+    "truncated": false
+  },
+  "8:905658ef528068df0634a5533feb83124e3874f0ba4aa1cc8bce3c43705f5b87": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price",
+      "average_menu_price"
+    ],
+    "rows": [
+      [
+        "Cold Brew",
+        "3.000",
+        "2.192"
+      ],
+      [
+        "Matcha Latte",
+        "2.900",
+        "2.192"
+      ],
+      [
+        "Iced Latte",
+        "2.750",
+        "2.192"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "8:ad91ca78b457c31fc2980ee705432936b96a1af51704d65b74f28514290f27bc": {
+    "kind": "rows",
+    "columns": [],
+    "rows": [],
+    "row_count": 0
+  },
+  "8:bd1e0259b9084ea02f24d31fe8e950418da8ff02752d531a74b12142dc58adee": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "daily_revenue",
+      "average_daily_revenue"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "13.000",
+        "11.450"
+      ],
+      [
+        "2026-06-22",
+        "12.500",
+        "11.450"
+      ],
+      [
+        "2026-06-21",
+        "12.050",
+        "11.450"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "8:a60783e64aab9502067d4b8f233d749183caf40a45e9658a89482eabef26807f": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "category",
+      "product_revenue",
+      "category_revenue",
+      "category_revenue_percent"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "Coffee",
+        "16.500",
+        "30.500",
+        "54.10"
+      ],
+      [
+        "Cold Brew",
+        "Coffee",
+        "9.000",
+        "30.500",
+        "29.51"
+      ],
+      [
+        "Americano",
+        "Coffee",
+        "5.000",
+        "30.500",
+        "16.39"
+      ],
+      [
+        "Brownie",
+        "Dessert",
+        "3.500",
+        "3.500",
+        "100.00"
+      ],
+      [
+        "Croissant",
+        "Pastry",
+        "6.000",
+        "6.000",
+        "100.00"
+      ],
+      [
+        "Matcha Latte",
+        "Tea",
+        "5.800",
+        "5.800",
+        "100.00"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "8:91005eb832822c37fd1858c7472e5bbf061fb2043c9dfbe0848002b5c15d1394": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "revenue",
+      "avg_product_revenue"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "16.500",
+        "7.6333333"
+      ],
+      [
+        "Cold Brew",
+        "9.000",
+        "7.6333333"
+      ]
+    ],
+    "row_count": 2,
+    "truncated": false
+  },
+  "9:e0830dc35267eb10b26b8c8b8aa9b43629832ef486e7e93f3994d9cdbc3d62c2": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "order_date",
+      "row_revenue",
+      "total_revenue"
+    ],
+    "rows": [
+      [
+        "1",
+        "2026-06-20",
+        "5.500",
+        "45.800"
+      ],
+      [
+        "2",
+        "2026-06-20",
+        "3.000",
+        "45.800"
+      ],
+      [
+        "3",
+        "2026-06-20",
+        "4.500",
+        "45.800"
+      ],
+      [
+        "4",
+        "2026-06-21",
+        "3.500",
+        "45.800"
+      ],
+      [
+        "5",
+        "2026-06-21",
+        "2.750",
+        "45.800"
+      ],
+      [
+        "6",
+        "2026-06-21",
+        "5.800",
+        "45.800"
+      ],
+      [
+        "7",
+        "2026-06-22",
+        "5.000",
+        "45.800"
+      ],
+      [
+        "8",
+        "2026-06-22",
+        "6.000",
+        "45.800"
+      ],
+      [
+        "9",
+        "2026-06-22",
+        "1.500",
+        "45.800"
+      ],
+      [
+        "10",
+        "2026-06-23",
+        "8.250",
+        "45.800"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "9:df0ec2995956cf2dadf1a17cc99f21f253cc0a0b7ae22449555a9035953736fd": {
+    "kind": "rows",
+    "columns": [
+      "total_revenue"
+    ],
+    "rows": [
+      [
+        "45.800"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "9:d44e38b1f1e0af0ba4df8690a797e9213e3078ab7c353f0528ee436b6365002a": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "category",
+      "row_revenue",
+      "category_revenue"
+    ],
+    "rows": [
+      [
+        "1",
+        "Coffee",
+        "5.500",
+        "30.500"
+      ],
+      [
+        "2",
+        "Coffee",
+        "3.000",
+        "30.500"
+      ],
+      [
+        "5",
+        "Coffee",
+        "2.750",
+        "30.500"
+      ],
+      [
+        "7",
+        "Coffee",
+        "5.000",
+        "30.500"
+      ],
+      [
+        "8",
+        "Coffee",
+        "6.000",
+        "30.500"
+      ],
+      [
+        "10",
+        "Coffee",
+        "8.250",
+        "30.500"
+      ],
+      [
+        "4",
+        "Dessert",
+        "3.500",
+        "3.500"
+      ],
+      [
+        "3",
+        "Pastry",
+        "4.500",
+        "6.000"
+      ],
+      [
+        "9",
+        "Pastry",
+        "1.500",
+        "6.000"
+      ],
+      [
+        "6",
+        "Tea",
+        "5.800",
+        "5.800"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "9:6a3dee6be0ea3519d9217f1caee71656a4ddd2441735a654a8c87b2259d09c85": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "daily_revenue",
+      "running_revenue"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "13.000",
+        "13.000"
+      ],
+      [
+        "2026-06-21",
+        "12.050",
+        "25.050"
+      ],
+      [
+        "2026-06-22",
+        "12.500",
+        "37.550"
+      ],
+      [
+        "2026-06-23",
+        "8.250",
+        "45.800"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "9:3157a843e0f049f1f674bfbcb9543d61622159b3074aa4c0a71ab73da6eff769": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "revenue",
+      "revenue_position"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "16.500",
+        "1"
+      ],
+      [
+        "Cold Brew",
+        "9.000",
+        "2"
+      ],
+      [
+        "Croissant",
+        "6.000",
+        "3"
+      ],
+      [
+        "Matcha Latte",
+        "5.800",
+        "4"
+      ],
+      [
+        "Americano",
+        "5.000",
+        "5"
+      ],
+      [
+        "Brownie",
+        "3.500",
+        "6"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "9:86800ec62f5186f317761576f6d526d5ff38b0178a614ec161bb8e0eba195b42": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price",
+      "price_rank",
+      "dense_price_rank"
+    ],
+    "rows": [
+      [
+        "Cold Brew",
+        "3.000",
+        "1",
+        "1"
+      ],
+      [
+        "Matcha Latte",
+        "2.900",
+        "2",
+        "2"
+      ],
+      [
+        "Iced Latte",
+        "2.750",
+        "3",
+        "3"
+      ],
+      [
+        "Brownie",
+        "1.750",
+        "4",
+        "4"
+      ],
+      [
+        "Croissant",
+        "1.500",
+        "5",
+        "5"
+      ],
+      [
+        "Americano",
+        "1.250",
+        "6",
+        "6"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "9:a32ac6acf25dfce18664f29b9758ac825e68e848a42292c4681ad3dc0c16f70a": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "product_name",
+      "price",
+      "category_price_position"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "Cold Brew",
+        "3.000",
+        "1"
+      ],
+      [
+        "Coffee",
+        "Iced Latte",
+        "2.750",
+        "2"
+      ],
+      [
+        "Coffee",
+        "Americano",
+        "1.250",
+        "3"
+      ],
+      [
+        "Dessert",
+        "Brownie",
+        "1.750",
+        "1"
+      ],
+      [
+        "Pastry",
+        "Croissant",
+        "1.500",
+        "1"
+      ],
+      [
+        "Tea",
+        "Matcha Latte",
+        "2.900",
+        "1"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "9:2e37eede5e9c698a297a857b1f25cd4e2434320d7dafb87fba980f38923f685d": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "product_name",
+      "price"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "Cold Brew",
+        "3.000"
+      ],
+      [
+        "Coffee",
+        "Iced Latte",
+        "2.750"
+      ],
+      [
+        "Dessert",
+        "Brownie",
+        "1.750"
+      ],
+      [
+        "Pastry",
+        "Croissant",
+        "1.500"
+      ],
+      [
+        "Tea",
+        "Matcha Latte",
+        "2.900"
+      ]
+    ],
+    "row_count": 5,
+    "truncated": false
+  },
+  "9:86ffe78b5fc2514aac558fdc1652ffe3e1338975f2a00cbeb53113bc8ebf1daf": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "daily_revenue",
+      "previous_day_revenue"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "13.000",
+        "NULL"
+      ],
+      [
+        "2026-06-21",
+        "12.050",
+        "13.000"
+      ],
+      [
+        "2026-06-22",
+        "12.500",
+        "12.050"
+      ],
+      [
+        "2026-06-23",
+        "8.250",
+        "12.500"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "9:2bcc11ae8ccd37ac4aead120d4885ccc6c225f8f7dc6e56edec4687abc6badce": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "daily_revenue",
+      "previous_revenue",
+      "revenue_change"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "13.000",
+        "NULL",
+        "NULL"
+      ],
+      [
+        "2026-06-21",
+        "12.050",
+        "13.000",
+        "-0.950"
+      ],
+      [
+        "2026-06-22",
+        "12.500",
+        "12.050",
+        "0.450"
+      ],
+      [
+        "2026-06-23",
+        "8.250",
+        "12.500",
+        "-4.250"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "9:0ab31d8a6ffb27557fcc018908899ad7de18f5dd9c3a78610cf373b79b214dee": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "daily_revenue",
+      "next_day_revenue"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "13.000",
+        "12.050"
+      ],
+      [
+        "2026-06-21",
+        "12.050",
+        "12.500"
+      ],
+      [
+        "2026-06-22",
+        "12.500",
+        "8.250"
+      ],
+      [
+        "2026-06-23",
+        "8.250",
+        "NULL"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "9:a247d0bddc48e76f728aa946f3606226797097005e421001c831ed22eb7f9075": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "daily_revenue",
+      "three_row_moving_average"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "13.000",
+        "13.000"
+      ],
+      [
+        "2026-06-21",
+        "12.050",
+        "12.525"
+      ],
+      [
+        "2026-06-22",
+        "12.500",
+        "12.517"
+      ],
+      [
+        "2026-06-23",
+        "8.250",
+        "10.933"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "9:050490ff6bc0865814f4ef6a2cc1c9eec46d145032599726701035c31aabc6ee": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "revenue",
+      "revenue_percent"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "16.500",
+        "36.03"
+      ],
+      [
+        "Cold Brew",
+        "9.000",
+        "19.65"
+      ],
+      [
+        "Croissant",
+        "6.000",
+        "13.10"
+      ],
+      [
+        "Matcha Latte",
+        "5.800",
+        "12.66"
+      ],
+      [
+        "Americano",
+        "5.000",
+        "10.92"
+      ],
+      [
+        "Brownie",
+        "3.500",
+        "7.64"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "9:06c1e1b5516134bb6fe2ee475d74eb45b1d0209900f68399c8902aca06ecc788": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price",
+      "price_rank"
+    ],
+    "rows": [
+      [
+        "Americano",
+        "1.250",
+        "6"
+      ],
+      [
+        "Brownie",
+        "1.750",
+        "4"
+      ],
+      [
+        "Cold Brew",
+        "3.000",
+        "1"
+      ],
+      [
+        "Croissant",
+        "1.500",
+        "5"
+      ],
+      [
+        "Iced Latte",
+        "2.750",
+        "3"
+      ],
+      [
+        "Matcha Latte",
+        "2.900",
+        "2"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "9:55145046875b0c12617659b23ed69ef1e67ca626dfb5d787abfb224da11112d7": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "daily_revenue",
+      "revenue_rank"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "13.000",
+        "1"
+      ],
+      [
+        "2026-06-22",
+        "12.500",
+        "2"
+      ],
+      [
+        "2026-06-21",
+        "12.050",
+        "3"
+      ],
+      [
+        "2026-06-23",
+        "8.250",
+        "4"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "9:fcb9d3bf164e14f502e572a8f20208c5e7d8365c07a06a717dbc4f9e205828ee": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "daily_revenue",
+      "running_revenue",
+      "previous_revenue",
+      "daily_change",
+      "revenue_rank"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "13.000",
+        "13.000",
+        "NULL",
+        "NULL",
+        "1"
+      ],
+      [
+        "2026-06-21",
+        "12.050",
+        "25.050",
+        "13.000",
+        "-0.950",
+        "3"
+      ],
+      [
+        "2026-06-22",
+        "12.500",
+        "37.550",
+        "12.050",
+        "0.450",
+        "2"
+      ],
+      [
+        "2026-06-23",
+        "8.250",
+        "45.800",
+        "12.500",
+        "-4.250",
+        "4"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "9:dbb6b71daf1dcc23f73e1580c6bdea9c9088eac7641119def846bd1e276fa86a": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "revenue",
+      "revenue_rank"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "16.500",
+        "1"
+      ],
+      [
+        "Cold Brew",
+        "9.000",
+        "2"
+      ],
+      [
+        "Croissant",
+        "6.000",
+        "3"
+      ],
+      [
+        "Matcha Latte",
+        "5.800",
+        "4"
+      ],
+      [
+        "Americano",
+        "5.000",
+        "5"
+      ],
+      [
+        "Brownie",
+        "3.500",
+        "6"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "9:39062e6c8077bf15156ae181362d4766ee5209a14d68b81f1f082549a680287b": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "product_name",
+      "price",
+      "price_rank",
+      "stable_position"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "Cold Brew",
+        "3.000",
+        "1",
+        "1"
+      ],
+      [
+        "Coffee",
+        "Iced Latte",
+        "2.750",
+        "2",
+        "2"
+      ],
+      [
+        "Coffee",
+        "Americano",
+        "1.250",
+        "3",
+        "3"
+      ],
+      [
+        "Dessert",
+        "Brownie",
+        "1.750",
+        "1",
+        "1"
+      ],
+      [
+        "Pastry",
+        "Croissant",
+        "1.500",
+        "1",
+        "1"
+      ],
+      [
+        "Tea",
+        "Matcha Latte",
+        "2.900",
+        "1",
+        "1"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "9:bd5d7f7ae7cf8b98f0e850ac8998008cfc865ec4e7f72a94b420217c5993241d": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "product_name",
+      "price"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "Cold Brew",
+        "3.000"
+      ],
+      [
+        "Coffee",
+        "Iced Latte",
+        "2.750"
+      ],
+      [
+        "Dessert",
+        "Brownie",
+        "1.750"
+      ],
+      [
+        "Pastry",
+        "Croissant",
+        "1.500"
+      ],
+      [
+        "Tea",
+        "Matcha Latte",
+        "2.900"
+      ]
+    ],
+    "row_count": 5,
+    "truncated": false
+  },
+  "9:d0a1ce1b2f2bdc0b41bcd79a6f5f629d3e3445bcdf01463cfd8ad6f36c1d40ed": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "revenue",
+      "revenue_percent"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "16.500",
+        "36.03"
+      ],
+      [
+        "Cold Brew",
+        "9.000",
+        "19.65"
+      ],
+      [
+        "Croissant",
+        "6.000",
+        "13.10"
+      ],
+      [
+        "Matcha Latte",
+        "5.800",
+        "12.66"
+      ],
+      [
+        "Americano",
+        "5.000",
+        "10.92"
+      ],
+      [
+        "Brownie",
+        "3.500",
+        "7.64"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "9:bef15820f97165853c92e66bfcf7efed12c9bd948c56373fd70d381095f7e8a0": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "daily_revenue",
+      "running_revenue",
+      "previous_revenue",
+      "daily_change"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "13.000",
+        "13.000",
+        "NULL",
+        "NULL"
+      ],
+      [
+        "2026-06-21",
+        "12.050",
+        "25.050",
+        "13.000",
+        "-0.950"
+      ],
+      [
+        "2026-06-22",
+        "12.500",
+        "37.550",
+        "12.050",
+        "0.450"
+      ],
+      [
+        "2026-06-23",
+        "8.250",
+        "45.800",
+        "12.500",
+        "-4.250"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "9:5efd5bfd87140418f39651e972131b35fec2e390723176186408fd0e5a1d946b": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "revenue",
+      "running_revenue",
+      "prior_revenue",
+      "revenue_change"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "13.000",
+        "13.000",
+        "NULL",
+        "NULL"
+      ],
+      [
+        "2026-06-21",
+        "12.050",
+        "25.050",
+        "13.000",
+        "-0.950"
+      ],
+      [
+        "2026-06-22",
+        "12.500",
+        "37.550",
+        "12.050",
+        "0.450"
+      ],
+      [
+        "2026-06-23",
+        "8.250",
+        "45.800",
+        "12.500",
+        "-4.250"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "10:df0798de7b70afc5ce8c014428eec9b5b351f5d47531172e1572330bc9e11343": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "price",
+      "price_band"
+    ],
+    "rows": [
+      [
+        "Cold Brew",
+        "3.000",
+        "Premium"
+      ],
+      [
+        "Matcha Latte",
+        "2.900",
+        "Standard"
+      ],
+      [
+        "Iced Latte",
+        "2.750",
+        "Standard"
+      ],
+      [
+        "Brownie",
+        "1.750",
+        "Value"
+      ],
+      [
+        "Croissant",
+        "1.500",
+        "Value"
+      ],
+      [
+        "Americano",
+        "1.250",
+        "Value"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "10:b88997c30e9ff4f444908c4afbdd63fbaf7e990de4d7008e3c8ba84c6f49b69d": {
+    "kind": "rows",
+    "columns": [
+      "large_order_rows",
+      "smaller_order_rows"
+    ],
+    "rows": [
+      [
+        "3",
+        "7"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "10:9a9423ab958bdf18cc77beedb2a25cbd1b7548dad0acde3fd5dc23e89970a4d1": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "order_year",
+      "order_month",
+      "order_day"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "2026",
+        "6",
+        "20"
+      ],
+      [
+        "2026-06-20",
+        "2026",
+        "6",
+        "20"
+      ],
+      [
+        "2026-06-20",
+        "2026",
+        "6",
+        "20"
+      ],
+      [
+        "2026-06-21",
+        "2026",
+        "6",
+        "21"
+      ],
+      [
+        "2026-06-21",
+        "2026",
+        "6",
+        "21"
+      ],
+      [
+        "2026-06-21",
+        "2026",
+        "6",
+        "21"
+      ],
+      [
+        "2026-06-22",
+        "2026",
+        "6",
+        "22"
+      ],
+      [
+        "2026-06-22",
+        "2026",
+        "6",
+        "22"
+      ],
+      [
+        "2026-06-22",
+        "2026",
+        "6",
+        "22"
+      ],
+      [
+        "2026-06-23",
+        "2026",
+        "6",
+        "23"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "10:381dc75e8957c6f1f7221fbdf9e3caf26897d7f1a02e8fb73c79a7fcfe8e1a5b": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "sales_month",
+      "weekday_name"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "2026-06",
+        "Saturday"
+      ],
+      [
+        "2026-06-20",
+        "2026-06",
+        "Saturday"
+      ],
+      [
+        "2026-06-20",
+        "2026-06",
+        "Saturday"
+      ],
+      [
+        "2026-06-21",
+        "2026-06",
+        "Sunday"
+      ],
+      [
+        "2026-06-21",
+        "2026-06",
+        "Sunday"
+      ],
+      [
+        "2026-06-21",
+        "2026-06",
+        "Sunday"
+      ],
+      [
+        "2026-06-22",
+        "2026-06",
+        "Monday"
+      ],
+      [
+        "2026-06-22",
+        "2026-06",
+        "Monday"
+      ],
+      [
+        "2026-06-22",
+        "2026-06",
+        "Monday"
+      ],
+      [
+        "2026-06-23",
+        "2026-06",
+        "Tuesday"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "10:7f96b780acb57e5bfd82bbba640964bfd3e76982e6bd83e09e50c73924d45af3": {
+    "kind": "rows",
+    "columns": [
+      "first_order_date",
+      "last_order_date",
+      "days_between"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "2026-06-23",
+        "3"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "10:0457df5b17c2d772b166642444f33c9f747ca2371b2f5c5997ff11a5aa602e26": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "cleaned_product_name"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "Iced Latte"
+      ],
+      [
+        "Cold Brew",
+        "Cold Brew"
+      ],
+      [
+        "Croissant",
+        "Croissant"
+      ],
+      [
+        "Brownie",
+        "Brownie"
+      ],
+      [
+        "Matcha Latte",
+        "Matcha Latte"
+      ],
+      [
+        "Americano",
+        "Americano"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "10:02a90acca4412eceac928f3121c72187da2d01901d45ba3b6a896c56516d2925": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "lowercase_name",
+      "uppercase_category"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "iced latte",
+        "COFFEE"
+      ],
+      [
+        "Cold Brew",
+        "cold brew",
+        "COFFEE"
+      ],
+      [
+        "Croissant",
+        "croissant",
+        "PASTRY"
+      ],
+      [
+        "Brownie",
+        "brownie",
+        "DESSERT"
+      ],
+      [
+        "Matcha Latte",
+        "matcha latte",
+        "TEA"
+      ],
+      [
+        "Americano",
+        "americano",
+        "COFFEE"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "10:6831b2ea91fdaefbb3933373eda98e45fd73b6faf6caa30fc2e74bcdf41adf83": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_label"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte — Coffee"
+      ],
+      [
+        "2",
+        "Cold Brew — Coffee"
+      ],
+      [
+        "3",
+        "Croissant — Pastry"
+      ],
+      [
+        "4",
+        "Brownie — Dessert"
+      ],
+      [
+        "5",
+        "Matcha Latte — Tea"
+      ],
+      [
+        "6",
+        "Americano — Coffee"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "10:56022753dee7b6b470cf0fe89c1829c9b8ae4dd68c04d8800066c8c9dabaa7a2": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "display_category"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "Coffee"
+      ],
+      [
+        "Cold Brew",
+        "Coffee"
+      ],
+      [
+        "Croissant",
+        "Pastry"
+      ],
+      [
+        "Brownie",
+        "Dessert"
+      ],
+      [
+        "Matcha Latte",
+        "Tea"
+      ],
+      [
+        "Americano",
+        "Coffee"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "10:e120c67e43b8a4168f9e4d7462693d98425faa0489d14b72b62258bcf85a2b44": {
+    "kind": "rows",
+    "columns": [
+      "sales_month",
+      "category",
+      "items_sold",
+      "revenue",
+      "performance_band"
+    ],
+    "rows": [
+      [
+        "2026-06",
+        "Coffee",
+        "13",
+        "30.500",
+        "High"
+      ],
+      [
+        "2026-06",
+        "Pastry",
+        "4",
+        "6.000",
+        "Low"
+      ],
+      [
+        "2026-06",
+        "Tea",
+        "2",
+        "5.800",
+        "Low"
+      ],
+      [
+        "2026-06",
+        "Dessert",
+        "2",
+        "3.500",
+        "Low"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "10:74914730027551637ceea98ad833739027952dcf0562383e6f97ae838c0e0fe4": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "quantity",
+      "order_size"
+    ],
+    "rows": [
+      [
+        "1",
+        "2",
+        "Regular"
+      ],
+      [
+        "2",
+        "1",
+        "Regular"
+      ],
+      [
+        "3",
+        "3",
+        "Large"
+      ],
+      [
+        "4",
+        "2",
+        "Regular"
+      ],
+      [
+        "5",
+        "1",
+        "Regular"
+      ],
+      [
+        "6",
+        "2",
+        "Regular"
+      ],
+      [
+        "7",
+        "4",
+        "Large"
+      ],
+      [
+        "8",
+        "2",
+        "Regular"
+      ],
+      [
+        "9",
+        "1",
+        "Regular"
+      ],
+      [
+        "10",
+        "3",
+        "Large"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "10:43f70f2a03767cbaa58cc37c62c1a3d96523904d26025cf14e370a12ca014695": {
+    "kind": "rows",
+    "columns": [
+      "weekday_name",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Saturday",
+        "13.000"
+      ],
+      [
+        "Monday",
+        "12.500"
+      ],
+      [
+        "Sunday",
+        "12.050"
+      ],
+      [
+        "Tuesday",
+        "8.250"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "10:01fd422316640304437849d56c85e9f5ed01931ca02bf392fb472cdb9bfb4739": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_label"
+    ],
+    "rows": [
+      [
+        "1",
+        "ICED LATTE — COFFEE"
+      ],
+      [
+        "2",
+        "COLD BREW — COFFEE"
+      ],
+      [
+        "3",
+        "CROISSANT — PASTRY"
+      ],
+      [
+        "4",
+        "BROWNIE — DESSERT"
+      ],
+      [
+        "5",
+        "MATCHA LATTE — TEA"
+      ],
+      [
+        "6",
+        "AMERICANO — COFFEE"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "10:d0281555ab6ea0a271098bb236515fe074e5f8a7d78ce664af22de478865f8eb": {
+    "kind": "rows",
+    "columns": [
+      "product_name",
+      "revenue",
+      "revenue_band"
+    ],
+    "rows": [
+      [
+        "Iced Latte",
+        "16.500",
+        "High"
+      ],
+      [
+        "Cold Brew",
+        "9.000",
+        "High"
+      ],
+      [
+        "Croissant",
+        "6.000",
+        "Medium"
+      ],
+      [
+        "Matcha Latte",
+        "5.800",
+        "Medium"
+      ],
+      [
+        "Americano",
+        "5.000",
+        "Medium"
+      ],
+      [
+        "Brownie",
+        "3.500",
+        "Low"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "10:01a956de5a33316c11a200fa73fd998868408a8c0630486f595847dcbf2b26d1": {
+    "kind": "rows",
+    "columns": [
+      "product_label",
+      "order_year",
+      "order_month",
+      "weekday",
+      "row_revenue",
+      "revenue_band"
+    ],
+    "rows": [
+      [
+        "ICED LATTE",
+        "2026",
+        "6",
+        "Saturday",
+        "5.500",
+        "Medium"
+      ],
+      [
+        "COLD BREW",
+        "2026",
+        "6",
+        "Saturday",
+        "3.000",
+        "Medium"
+      ],
+      [
+        "CROISSANT",
+        "2026",
+        "6",
+        "Saturday",
+        "4.500",
+        "Medium"
+      ],
+      [
+        "BROWNIE",
+        "2026",
+        "6",
+        "Sunday",
+        "3.500",
+        "Medium"
+      ],
+      [
+        "ICED LATTE",
+        "2026",
+        "6",
+        "Sunday",
+        "2.750",
+        "Low"
+      ],
+      [
+        "MATCHA LATTE",
+        "2026",
+        "6",
+        "Sunday",
+        "5.800",
+        "Medium"
+      ],
+      [
+        "AMERICANO",
+        "2026",
+        "6",
+        "Monday",
+        "5.000",
+        "Medium"
+      ],
+      [
+        "COLD BREW",
+        "2026",
+        "6",
+        "Monday",
+        "6.000",
+        "High"
+      ],
+      [
+        "CROISSANT",
+        "2026",
+        "6",
+        "Monday",
+        "1.500",
+        "Low"
+      ],
+      [
+        "ICED LATTE",
+        "2026",
+        "6",
+        "Tuesday",
+        "8.250",
+        "High"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "11:caff2d510c11fc56296dd626a3f255297a14994b048ebcf13ecfdc62c3405715": {
+    "kind": "rows",
+    "columns": [
+      "row_count",
+      "names_present",
+      "names_missing",
+      "distinct_categories"
+    ],
+    "rows": [
+      [
+        "6",
+        "6",
+        "0",
+        "4"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "11:25c2d089d2b594f34e9d2ed0731b477d9db63936aa2e352a92fd3bee5703e38b": {
+    "kind": "rows",
+    "columns": [],
+    "rows": [],
+    "row_count": 0
+  },
+  "11:9bc4c1f1afe8aace93007eaa5af8049ac8013403e213724a4f32e0f01a651cc0": {
+    "kind": "rows",
+    "columns": [],
+    "rows": [],
+    "row_count": 0
+  },
+  "11:49e5493132d2dee22dbc33ee1576415642d201db3def02d165358afe6e4988d9": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "product_count"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "3"
+      ],
+      [
+        "Dessert",
+        "1"
+      ],
+      [
+        "Pastry",
+        "1"
+      ],
+      [
+        "Tea",
+        "1"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "11:118e6df5ae844b492d6e14aad083034ff178e1d72bd521359ff4dacce517184c": {
+    "kind": "rows",
+    "columns": [],
+    "rows": [],
+    "row_count": 0
+  },
+  "11:af5e71c3d43c26f77ffa4c7d2460d1f7c4f378d934d42cb0df917b9fcbd9e4d0": {
+    "kind": "rows",
+    "columns": [],
+    "rows": [],
+    "row_count": 0
+  },
+  "11:aef74a687bc9004f5490275afe579153c0f9deafd901d3e852599a16e93be52f": {
+    "kind": "rows",
+    "columns": [],
+    "rows": [],
+    "row_count": 0
+  },
+  "11:9005e1e90d5d8c4b86e17b0f54e45229740ab63826fbe3ef922432cfa2e94590": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "old_category",
+      "new_category"
+    ],
+    "rows": [
+      [
+        "1",
+        "Coffee",
+        "Coffee"
+      ],
+      [
+        "2",
+        "Coffee",
+        "Coffee"
+      ],
+      [
+        "6",
+        "Coffee",
+        "Coffee"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "11:be67a5b084b160fe132608dde33168482ef5e9d42f73f2b8b4a2900670c2bda4": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "price"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "2.750"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "3.000"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "1.500"
+      ],
+      [
+        "4",
+        "Brownie",
+        "Dessert",
+        "1.750"
+      ],
+      [
+        "5",
+        "Matcha Latte",
+        "Tea",
+        "2.900"
+      ],
+      [
+        "6",
+        "Americano",
+        "Coffee",
+        "1.250"
+      ]
+    ],
+    "row_count": 6,
+    "truncated": false
+  },
+  "11:33c730b8dd773bf3e25f568ff8bc016da649d38efb7cec3e304ac07edde1c29c": {
+    "kind": "rows",
+    "columns": [
+      "quality_check",
+      "issue_count"
+    ],
+    "rows": [
+      [
+        "products missing category",
+        "0"
+      ],
+      [
+        "orders with invalid quantity",
+        "0"
+      ]
+    ],
+    "row_count": 2,
+    "truncated": false
+  },
+  "11:7082380d00c97b4086057a2f8e0b5167d2eab0ab6d6b92fcdba3caa165bfe630": {
+    "kind": "rows",
+    "columns": [],
+    "rows": [],
+    "row_count": 0
+  },
+  "11:201680ade742379458195b4aae8c4b957ca4c5a2c98591635bb28b7c85ecee50": {
+    "kind": "rows",
+    "columns": [],
+    "rows": [],
+    "row_count": 0
+  },
+  "11:be9fefbdc1c3120b92261b7a9782ff0b12624c75763aaef7aaffa4337564b628": {
+    "kind": "rows",
+    "columns": [],
+    "rows": [],
+    "row_count": 0
+  },
+  "12:19195fbad946a6af5fbc7669a6cd748f85caab0099a0a6bad982f9e2f38d0631": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "order_date",
+      "product_name",
+      "category",
+      "quantity",
+      "unit_price",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "1",
+        "2026-06-20",
+        "Iced Latte",
+        "Coffee",
+        "2",
+        "2.750",
+        "5.500"
+      ],
+      [
+        "2",
+        "2026-06-20",
+        "Cold Brew",
+        "Coffee",
+        "1",
+        "3.000",
+        "3.000"
+      ],
+      [
+        "3",
+        "2026-06-20",
+        "Croissant",
+        "Pastry",
+        "3",
+        "1.500",
+        "4.500"
+      ],
+      [
+        "4",
+        "2026-06-21",
+        "Brownie",
+        "Dessert",
+        "2",
+        "1.750",
+        "3.500"
+      ],
+      [
+        "5",
+        "2026-06-21",
+        "Iced Latte",
+        "Coffee",
+        "1",
+        "2.750",
+        "2.750"
+      ],
+      [
+        "6",
+        "2026-06-21",
+        "Matcha Latte",
+        "Tea",
+        "2",
+        "2.900",
+        "5.800"
+      ],
+      [
+        "7",
+        "2026-06-22",
+        "Americano",
+        "Coffee",
+        "4",
+        "1.250",
+        "5.000"
+      ],
+      [
+        "8",
+        "2026-06-22",
+        "Cold Brew",
+        "Coffee",
+        "2",
+        "3.000",
+        "6.000"
+      ],
+      [
+        "9",
+        "2026-06-22",
+        "Croissant",
+        "Pastry",
+        "1",
+        "1.500",
+        "1.500"
+      ],
+      [
+        "10",
+        "2026-06-23",
+        "Iced Latte",
+        "Coffee",
+        "3",
+        "2.750",
+        "8.250"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "12:5db8e4ea1a22e44af7817d96e7a481eba74a4d74222928afc574b6be0502fa47": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "items_sold",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "10",
+        "22.250"
+      ],
+      [
+        "Pastry",
+        "4",
+        "6.000"
+      ],
+      [
+        "Tea",
+        "2",
+        "5.800"
+      ],
+      [
+        "Dessert",
+        "2",
+        "3.500"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "12:324ff184a255a321490d77f45222d0ff1b88883122fb524c2ad5dcd88434fa8e": {
+    "kind": "rows",
+    "columns": [
+      "order_date",
+      "revenue",
+      "running_revenue"
+    ],
+    "rows": [
+      [
+        "2026-06-20",
+        "13.000",
+        "13.000"
+      ],
+      [
+        "2026-06-21",
+        "12.050",
+        "25.050"
+      ],
+      [
+        "2026-06-22",
+        "12.500",
+        "37.550"
+      ],
+      [
+        "2026-06-23",
+        "8.250",
+        "45.800"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "12:99b8d1a81b4349160845e08d9283226d915479fe67f2e16ed7aa21549ec565e8": {
+    "kind": "rows",
+    "columns": [
+      "daily_rows",
+      "first_date",
+      "last_date"
+    ],
+    "rows": [
+      [
+        "4",
+        "2026-06-20",
+        "2026-06-23"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "12:ebf7641f4c3b7e760f28c3a6f166817c5d82ddba1200967a2edb75585e0f7160": {
+    "kind": "rows",
+    "columns": [
+      "coffee_revenue"
+    ],
+    "rows": [
+      [
+        "30.500"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "12:1396e27eac375a23d8cb031f87ca72cccb491f6222bea3aa115f155513921084": {
+    "kind": "rows",
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "items_sold",
+      "revenue"
+    ],
+    "rows": [
+      [
+        "1",
+        "Iced Latte",
+        "Coffee",
+        "6",
+        "16.500"
+      ],
+      [
+        "2",
+        "Cold Brew",
+        "Coffee",
+        "3",
+        "9.000"
+      ],
+      [
+        "3",
+        "Croissant",
+        "Pastry",
+        "4",
+        "6.000"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "12:0d383d3eb5454182286b241278e2a640c82dabe8caaaa1b1862246766877cf48": {
+    "kind": "rows",
+    "columns": [
+      "category",
+      "revenue",
+      "revenue_percent"
+    ],
+    "rows": [
+      [
+        "Coffee",
+        "30.500",
+        "66.59"
+      ],
+      [
+        "Pastry",
+        "6.000",
+        "13.10"
+      ],
+      [
+        "Tea",
+        "5.800",
+        "12.66"
+      ],
+      [
+        "Dessert",
+        "3.500",
+        "7.64"
+      ]
+    ],
+    "row_count": 4,
+    "truncated": false
+  },
+  "13:b7b699d1f5a403404aea3a15b3fe4ef81284a56f9906223908ee2b41cae55a62": {
+    "kind": "rows",
+    "columns": [
+      "id",
+      "select_type",
+      "table",
+      "partitions",
+      "type",
+      "possible_keys",
+      "key",
+      "key_len",
+      "ref",
+      "rows",
+      "filtered",
+      "Extra"
+    ],
+    "rows": [
+      [
+        "1",
+        "SIMPLE",
+        "orders",
+        "NULL",
+        "ref",
+        "product_id",
+        "product_id",
+        "4",
+        "const",
+        "3",
+        "100.00",
+        "NULL"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "13:b0c71807bddeadf58da23c76796f5d01c0d7240c5183b17cfee033a0cd61fc17": {
+    "kind": "rows",
+    "columns": [
+      "id",
+      "select_type",
+      "table",
+      "partitions",
+      "type",
+      "possible_keys",
+      "key",
+      "key_len",
+      "ref",
+      "rows",
+      "filtered",
+      "Extra"
+    ],
+    "rows": [
+      [
+        "1",
+        "SIMPLE",
+        "orders",
+        "NULL",
+        "ALL",
+        "NULL",
+        "NULL",
+        "NULL",
+        "NULL",
+        "10",
+        "100.00",
+        "Using temporary"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "13:db9cba75b9ecceb7e29a4e688c40b3e55e03a081060f158e51be3fe16ab3e14b": {
+    "kind": "rows",
+    "columns": [
+      "id",
+      "select_type",
+      "table",
+      "partitions",
+      "type",
+      "possible_keys",
+      "key",
+      "key_len",
+      "ref",
+      "rows",
+      "filtered",
+      "Extra"
+    ],
+    "rows": [
+      [
+        "1",
+        "SIMPLE",
+        "orders",
+        "NULL",
+        "ALL",
+        "NULL",
+        "NULL",
+        "NULL",
+        "NULL",
+        "10",
+        "10.00",
+        "Using where"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "13:5a01047e2f4b4ba76516e48d085605eb91341ac423d97cae2f09088924783851": {
+    "kind": "rows",
+    "columns": [
+      "id",
+      "select_type",
+      "table",
+      "partitions",
+      "type",
+      "possible_keys",
+      "key",
+      "key_len",
+      "ref",
+      "rows",
+      "filtered",
+      "Extra"
+    ],
+    "rows": [
+      [
+        "1",
+        "SIMPLE",
+        "orders",
+        "NULL",
+        "ALL",
+        "idx_orders_order_date",
+        "NULL",
+        "NULL",
+        "NULL",
+        "10",
+        "90.00",
+        "Using where"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "13:c89b340862677c875c405442737f7cca85c13281d739beae36e4c59f95b85630": {
+    "kind": "rows",
+    "columns": [
+      "id",
+      "select_type",
+      "table",
+      "partitions",
+      "type",
+      "possible_keys",
+      "key",
+      "key_len",
+      "ref",
+      "rows",
+      "filtered",
+      "Extra"
+    ],
+    "rows": [
+      [
+        "1",
+        "SIMPLE",
+        "orders",
+        "NULL",
+        "range",
+        "idx_orders_order_date,idx_orders_product_date",
+        "idx_orders_product_date",
+        "7",
+        "NULL",
+        "3",
+        "100.00",
+        "Using index condition"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "13:3d836c30022df1b8f2c22d555a3cd8e248df5b5c1941e45ad6a177a68256d0c0": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_id",
+      "quantity",
+      "unit_price",
+      "order_date"
+    ],
+    "rows": [
+      [
+        "1",
+        "1",
+        "2",
+        "2.750",
+        "2026-06-20"
+      ],
+      [
+        "2",
+        "2",
+        "1",
+        "3.000",
+        "2026-06-20"
+      ],
+      [
+        "3",
+        "3",
+        "3",
+        "1.500",
+        "2026-06-20"
+      ],
+      [
+        "4",
+        "4",
+        "2",
+        "1.750",
+        "2026-06-21"
+      ],
+      [
+        "5",
+        "1",
+        "1",
+        "2.750",
+        "2026-06-21"
+      ],
+      [
+        "6",
+        "5",
+        "2",
+        "2.900",
+        "2026-06-21"
+      ],
+      [
+        "7",
+        "6",
+        "4",
+        "1.250",
+        "2026-06-22"
+      ],
+      [
+        "8",
+        "2",
+        "2",
+        "3.000",
+        "2026-06-22"
+      ],
+      [
+        "9",
+        "3",
+        "1",
+        "1.500",
+        "2026-06-22"
+      ],
+      [
+        "10",
+        "1",
+        "3",
+        "2.750",
+        "2026-06-23"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "13:4a1fe30221c4cb6f851e9ebf78dc796ead6fd673e227fd4266a60cd59aa4449d": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_id",
+      "quantity",
+      "unit_price",
+      "order_date"
+    ],
+    "rows": [
+      [
+        "1",
+        "1",
+        "2",
+        "2.750",
+        "2026-06-20"
+      ],
+      [
+        "2",
+        "2",
+        "1",
+        "3.000",
+        "2026-06-20"
+      ],
+      [
+        "3",
+        "3",
+        "3",
+        "1.500",
+        "2026-06-20"
+      ],
+      [
+        "4",
+        "4",
+        "2",
+        "1.750",
+        "2026-06-21"
+      ],
+      [
+        "5",
+        "1",
+        "1",
+        "2.750",
+        "2026-06-21"
+      ],
+      [
+        "6",
+        "5",
+        "2",
+        "2.900",
+        "2026-06-21"
+      ],
+      [
+        "7",
+        "6",
+        "4",
+        "1.250",
+        "2026-06-22"
+      ],
+      [
+        "8",
+        "2",
+        "2",
+        "3.000",
+        "2026-06-22"
+      ],
+      [
+        "9",
+        "3",
+        "1",
+        "1.500",
+        "2026-06-22"
+      ],
+      [
+        "10",
+        "1",
+        "3",
+        "2.750",
+        "2026-06-23"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "13:5644e628f4899ee74178881f15e492b75959eee2123761d6572969b748794385": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_id",
+      "order_date"
+    ],
+    "rows": [
+      [
+        "1",
+        "1",
+        "2026-06-20"
+      ],
+      [
+        "5",
+        "1",
+        "2026-06-21"
+      ],
+      [
+        "10",
+        "1",
+        "2026-06-23"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "13:0e7808afc17431ba471234944397ee094dc7d54bbd1d1c14f99cc4b9c9f6f5c7": {
+    "kind": "rows",
+    "columns": [
+      "id",
+      "select_type",
+      "table",
+      "partitions",
+      "type",
+      "possible_keys",
+      "key",
+      "key_len",
+      "ref",
+      "rows",
+      "filtered",
+      "Extra"
+    ],
+    "rows": [
+      [
+        "1",
+        "SIMPLE",
+        "p",
+        "NULL",
+        "ALL",
+        "PRIMARY",
+        "NULL",
+        "NULL",
+        "NULL",
+        "6",
+        "100.00",
+        "Using temporary"
+      ],
+      [
+        "1",
+        "SIMPLE",
+        "o",
+        "NULL",
+        "ref",
+        "idx_orders_product_date",
+        "idx_orders_product_date",
+        "4",
+        "course_audit.p.product_id",
+        "1",
+        "100.00",
+        "NULL"
+      ]
+    ],
+    "row_count": 2,
+    "truncated": false
+  },
+  "13:3b1f162a3ebbf09e1380ccfdd345e0028013ec164088111bcb41a649b325b430": {
+    "kind": "rows",
+    "columns": [
+      "order_rows"
+    ],
+    "rows": [
+      [
+        "10"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "13:2cbf6ad3c8ba504110d0f6788eece00303c7db1e192c10f939581b85e65b25d3": {
+    "kind": "rows",
+    "columns": [
+      "joined_rows"
+    ],
+    "rows": [
+      [
+        "10"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "13:91465abb9127f836735f40af7e589cbc8103831b0ef8214c5575fec9ffaef0dd": {
+    "kind": "rows",
+    "columns": [
+      "id",
+      "select_type",
+      "table",
+      "partitions",
+      "type",
+      "possible_keys",
+      "key",
+      "key_len",
+      "ref",
+      "rows",
+      "filtered",
+      "Extra"
+    ],
+    "rows": [
+      [
+        "1",
+        "SIMPLE",
+        "orders",
+        "NULL",
+        "ref",
+        "idx_orders_product_date",
+        "idx_orders_product_date",
+        "4",
+        "const",
+        "2",
+        "100.00",
+        "NULL"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "13:44338e9c3212f1988c7198e1ba36554e82a7ebf5007c10025d4137a0143e58bc": {
+    "kind": "rows",
+    "columns": [
+      "Table",
+      "Non_unique",
+      "Key_name",
+      "Seq_in_index",
+      "Column_name",
+      "Collation",
+      "Cardinality",
+      "Sub_part",
+      "Packed",
+      "Null",
+      "Index_type",
+      "Comment",
+      "Index_comment",
+      "Visible",
+      "Expression"
+    ],
+    "rows": [
+      [
+        "orders",
+        "0",
+        "PRIMARY",
+        "1",
+        "order_id",
+        "A",
+        "10",
+        "NULL",
+        "NULL",
+        "",
+        "BTREE",
+        "",
+        "",
+        "YES",
+        "NULL"
+      ],
+      [
+        "orders",
+        "1",
+        "idx_orders_product_date",
+        "1",
+        "product_id",
+        "A",
+        "6",
+        "NULL",
+        "NULL",
+        "",
+        "BTREE",
+        "",
+        "",
+        "YES",
+        "NULL"
+      ],
+      [
+        "orders",
+        "1",
+        "idx_orders_product_date",
+        "2",
+        "order_date",
+        "A",
+        "10",
+        "NULL",
+        "NULL",
+        "",
+        "BTREE",
+        "",
+        "",
+        "YES",
+        "NULL"
+      ]
+    ],
+    "row_count": 3,
+    "truncated": false
+  },
+  "13:6b7f47b427ee4ce7b8dd1bb61f287c29aee464d6458099ed0519482d100b0623": {
+    "kind": "rows",
+    "columns": [
+      "id",
+      "select_type",
+      "table",
+      "partitions",
+      "type",
+      "possible_keys",
+      "key",
+      "key_len",
+      "ref",
+      "rows",
+      "filtered",
+      "Extra"
+    ],
+    "rows": [
+      [
+        "1",
+        "SIMPLE",
+        "orders",
+        "NULL",
+        "range",
+        "idx_orders_product_date",
+        "idx_orders_product_date",
+        "7",
+        "NULL",
+        "3",
+        "100.00",
+        "Using index condition"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  },
+  "13:4c8b0e9a2fa29dc8cc811354d4084506b47acb1a4619a1ac273f760c11466584": {
+    "kind": "rows",
+    "columns": [
+      "order_id",
+      "product_id",
+      "quantity",
+      "unit_price",
+      "order_date"
+    ],
+    "rows": [
+      [
+        "1",
+        "1",
+        "2",
+        "2.750",
+        "2026-06-20"
+      ],
+      [
+        "2",
+        "2",
+        "1",
+        "3.000",
+        "2026-06-20"
+      ],
+      [
+        "3",
+        "3",
+        "3",
+        "1.500",
+        "2026-06-20"
+      ],
+      [
+        "4",
+        "4",
+        "2",
+        "1.750",
+        "2026-06-21"
+      ],
+      [
+        "5",
+        "1",
+        "1",
+        "2.750",
+        "2026-06-21"
+      ],
+      [
+        "6",
+        "5",
+        "2",
+        "2.900",
+        "2026-06-21"
+      ],
+      [
+        "7",
+        "6",
+        "4",
+        "1.250",
+        "2026-06-22"
+      ],
+      [
+        "8",
+        "2",
+        "2",
+        "3.000",
+        "2026-06-22"
+      ],
+      [
+        "9",
+        "3",
+        "1",
+        "1.500",
+        "2026-06-22"
+      ],
+      [
+        "10",
+        "1",
+        "3",
+        "2.750",
+        "2026-06-23"
+      ]
+    ],
+    "row_count": 10,
+    "truncated": false
+  },
+  "13:190099692ea439eca1c26e7c5517d6bc9e573b4addb75a9a0db8833f83daca98": {
+    "kind": "rows",
+    "columns": [
+      "order_rows",
+      "joined_rows"
+    ],
+    "rows": [
+      [
+        "10",
+        "10"
+      ]
+    ],
+    "row_count": 1,
+    "truncated": false
+  }
+}

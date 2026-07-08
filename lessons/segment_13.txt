@@ -1,0 +1,198 @@
+Segment 13 — Query Performance and EXPLAIN
+
+Correct SQL must also remain practical as data grows. This segment teaches how to inspect query plans, design useful indexes, and avoid patterns that force unnecessary work.
+
+1. Performance starts with measurement
+
+Do not optimize from intuition alone. Record the query, parameters, row counts, execution time, and plan before changing it.
+
+EXPLAIN
+SELECT *
+FROM orders
+WHERE product_id = 1;
+
+EXPLAIN describes MySQL's plan without returning the normal result rows.
+
+2. Read the important EXPLAIN columns
+
+EXPLAIN
+SELECT
+    order_date,
+    SUM(quantity * unit_price) AS revenue
+FROM orders
+GROUP BY order_date;
+
+Start with table, type, possible_keys, key, rows, and Extra. Estimated rows are not guaranteed to equal actual rows.
+
+EXPLAIN output is evidence, not a promise. MySQL can choose a different plan after data grows, statistics change, indexes are added or removed, or the MySQL version changes. Record the plan you actually see, then verify that the tuned query still returns the same business result.
+
+3. Full scans
+
+A full table scan is not automatically bad. It can be reasonable for small tables or queries that need most rows. It becomes expensive when a large table is scanned to return a tiny subset.
+
+EXPLAIN
+SELECT *
+FROM orders
+WHERE order_date = '2026-06-22';
+
+4. Create a single-column index
+
+CREATE INDEX idx_orders_order_date
+ON orders (order_date);
+
+This index can help equality and range filters on order_date. Indexes consume storage and add work to INSERT, UPDATE, and DELETE.
+
+5. Verify index use
+
+EXPLAIN
+SELECT
+    order_id,
+    product_id,
+    quantity
+FROM orders
+WHERE order_date BETWEEN '2026-06-20' AND '2026-06-22';
+
+Look for idx_orders_order_date in key and compare estimated work.
+
+6. Composite indexes
+
+CREATE INDEX idx_orders_product_date
+ON orders (product_id, order_date);
+
+Column order matters. This index supports filters beginning with product_id and can continue into order_date.
+
+7. The leftmost-prefix idea
+
+The composite index (product_id, order_date) is naturally useful for product_id alone or product_id plus order_date. It is generally less useful for order_date alone.
+
+EXPLAIN
+SELECT *
+FROM orders
+WHERE product_id = 1
+  AND order_date >= '2026-06-20';
+
+8. Write searchable date filters
+
+Avoid wrapping an indexed column in a function when a range expresses the same condition.
+
+Less index-friendly:
+
+SELECT * FROM orders WHERE YEAR(order_date) = 2026;
+
+More searchable:
+
+SELECT *
+FROM orders
+WHERE order_date >= '2026-01-01'
+  AND order_date < '2027-01-01';
+
+9. Select only needed columns
+
+SELECT
+    order_id,
+    product_id,
+    order_date
+FROM orders
+WHERE product_id = 1;
+
+Naming columns reduces transferred data and makes the query's contract clearer.
+
+10. Index join keys
+
+Primary and foreign-key columns used for joins should be indexed appropriately.
+
+EXPLAIN
+SELECT
+    p.product_name,
+    SUM(o.quantity * o.unit_price) AS revenue
+FROM products AS p
+JOIN orders AS o ON o.product_id = p.product_id
+GROUP BY p.product_id, p.product_name;
+
+11. Avoid accidental row multiplication
+
+Performance and correctness both suffer when a join condition is incomplete. State the expected grain and verify row counts before and after a join.
+
+SELECT COUNT(*) AS order_rows FROM orders;
+
+SELECT COUNT(*) AS joined_rows
+FROM orders AS o
+JOIN products AS p ON p.product_id = o.product_id;
+
+For this many-to-one relationship, the counts should match when every order has a valid product.
+
+12. Remove unused indexes carefully
+
+DROP INDEX idx_orders_order_date ON orders;
+
+Confirm an index is redundant and unused by important workloads before removing it.
+
+13. Common mistakes
+
+Do not add indexes to every column, assume an index must be used, optimize only on tiny development data, ignore write costs, compare timings without controlling conditions, or change several things before measuring again.
+
+14. Practice Questions
+
+Practice 1: Explain a product filter
+
+Answer:
+
+EXPLAIN
+SELECT
+    order_id,
+    quantity,
+    unit_price
+FROM orders
+WHERE product_id = 2;
+
+Practice 2: Inspect indexes on orders
+
+Answer:
+
+SHOW INDEX
+FROM orders;
+
+Because product_id is a foreign key in this course schema, MySQL requires a supporting index and creates one automatically when needed. Do not add a redundant single-column index without checking first.
+
+Practice 3: Test the composite product-date index
+
+Answer:
+
+EXPLAIN
+SELECT
+    order_id,
+    quantity,
+    unit_price
+FROM orders
+WHERE product_id = 1
+  AND order_date >= '2026-06-20';
+
+Practice 4: Rewrite a monthly date filter
+
+Answer:
+
+SELECT *
+FROM orders
+WHERE order_date >= '2026-06-01'
+  AND order_date < '2026-07-01';
+
+Practice 5: Compare join row counts
+
+Answer:
+
+SELECT
+    (SELECT COUNT(*) FROM orders) AS order_rows,
+    COUNT(*) AS joined_rows
+FROM orders AS o
+JOIN products AS p ON p.product_id = o.product_id;
+
+15. Segment 13 cheat sheet
+
+Goal\tTool
+Inspect a plan\tEXPLAIN
+Support one search column\tSingle-column index
+Support ordered filter columns\tComposite index
+Keep filters searchable\tCompare indexed columns directly to ranges
+Reduce output work\tSelect only required columns
+Validate joins\tCompare grain and row counts
+Remove an index\tDROP INDEX ... ON table
