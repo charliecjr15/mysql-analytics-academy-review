@@ -61,6 +61,10 @@ Build a report that answers:
 - At least one data-cleaning log or quality-test result
 - One `EXPLAIN` before/after comparison for a date/status report
 
+For a guided analyst-style workday, follow
+[`analyst_walkthrough.md`](analyst_walkthrough.md). It walks through the project
+from intake and profiling through reporting, QA, and final stakeholder notes.
+
 ## Important Business Rules
 
 - Treat `orders.status = 'completed'` as completed sales.

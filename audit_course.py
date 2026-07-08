@@ -239,6 +239,7 @@ capstone_solution = ROOT / "capstone" / "reference_solution.sql"
 project_dataset = ROOT / "project_data" / "retail_project_setup.sql"
 project_readme = ROOT / "project_data" / "README.md"
 project_starters = ROOT / "project_data" / "starter_questions.sql"
+project_walkthrough = ROOT / "project_data" / "analyst_walkthrough.md"
 if not career_page.is_file():
     errors.append("missing learner-facing career center")
 else:
@@ -291,6 +292,12 @@ else:
     starters_text = project_starters.read_text(encoding="utf-8")
     for required in ("GROUP BY", "HAVING", "LEFT JOIN", "WITH product_month", "DENSE_RANK()", "CREATE OR REPLACE VIEW completed_valid_sales_v", "EXPLAIN", "CREATE INDEX idx_orders_status_date_store"):
         if required not in starters_text: errors.append(f"project starter questions are missing {required}")
+if not project_walkthrough.is_file():
+    errors.append("missing analyst walkthrough for larger project dataset")
+else:
+    walkthrough_text = project_walkthrough.read_text(encoding="utf-8")
+    for required in ("The Work Request", "Build the Trusted Reporting View", "Reconcile the View Against the Source", "Month-Over-Month Revenue Change", "Performance Check", "Analyst Summary Template"):
+        if required not in walkthrough_text: errors.append(f"project analyst walkthrough is missing {required}")
 
 for required in ("RIGHT JOIN", "A self join", "NOT EXISTS", "CROSS JOIN", "WITH product_sales", "ROW_NUMBER()", "DENSE_RANK()", "LAG(", "LEAD(", "ROWS BETWEEN UNBOUNDED PRECEDING"):
     if required not in all_html: errors.append(f"required advanced concept {required} is missing")
