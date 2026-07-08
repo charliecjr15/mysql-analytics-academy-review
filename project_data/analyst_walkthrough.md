@@ -19,11 +19,12 @@ Your job for the day:
 2. Understand the schema and result grain.
 3. Profile the raw data before trusting it.
 4. Define business rules for valid sales.
-5. Build a clean reporting view.
-6. Answer the core business questions.
-7. Validate totals.
-8. Add performance evidence.
-9. Write a short analyst summary.
+5. Correct customer data in a staging layer.
+6. Build a clean reporting view.
+7. Answer the core business questions.
+8. Validate totals.
+9. Add performance evidence.
+10. Write a short analyst summary.
 
 ## Step 0: Start the Assignment
 
@@ -233,7 +234,114 @@ Decision:
 - Use `products.product_name` for final reporting.
 - Use `raw_product_name` to explain data-quality issues.
 
-## Step 7: Build the Trusted Reporting View
+## Step 7: Correct Customer Data in a Staging Layer
+
+Profiling tells you what is wrong. Correcting data means applying a written rule
+in a place where the raw evidence is still preserved.
+
+For this project, do not overwrite the raw `customers` table. Create a staging
+copy, apply corrections there, validate the result, and use the corrected layer
+for customer-quality analysis.
+
+Create the staging table.
+
+```sql
+DROP TABLE IF EXISTS customers_staging;
+
+CREATE TABLE customers_staging AS
+SELECT *
+FROM customers;
+```
+
+Preview the correction rules before changing anything.
+
+```sql
+SELECT
+    customer_id,
+    email AS old_email,
+    NULLIF(LOWER(TRIM(email)), '') AS corrected_email,
+    city AS old_city,
+    NULLIF(TRIM(city), '') AS corrected_city,
+    loyalty_tier AS old_loyalty_tier,
+    CASE
+        WHEN LOWER(TRIM(loyalty_tier)) IN ('gold', 'silver', 'bronze')
+            THEN CONCAT(UPPER(LEFT(TRIM(loyalty_tier), 1)), LOWER(SUBSTRING(TRIM(loyalty_tier), 2)))
+        ELSE NULL
+    END AS corrected_loyalty_tier
+FROM customers_staging
+WHERE email <> NULLIF(LOWER(TRIM(email)), '')
+   OR city <> NULLIF(TRIM(city), '')
+   OR loyalty_tier <> CASE
+        WHEN LOWER(TRIM(loyalty_tier)) IN ('gold', 'silver', 'bronze')
+            THEN CONCAT(UPPER(LEFT(TRIM(loyalty_tier), 1)), LOWER(SUBSTRING(TRIM(loyalty_tier), 2)))
+        ELSE NULL
+    END
+   OR email IS NULL
+   OR city IS NULL
+   OR loyalty_tier IS NULL
+ORDER BY customer_id;
+```
+
+Apply the corrections to the staging copy inside a transaction.
+
+```sql
+START TRANSACTION;
+
+UPDATE customers_staging
+SET
+    email = NULLIF(LOWER(TRIM(email)), ''),
+    city = NULLIF(TRIM(city), ''),
+    loyalty_tier = CASE
+        WHEN LOWER(TRIM(loyalty_tier)) IN ('gold', 'silver', 'bronze')
+            THEN CONCAT(UPPER(LEFT(TRIM(loyalty_tier), 1)), LOWER(SUBSTRING(TRIM(loyalty_tier), 2)))
+        ELSE NULL
+    END;
+```
+
+Validate the corrected staging table before committing.
+
+```sql
+SELECT
+    COUNT(*) AS customer_rows,
+    SUM(email IS NULL OR email NOT LIKE '%@%.%') AS email_issues_after,
+    SUM(city IS NULL OR city = '') AS city_issues_after,
+    SUM(loyalty_tier IS NULL) AS tier_issues_after,
+    SUM(loyalty_tier NOT IN ('Gold', 'Silver', 'Bronze')) AS unexpected_tier_rows
+FROM customers_staging;
+```
+
+Check whether normalization exposed duplicate customer identities.
+
+```sql
+SELECT
+    email,
+    COUNT(*) AS customer_count
+FROM customers_staging
+WHERE email IS NOT NULL
+GROUP BY email
+HAVING COUNT(*) > 1
+ORDER BY customer_count DESC, email;
+```
+
+If the validation result looks correct, commit the staging correction.
+
+```sql
+COMMIT;
+```
+
+If the validation result does not look correct, run `ROLLBACK;` instead of
+`COMMIT;`, adjust the rule, and try again.
+
+What changed:
+
+- Raw `customers` stayed untouched.
+- `customers_staging` now has standardized email casing, outside spaces removed,
+  blank strings converted to `NULL`, and loyalty tiers standardized to
+  `Gold`, `Silver`, or `Bronze`.
+- Duplicate-like emails are now easier to detect because spacing and case no
+  longer hide the match.
+
+## Step 8: Build the Trusted Reporting View
 
 Now create a reusable layer with your business rules baked in. This is your
 main analyst deliverable because it gives future queries one clean source.
@@ -282,7 +390,7 @@ Result grain:
 That sentence matters. If you cannot state result grain, you are not ready to
 interpret the numbers.
 
-## Step 8: Reconcile the View Against the Source
+## Step 9: Reconcile the View Against the Source
 
 Before using the view, prove it did not accidentally change the math.
 
@@ -311,7 +419,7 @@ SELECT
 
 If these do not match, stop. Fix the view before continuing.
 
-## Step 9: Calculate the Executive Monthly KPI Trend
+## Step 10: Calculate the Executive Monthly KPI Trend
 
 Now you can answer the first business question.
 
@@ -334,7 +442,7 @@ What to look for:
 - Whether orders and revenue move together.
 - Whether revenue per order is changing.
 
-## Step 10: Sales by Region, Store, and Channel
+## Step 11: Sales by Region, Store, and Channel
 
 Operations leaders usually ask where performance is coming from.
 
@@ -365,7 +473,7 @@ GROUP BY region_name, store_name
 ORDER BY gross_revenue DESC;
 ```
 
-## Step 11: Product and Category Performance
+## Step 12: Product and Category Performance
 
 Start with category and department.
 
@@ -400,7 +508,7 @@ Analyst note:
 - Revenue answers money.
 - They are related, but they are not the same metric.
 
-## Step 12: Use HAVING for Business Thresholds
+## Step 13: Use HAVING for Business Thresholds
 
 Find products with enough volume to matter operationally.
 
@@ -420,7 +528,7 @@ Why `HAVING`:
 - `WHERE` filters detail rows before grouping.
 - `HAVING` filters completed groups after `SUM(quantity)` exists.
 
-## Step 13: Use CTEs for Monthly Product Movement
+## Step 14: Use CTEs for Monthly Product Movement
 
 Now answer which products are above or below their own average month.
 
@@ -457,7 +565,7 @@ What you are doing:
 - Second CTE: benchmark per product.
 - Final query: compare each month with that product's normal performance.
 
-## Step 14: Use Window Functions for Rankings
+## Step 15: Use Window Functions for Rankings
 
 Rank top products inside each department.
 
@@ -490,7 +598,7 @@ Why `DENSE_RANK`:
 - It preserves ties.
 - It ranks within each department separately.
 
-## Step 15: Month-Over-Month Revenue Change
+## Step 16: Month-Over-Month Revenue Change
 
 Use `LAG` to compare each store-month with the previous month.
 
@@ -530,7 +638,7 @@ Why `NULLIF`:
 - It prevents division by zero.
 - First month per store has no prior month, so the comparison is `NULL`.
 
-## Step 16: Compare Stores With Their Region Average
+## Step 17: Compare Stores With Their Region Average
 
 This answers whether a store is underperforming relative to peers.
 
@@ -565,7 +673,7 @@ What to write down:
 - Is it one bad month or a pattern?
 - Does the store have fewer orders, lower basket size, or a weaker product mix?
 
-## Step 17: Analyze Returns and Net Revenue
+## Step 18: Analyze Returns and Net Revenue
 
 Gross sales alone can overstate performance. Bring in returns.
 
@@ -599,7 +707,7 @@ Decision to document:
 - A different finance team might subtract refunds from the original sale month.
 - Both are valid if clearly defined.
 
-## Step 18: Return Rate by Product
+## Step 19: Return Rate by Product
 
 Now identify products that may have quality or expectation issues.
 
@@ -634,7 +742,7 @@ LEFT JOIN returned ON returned.product_id = sold.product_id
 ORDER BY return_row_rate_pct DESC, refund_amount DESC;
 ```
 
-## Step 19: Inventory Risk
+## Step 20: Inventory Risk
 
 Find product-store combinations below reorder point in the latest snapshot.
 
@@ -664,7 +772,7 @@ Business interpretation:
 - A slow product below reorder point may be less urgent.
 - Join this with sales rank for better prioritization.
 
-## Step 20: Customer Retention Question
+## Step 21: Customer Retention Question
 
 Find customers with no completed purchase in the latest 45 days represented.
 
@@ -696,7 +804,7 @@ Why `NOT EXISTS`:
 - It expresses "no matching completed order in this period."
 - It avoids common `NOT IN` surprises when `NULL` appears.
 
-## Step 21: Create a Cleaning Log
+## Step 22: Create a Cleaning Log
 
 In real work, cleaning choices should be reviewable.
 
@@ -743,7 +851,7 @@ SELECT
     'customers',
     'standardize customer contact fields',
     COUNT(*),
-    'Use LOWER/TRIM for email analysis and flag missing or suspicious emails'
+    'Created customers_staging with LOWER/TRIM email corrections, blank cleanup, and standardized loyalty tiers'
 FROM customers
 WHERE email IS NULL
    OR TRIM(email) = ''
@@ -760,7 +868,7 @@ FROM cleaning_log
 ORDER BY checked_at, log_id;
 ```
 
-## Step 22: Performance Check
+## Step 23: Performance Check
 
 Pretend the March completed-order report is slow. First capture the plan.
 
@@ -811,13 +919,14 @@ Important:
 > Do not claim the query is better just because an index exists. The plan and
 > unchanged result are your evidence.
 
-## Step 23: Final QA Checklist
+## Step 24: Final QA Checklist
 
 Before sending anything, answer these:
 
 - Did I define completed sales?
 - Did I state the grain of the reporting view?
 - Did I exclude invalid metric rows?
+- Did I correct customer fields in a staging layer instead of overwriting raw data?
 - Did I reconcile the reporting view to the source logic?
 - Did I separate gross revenue from net revenue?
 - Did I explain how returns are assigned to months?
@@ -825,7 +934,7 @@ Before sending anything, answer these:
 - Did I use CTEs/windows where they improve the question?
 - Did I use `EXPLAIN` evidence for performance claims?
 
-## Step 24: Analyst Summary Template
+## Step 25: Analyst Summary Template
 
 Use this format for your final project write-up.
 
@@ -848,8 +957,9 @@ happened.
 Quality notes
 The raw data includes invalid item metrics, product-name variants, missing or
 suspicious customer contact fields, blank cities, and feedback ratings outside
-the expected 1-5 range. I did not overwrite raw tables; I created a trusted
-reporting view and logged cleaning decisions.
+the expected 1-5 range. I did not overwrite raw tables; I corrected customer
+contact fields in a staging table, created a trusted reporting view, and logged
+cleaning decisions.
 
 Main findings
 1. [Write your strongest revenue finding.]

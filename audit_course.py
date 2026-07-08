@@ -296,7 +296,7 @@ if not project_walkthrough.is_file():
     errors.append("missing analyst walkthrough for larger project dataset")
 else:
     walkthrough_text = project_walkthrough.read_text(encoding="utf-8")
-    for required in ("The Work Request", "Build the Trusted Reporting View", "Reconcile the View Against the Source", "Month-Over-Month Revenue Change", "Performance Check", "Analyst Summary Template"):
+    for required in ("The Work Request", "Correct Customer Data in a Staging Layer", "customers_staging", "START TRANSACTION", "COMMIT", "Build the Trusted Reporting View", "Reconcile the View Against the Source", "Month-Over-Month Revenue Change", "Performance Check", "Analyst Summary Template"):
         if required not in walkthrough_text: errors.append(f"project analyst walkthrough is missing {required}")
 
 for required in ("RIGHT JOIN", "A self join", "NOT EXISTS", "CROSS JOIN", "WITH product_sales", "ROW_NUMBER()", "DENSE_RANK()", "LAG(", "LEAD(", "ROWS BETWEEN UNBOUNDED PRECEDING", "TIMESTAMPDIFF", "NULLIF", "Net revenue"):
