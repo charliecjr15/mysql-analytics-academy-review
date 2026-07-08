@@ -1332,9 +1332,9 @@ TEXTBOOK_UNITS = [
     ],
     [
         ("Turning Facts into Business Categories",1,3,"CASE applies ordered business rules inside a query. We use it both to label individual rows and to count conditional populations within an aggregate."),
-        ("Working with Dates and Text",4,10,"Dates and text often require transformation before reporting. We extract calendar parts, format labels, measure intervals, standardize text, combine fields, and handle missing display values."),
-        ("Assembling a Reporting Query",11,12,"A useful report combines transformations without obscuring their meaning. We build a monthly category report and review common mistakes involving types, labels, and NULLs."),
-        ("Functions Lab and Chapter Summary",13,17,"The exercises combine CASE, weekday reporting, cleaned labels, and grouped revenue bands. Use the summary to distinguish formatting from permanent data cleaning."),
+        ("Working with Dates, Text, and Safe Ratios",4,11,"Dates, text, and NULL-aware expressions often require transformation before reporting. We extract calendar parts, format labels, measure intervals, standardize text, combine fields, handle missing display values, and protect ratio calculations."),
+        ("Project Metric Definitions",12,14,"A useful report combines transformations without obscuring their meaning. We connect gross revenue, net revenue, refunds, inventory rules, monthly reporting, and common mistakes to explicit business definitions."),
+        ("Functions Lab and Chapter Summary",15,20,"The exercises combine CASE, weekday reporting, cleaned labels, and grouped revenue bands. Use the summary to distinguish formatting from permanent data cleaning."),
     ],
     [
         ("Profiling Data Before Changing It",1,7,"Cleaning begins with evidence. We measure completeness, blanks, inconsistent categories, duplicates, and invalid numeric ranges before defining any correction."),
