@@ -36,7 +36,7 @@ assertions = [
 for passed, message in assertions:
     if not passed: errors.append(message)
 
-expected_lessons = {1: 7, 2: 8, 3: 9, 4: 7, 5: 6, 6: 9, 7: 10, 8: 7, 9: 7, 10: 6, 11: 8, 12: 8, 13: 6}
+expected_lessons = {1: 8, 2: 9, 3: 10, 4: 8, 5: 7, 6: 10, 7: 11, 8: 8, 9: 8, 10: 7, 11: 9, 12: 9, 13: 7}
 
 for si, segment in enumerate(segments, 1):
     if not segment["lessons"]: errors.append(f"S{si}: no lessons")
@@ -91,8 +91,8 @@ for stale_scene_phrase in ("Candidate value A", "CTEs turn a complex query into 
 # explicit explanation layer so learners understand purpose, grain, validation,
 # and mental model instead of copying isolated examples.
 lesson_total = sum(len(segment["lessons"]) for segment in segments)
-if lesson_total != 98:
-    errors.append(f"expected 98 textbook sections, found {lesson_total}")
+if lesson_total != 111:
+    errors.append(f"expected 111 textbook sections, found {lesson_total}")
 source_topic_total = 0
 teaching_context_count = 0
 query_teaching_count = 0
@@ -115,8 +115,8 @@ for segment_number, segment in enumerate(segments, 1):
         source_topic_total += len(titles)
         if body.count('class="textbook-subsection"') != len(titles):
             errors.append(f"S{segment_number}L{lesson_number}: source-topic count does not match rendered subsections")
-if source_topic_total != 362:
-    errors.append(f"expected 359 original/enriched topics plus two join supplements and one setup supplement, found {source_topic_total}")
+if source_topic_total != 375:
+    errors.append(f"expected 359 original/enriched topics plus two join supplements, one setup supplement, and 13 MetroMart build-along topics, found {source_topic_total}")
 if teaching_context_count != lesson_total:
     errors.append(f"expected learning context on all {lesson_total} lessons, found {teaching_context_count}")
 if query_teaching_count < 60:
@@ -155,10 +155,18 @@ else:
 for segment_number, segment in enumerate(segments, 1):
     checks = [lesson for lesson in segment["lessons"] if lesson["title"] == "Section knowledge check"]
     projects = [lesson for lesson in segment["lessons"] if lesson["title"].startswith("Mini-project: ")]
+    build_alongs = [lesson for lesson in segment["lessons"] if lesson["title"].startswith("Project build-along: ")]
     if len(checks) != 1:
         errors.append(f"S{segment_number}: expected one section knowledge check, found {len(checks)}")
     elif checks[0]["body"].count('class="quiz"') != 3:
         errors.append(f"S{segment_number}: knowledge check must contain exactly three questions")
+    if len(build_alongs) != 1:
+        errors.append(f"S{segment_number}: expected one MetroMart project build-along, found {len(build_alongs)}")
+    else:
+        build_body = build_alongs[0]["body"]
+        for required in ("Build the project while you learn", "MetroMart project database", "PROJECT SQL", "Result grain:", "Validation habit:"):
+            if required not in build_body:
+                errors.append(f"S{segment_number}: MetroMart build-along is missing {required}")
     if len(projects) != 1:
         errors.append(f"S{segment_number}: expected one mini-project, found {len(projects)}")
     else:

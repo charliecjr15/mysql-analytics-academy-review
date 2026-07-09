@@ -41,6 +41,8 @@ Each section must include:
 - a visual or tabular model where it materially improves understanding;
 - executable SQL examples and the expected result or verification method;
 - guided practice followed by independent practice;
+- a MetroMart project build-along task that applies the section skill to the
+  larger analyst dataset;
 - knowledge checks with explanations for correct and incorrect answers;
 - a mini-project with a business brief, deliverables, acceptance criteria,
   hints, a solution, and a self-assessment rubric;
@@ -76,7 +78,8 @@ schema.
 Completion requires all of the following:
 
 - diagnostic starting assessment;
-- section knowledge checks and 13 section mini-projects;
+- section knowledge checks, 13 MetroMart project build-alongs, and 13 section
+  mini-projects;
 - cumulative assessments at beginner, intermediate, and advanced milestones;
 - a final capstone using a larger, imperfect dataset;
 - capstone brief, stakeholder questions, SQL deliverables, QA checklist,
@@ -100,10 +103,12 @@ Completion requires all of the following:
 
 ## Current-state audit — 2026-07-05
 
-The browser build now contains 13 workflow-ordered chapters and 98 generated textbook sections.
+The browser build now contains 13 workflow-ordered chapters and 111 generated textbook sections.
 Each section ends with three interactive knowledge checks and one rubric-based
-mini-project with a deliberately hidden reference solution. The repository also
-contains reproducible baseline setup/reset SQL, a learner data dictionary, three
+mini-project with a deliberately hidden reference solution. Each chapter also
+includes a MetroMart project build-along that uses the larger analyst dataset
+to build the final walkthrough progressively. The repository also contains
+reproducible baseline setup/reset SQL, a learner data dictionary, three
 cumulative assessments, a larger imperfect capstone dataset and reference
 solution, five timed interview prompts, portfolio guidance, an application
 readiness gate, and a workplace guide covering requirements, permissions,

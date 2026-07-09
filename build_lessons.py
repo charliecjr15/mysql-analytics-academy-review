@@ -1012,6 +1012,14 @@ def statement_outcome(sql, segment_number):
         return expected_card("Uncommitted changes undone", "<p>No result grid is returned. The product rows return to their values from before START TRANSACTION.</p>")
     if re.match(r"(?is)^COMMIT", raw):
         return expected_card("Transaction changes made permanent", "<p>No result grid is returned. A later ROLLBACK cannot undo the committed changes.</p>")
+    if re.match(r"(?is)^EXPLAIN\b", raw):
+        return expected_card("Execution plan to inspect", "<p>MySQL returns plan columns such as table, access type, possible keys, chosen key, estimated rows, and Extra. Use this plan as performance evidence, then run the SELECT itself to verify the business result.</p>")
+    if re.match(r"(?is)^SHOW\s+INDEX\b", raw):
+        return expected_card("Index metadata to inspect", "<p>MySQL returns one metadata row per indexed column. Use Key_name and Seq_in_index to verify index names and column order.</p>")
+    if re.match(r"(?is)^DESCRIBE\b", raw):
+        return expected_card("Table definition to inspect", "<p>MySQL returns one metadata row per column. Use Field, Type, Null, Key, Default, and Extra to verify the table structure.</p>")
+    if re.match(r"(?is)^(SELECT|WITH)\b", raw):
+        return expected_card("Analysis result to verify", "<p>Run the query against the MetroMart project database. Verify the result grain, row count, key columns, NULL behavior, and at least one hand-checked metric before using the answer in the final walkthrough.</p>")
     if re.match(r"(?is)^(WHERE|GROUP\s+BY|ORDER\s+BY|LIMIT|VALUES|SELECT\s*$)", raw):
         return expected_card("Clause fragment", "<p>This is not a complete standalone statement. Its expected effect is demonstrated in the nearest complete query in this lesson.</p>")
     if ";" in raw:
@@ -1452,12 +1460,310 @@ def add_walkthrough_bridge_notes(segments):
     target["body"] = target["body"].replace("</div>", setup_note + "</div>", 1)
     target.setdefault("source_titles", []).append("Running a complete setup script")
 
+PROJECT_BUILD_ALONG = [
+    {
+        "title": "Project build-along: Start the MetroMart assignment",
+        "brief": "Open the final project dataset early and use basic SELECT skills to orient yourself like an analyst receiving a new data extract.",
+        "grain": "One output row per order returned by the filter.",
+        "sql": """SELECT
+    order_id,
+    order_date,
+    channel,
+    status,
+    payment_method
+FROM orders
+WHERE status = 'completed'
+ORDER BY order_date
+LIMIT 20;""",
+        "validation": "Confirm the result shows only completed orders and that the earliest returned rows match the January-June 2026 assignment window.",
+    },
+    {
+        "title": "Project build-along: Load and inspect MetroMart",
+        "brief": "After running project_data/retail_project_setup.sql, verify that the project database exists and that the core tables loaded before analyzing anything.",
+        "grain": "One output row per table being counted.",
+        "sql": """USE metromart_project;
+
+SELECT 'orders' AS table_name, COUNT(*) AS row_count FROM orders
+UNION ALL SELECT 'order_items', COUNT(*) FROM order_items
+UNION ALL SELECT 'customers', COUNT(*) FROM customers
+UNION ALL SELECT 'products', COUNT(*) FROM products
+UNION ALL SELECT 'stores', COUNT(*) FROM stores;""",
+        "validation": "Treat unexpected row counts as a setup problem, not an analysis problem. Fix the load before writing KPI queries.",
+    },
+    {
+        "title": "Project build-along: Map keys and table grain",
+        "brief": "Use the MetroMart schema to identify parent tables, transaction tables, and the key relationships that later joins must respect.",
+        "grain": "One output row per order item with its parent order and product keys visible.",
+        "sql": """SELECT
+    oi.order_item_id,
+    oi.order_id,
+    o.customer_id,
+    o.store_id,
+    oi.product_id,
+    oi.quantity,
+    oi.unit_price
+FROM order_items AS oi
+JOIN orders AS o ON o.order_id = oi.order_id
+ORDER BY oi.order_item_id
+LIMIT 20;""",
+        "validation": "State the grain out loud: order_items is one row per product line inside an order, so revenue belongs at this level.",
+    },
+    {
+        "title": "Project build-along: Profile messy source data",
+        "brief": "Before trusting revenue or customer analysis, measure invalid metrics, blanks, suspicious emails, and inconsistent values.",
+        "grain": "One summary row containing data-quality failure counts.",
+        "sql": """SELECT
+    COUNT(*) AS item_rows,
+    SUM(quantity IS NULL) AS null_quantity_rows,
+    SUM(quantity <= 0) AS non_positive_quantity_rows,
+    SUM(unit_price IS NULL) AS null_price_rows,
+    SUM(unit_price < 0) AS negative_price_rows,
+    SUM(discount_amount < 0) AS negative_discount_rows
+FROM order_items;""",
+        "validation": "Do not delete bad rows. Write the business rule that decides whether each row should be excluded, corrected, or escalated.",
+    },
+    {
+        "title": "Project build-along: Define reusable business fields",
+        "brief": "Create reporting-friendly fields for dates, customer quality, loyalty tiers, and metric labels without changing the raw tables.",
+        "grain": "One output row per customer returned by the query.",
+        "sql": """SELECT
+    customer_id,
+    TRIM(customer_name) AS clean_name,
+    LOWER(TRIM(email)) AS clean_email,
+    CASE
+        WHEN email IS NULL OR TRIM(email) = '' THEN 'missing email'
+        WHEN email NOT LIKE '%@%.%' THEN 'invalid email'
+        ELSE 'usable email'
+    END AS email_quality,
+    CASE
+        WHEN loyalty_tier IS NULL THEN 'Unknown'
+        ELSE CONCAT(UPPER(LEFT(TRIM(loyalty_tier), 1)), LOWER(SUBSTRING(TRIM(loyalty_tier), 2)))
+    END AS normalized_tier
+FROM customers
+ORDER BY customer_id
+LIMIT 50;""",
+        "validation": "Check that blank strings become visible as quality issues and that tier labels use one consistent spelling.",
+    },
+    {
+        "title": "Project build-along: Calculate the first sales KPIs",
+        "brief": "Use the valid completed sales population to calculate order count, units, revenue, and revenue per order.",
+        "grain": "One summary row for the completed valid order-item population.",
+        "sql": """SELECT
+    COUNT(DISTINCT o.order_id) AS completed_orders,
+    SUM(oi.quantity) AS units_sold,
+    ROUND(SUM(oi.quantity * oi.unit_price - oi.discount_amount), 2) AS gross_revenue,
+    ROUND(SUM(oi.quantity * oi.unit_price - oi.discount_amount) / COUNT(DISTINCT o.order_id), 2) AS revenue_per_order
+FROM orders AS o
+JOIN order_items AS oi ON oi.order_id = o.order_id
+WHERE o.status = 'completed'
+  AND oi.quantity > 0
+  AND oi.unit_price >= 0;""",
+        "validation": "Verify that completed_orders counts distinct orders while units_sold sums product quantities. These are different metrics.",
+    },
+    {
+        "title": "Project build-along: Join the business dimensions",
+        "brief": "Connect order facts to stores, regions, products, and categories so the project can answer where and what performance questions.",
+        "grain": "One output row per valid completed order item with business labels attached.",
+        "sql": """SELECT
+    o.order_id,
+    DATE(o.order_date) AS order_date,
+    r.region_name,
+    s.store_name,
+    p.product_name,
+    pc.category_name,
+    pc.department,
+    oi.quantity,
+    oi.quantity * oi.unit_price - oi.discount_amount AS gross_revenue
+FROM orders AS o
+JOIN stores AS s ON s.store_id = o.store_id
+JOIN regions AS r ON r.region_id = s.region_id
+JOIN order_items AS oi ON oi.order_id = o.order_id
+JOIN products AS p ON p.product_id = oi.product_id
+JOIN product_categories AS pc ON pc.category_id = p.category_id
+WHERE o.status = 'completed'
+  AND oi.quantity > 0
+  AND oi.unit_price >= 0
+ORDER BY o.order_date, o.order_id
+LIMIT 30;""",
+        "validation": "Check that joining dimensions adds labels but does not change the intended item-line grain.",
+    },
+    {
+        "title": "Project build-along: Summarize monthly store performance",
+        "brief": "Turn item-level facts into a monthly store report that operations leaders can scan.",
+        "grain": "One output row per store per sales month.",
+        "sql": """SELECT
+    s.store_name,
+    DATE_FORMAT(o.order_date, '%Y-%m') AS sales_month,
+    COUNT(DISTINCT o.order_id) AS completed_orders,
+    SUM(oi.quantity) AS units_sold,
+    ROUND(SUM(oi.quantity * oi.unit_price - oi.discount_amount), 2) AS gross_revenue
+FROM orders AS o
+JOIN stores AS s ON s.store_id = o.store_id
+JOIN order_items AS oi ON oi.order_id = o.order_id
+WHERE o.status = 'completed'
+  AND oi.quantity > 0
+  AND oi.unit_price >= 0
+GROUP BY s.store_id, s.store_name, DATE_FORMAT(o.order_date, '%Y-%m')
+ORDER BY sales_month, gross_revenue DESC;""",
+        "validation": "Before interpreting revenue, confirm the GROUP BY columns describe exactly one store-month.",
+    },
+    {
+        "title": "Project build-along: Apply business thresholds",
+        "brief": "Use HAVING to keep only product groups with enough sales volume to matter for operational decisions.",
+        "grain": "One output row per product that meets the unit threshold.",
+        "sql": """SELECT
+    p.product_name,
+    SUM(oi.quantity) AS units_sold,
+    ROUND(SUM(oi.quantity * oi.unit_price - oi.discount_amount), 2) AS gross_revenue
+FROM orders AS o
+JOIN order_items AS oi ON oi.order_id = o.order_id
+JOIN products AS p ON p.product_id = oi.product_id
+WHERE o.status = 'completed'
+  AND oi.quantity > 0
+  AND oi.unit_price >= 0
+GROUP BY p.product_id, p.product_name
+HAVING SUM(oi.quantity) >= 300
+ORDER BY units_sold DESC;""",
+        "validation": "Explain why the status and metric-quality rules belong in WHERE, while the unit threshold belongs in HAVING.",
+    },
+    {
+        "title": "Project build-along: Package the trusted sales view",
+        "brief": "Save the completed-sales business rules as a reusable reporting layer so later analysis reads from one reviewed source.",
+        "grain": "The view returns one row per valid item line from a completed order.",
+        "sql": """CREATE OR REPLACE VIEW completed_valid_sales_v AS
+SELECT
+    o.order_id,
+    DATE(o.order_date) AS order_date,
+    DATE_FORMAT(o.order_date, '%Y-%m') AS sales_month,
+    r.region_name,
+    s.store_name,
+    o.channel,
+    p.product_id,
+    p.product_name,
+    pc.category_name,
+    pc.department,
+    oi.order_item_id,
+    oi.quantity,
+    oi.unit_price,
+    oi.discount_amount,
+    oi.quantity * oi.unit_price - oi.discount_amount AS gross_revenue
+FROM orders AS o
+JOIN stores AS s ON s.store_id = o.store_id
+JOIN regions AS r ON r.region_id = s.region_id
+JOIN order_items AS oi ON oi.order_id = o.order_id
+JOIN products AS p ON p.product_id = oi.product_id
+JOIN product_categories AS pc ON pc.category_id = p.category_id
+WHERE o.status = 'completed'
+  AND oi.quantity > 0
+  AND oi.unit_price >= 0;""",
+        "validation": "Immediately reconcile view row count and revenue against the source tables before using it in reports.",
+    },
+    {
+        "title": "Project build-along: Build a CTE movement report",
+        "brief": "Break monthly product movement into named steps so the benchmark and comparison are reviewable.",
+        "grain": "One output row per product per month.",
+        "sql": """WITH product_month AS (
+    SELECT
+        product_id,
+        product_name,
+        sales_month,
+        ROUND(SUM(gross_revenue), 2) AS revenue
+    FROM completed_valid_sales_v
+    GROUP BY product_id, product_name, sales_month
+), product_average AS (
+    SELECT
+        product_id,
+        ROUND(AVG(revenue), 2) AS avg_monthly_revenue
+    FROM product_month
+    GROUP BY product_id
+)
+SELECT
+    pm.product_name,
+    pm.sales_month,
+    pm.revenue,
+    pa.avg_monthly_revenue,
+    ROUND(pm.revenue - pa.avg_monthly_revenue, 2) AS difference_from_average
+FROM product_month AS pm
+JOIN product_average AS pa ON pa.product_id = pm.product_id
+ORDER BY pm.product_name, pm.sales_month;""",
+        "validation": "Run each CTE by itself while developing. The first CTE should be product-month grain; the second should be product grain.",
+    },
+    {
+        "title": "Project build-along: Rank and compare performance",
+        "brief": "Use window functions to answer top-products and peer-comparison questions without losing the rows being reported.",
+        "grain": "One output row per ranked product within a department.",
+        "sql": """WITH product_sales AS (
+    SELECT
+        department,
+        category_name,
+        product_name,
+        ROUND(SUM(gross_revenue), 2) AS revenue
+    FROM completed_valid_sales_v
+    GROUP BY department, category_name, product_id, product_name
+), ranked AS (
+    SELECT
+        product_sales.*,
+        DENSE_RANK() OVER (
+            PARTITION BY department
+            ORDER BY revenue DESC
+        ) AS department_revenue_rank
+    FROM product_sales
+)
+SELECT *
+FROM ranked
+WHERE department_revenue_rank <= 3
+ORDER BY department, department_revenue_rank, product_name;""",
+        "validation": "Confirm the rank restarts for each department and that ties keep the same dense rank.",
+    },
+    {
+        "title": "Project build-along: Collect performance evidence",
+        "brief": "Before presenting the project, show that an important filter has a measured plan and an intentional index candidate.",
+        "grain": "One execution-plan row per table access in the explained query.",
+        "sql": """EXPLAIN
+SELECT store_id, order_date, status
+FROM orders
+WHERE status = 'completed'
+  AND order_date >= '2026-03-01'
+  AND order_date < '2026-04-01';""",
+        "validation": "After adding an index, rerun EXPLAIN and confirm the business result still matches. Performance work cannot change the answer.",
+    },
+]
+
+def add_project_build_along(segments):
+    """Make the final MetroMart project a chapter-by-chapter build-along."""
+    if len(segments) != len(PROJECT_BUILD_ALONG):
+        raise ValueError("Every chapter needs one MetroMart build-along task")
+    for chapter_number, (segment, task) in enumerate(zip(segments, PROJECT_BUILD_ALONG), 1):
+        lesson = {
+            "title": task["title"],
+            "time": 18,
+            "source_titles": [task["title"]],
+            "body": (
+                f'<p class="chapter-label">CHAPTER {chapter_number} · SECTION 999</p>'
+                f'<h2>{html.escape(task["title"])}</h2>'
+                f'<p class="chapter-lead">{html.escape(task["brief"])}</p>'
+                '<div class="chapter-reading">'
+                f'<section class="textbook-subsection" data-source-title="{html.escape(task["title"], quote=True)}">'
+                '<h3>Build the project while you learn</h3>'
+                '<p>Run this against the MetroMart project database. This is one piece of the final analyst walkthrough, introduced now so the capstone grows with the course.</p>'
+                f'<div class="project-brief"><strong>Analyst task</strong><p>{html.escape(task["brief"])}</p></div>'
+                f'<p><strong>Result grain:</strong> {html.escape(task["grain"])}</p>'
+                '<div class="code-block"><div class="code-label"><span>PROJECT SQL</span><button data-copy>Copy query</button></div>'
+                f'<pre><code>{html.escape(task["sql"])}</code></pre></div>'
+                f'<p><strong>Validation habit:</strong> {html.escape(task["validation"])}</p>'
+                '</section></div>'
+            ),
+        }
+        insert_at = next((index for index, item in enumerate(segment["lessons"]) if item["title"] == "Section knowledge check"), len(segment["lessons"]))
+        segment["lessons"].insert(insert_at, lesson)
+
 segments = [parse_source(path, transcript, *meta) for path, transcript, meta in zip(SOURCES, TRANSCRIPTS,META)]
 segments = consolidate_textbook_units(segments)
 add_walkthrough_bridge_notes(segments)
 segments = reorder_for_workflow(segments)
 add_segment_visuals(segments)
 add_assessments_and_projects(segments)
+add_project_build_along(segments)
 relabel_workflow_chapters(segments)
 add_expected_results(segments)
 add_instructional_context(segments)
