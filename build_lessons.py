@@ -51,7 +51,7 @@ WORKFLOW_ORDER = [
 ]
 SECTION = re.compile(r"^(\d+)\.\s+(.+)$", re.M)
 PRACTICE = re.compile(r"^(?:Practice|Question)\s+(\d+)(?::\s*([^\n]+))?$", re.M | re.I)
-SQL_START = re.compile(r"^(WITH\s+[a-z_][\w]*\s+AS\s*\(|EXPLAIN\b|SHOW\s+INDEX\b|SELECT\b|FROM\s+[a-z_]|WHERE\s+[a-z_]|GROUP BY\s+[a-z_]+(?:,\s*[a-z_]+)*(?:;|$)|ORDER BY\s+[a-z_]|LIMIT\s+\d|CREATE\b|ALTER\b|UPDATE\s+[a-z_]|DELETE\s+FROM\b|START\s+TRANSACTION\b|COMMIT\b|ROLLBACK\b|USE\s+[a-z_]|DROP\b|INSERT\s+INTO\b|VALUES\s*\(|DESCRIBE\s+[a-z_]|ROUND\(|SUM\(|AVG\(|COUNT\()", re.I)
+SQL_START = re.compile(r"^(WITH\s+[a-z_][\w]*\s+AS\s*\(|EXPLAIN\b|SHOW\s+INDEX\b|SELECT\b|FROM\s+[a-z_]|WHERE\s+[a-z_]|GROUP BY\s+[a-z_]+(?:,\s*[a-z_]+)*(?:;|$)|ORDER BY\s+[a-z_]|LIMIT\s+\d|CREATE\b|ALTER\b|UPDATE\s+[a-z_]|DELETE\s+FROM\b|START\s+TRANSACTION\b|COMMIT\b|ROLLBACK\b|SOURCE\s+|USE\s+[a-z_]|DROP\b|INSERT\s+INTO\b|VALUES\s*\(|DESCRIBE\s+[a-z_]|ROUND\(|SUM\(|AVG\(|COUNT\()", re.I)
 WORD_NS = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
 
 def normalize_transcript(raw):
@@ -160,7 +160,7 @@ def render_block(block):
             lines[0].strip(), re.I
         )
         first_is_sql = bool(valid_clause)
-    sql_tokens = ("WITH", "EXPLAIN", "SHOW INDEX", "SELECT", "FROM", "CREATE", "ALTER", "UPDATE", "START TRANSACTION", "COMMIT", "ROLLBACK", "INSERT", "WHERE", "GROUP BY", "ORDER BY", "LIMIT", "VALUES", "DROP", "USE COFFEE_SHOP", "DESCRIBE")
+    sql_tokens = ("WITH", "EXPLAIN", "SHOW INDEX", "SELECT", "FROM", "CREATE", "ALTER", "UPDATE", "START TRANSACTION", "COMMIT", "ROLLBACK", "SOURCE", "INSERT", "WHERE", "GROUP BY", "ORDER BY", "LIMIT", "VALUES", "DROP", "USE COFFEE_SHOP", "DESCRIBE")
     aggregate_list = len(lines) > 1 and not any(line.rstrip().endswith(";") for line in lines) and lines[0].strip().upper() in ("COUNT", "SUM", "AVG", "MIN", "MAX")
     if first_is_sql and not aggregate_list and not block.lower().endswith("means:") and any(x in block.upper() for x in sql_tokens):
         statement_end = next((i for i, line in enumerate(lines) if line.rstrip().endswith(";")), None)
@@ -174,7 +174,7 @@ def render_block(block):
 def make_body(number, title, text):
     blocks = [x.strip() for x in re.split(r"\n\s*\n", text.strip()) if x.strip()]
     grouped = []; index = 0
-    statement_start = re.compile(r"^(WITH\s+\w+\s+AS\s*\(|EXPLAIN\b|SHOW\s+INDEX\b|SELECT\s+\S|CREATE\s+(?:DATABASE|TABLE|VIEW|INDEX)\b|ALTER\s+TABLE\b|UPDATE\s+\w|DELETE\s+FROM\b|START\s+TRANSACTION\b|COMMIT\b|ROLLBACK\b|USE\s+\w|DROP\s+(?:DATABASE|TABLE|VIEW|INDEX)\b|INSERT\s+INTO\s+\w|DESCRIBE\s+\w)", re.I)
+    statement_start = re.compile(r"^(WITH\s+\w+\s+AS\s*\(|EXPLAIN\b|SHOW\s+INDEX\b|SELECT\s+\S|CREATE\s+(?:DATABASE|TABLE|VIEW|INDEX)\b|ALTER\s+TABLE\b|UPDATE\s+\w|DELETE\s+FROM\b|START\s+TRANSACTION\b|COMMIT\b|ROLLBACK\b|SOURCE\s+|USE\s+\w|DROP\s+(?:DATABASE|TABLE|VIEW|INDEX)\b|INSERT\s+INTO\s+\w|DESCRIBE\s+\w)", re.I)
     while index < len(blocks):
         current = blocks[index]
         next_block = blocks[index + 1] if index + 1 < len(blocks) else ""
@@ -371,7 +371,7 @@ def accurate_statement_scene(sql):
     """Build a visual only from identifiers and clauses present in this SQL."""
     raw = html.unescape(sql).strip()
     starter = re.search(
-        r"(?is)(?<![A-Z0-9_])(?:WITH\s+[A-Z_][A-Z0-9_]*\s+AS\s*\(|EXPLAIN\b|SHOW\s+INDEX\b|SELECT\b|CREATE\s+(?:DATABASE|TABLE|VIEW|INDEX)\b|ALTER\s+TABLE\b|INSERT\s+INTO\b|UPDATE\s+[A-Z_]|DELETE\s+FROM\b|START\s+TRANSACTION\b|COMMIT\b|ROLLBACK\b|USE\s+[A-Z_]|DROP\s+(?:DATABASE|TABLE|VIEW|INDEX)\b|DESCRIBE\s+[A-Z_]|WHERE\s+[A-Z_]|GROUP\s+BY\s+[A-Z_]|ORDER\s+BY\s+[A-Z_]|LIMIT\s+\d)",
+        r"(?is)(?<![A-Z0-9_])(?:WITH\s+[A-Z_][A-Z0-9_]*\s+AS\s*\(|EXPLAIN\b|SHOW\s+INDEX\b|SELECT\b|CREATE\s+(?:DATABASE|TABLE|VIEW|INDEX)\b|ALTER\s+TABLE\b|INSERT\s+INTO\b|UPDATE\s+[A-Z_]|DELETE\s+FROM\b|START\s+TRANSACTION\b|COMMIT\b|ROLLBACK\b|SOURCE\s+|USE\s+[A-Z_]|DROP\s+(?:DATABASE|TABLE|VIEW|INDEX)\b|DESCRIBE\s+[A-Z_]|WHERE\s+[A-Z_]|GROUP\s+BY\s+[A-Z_]|ORDER\s+BY\s+[A-Z_]|LIMIT\s+\d)",
         raw,
     )
     if not starter:
@@ -460,6 +460,9 @@ def accurate_statement_scene(sql):
         keyword = " ".join(upper.split()[:2]) if upper.startswith(("CREATE ", "ALTER ", "DROP ", "START ")) else upper.split()[0]
         stages = [("Send statement", compact_sql(raw)), ("MySQL action", {"USE":"Select the active database", "DESCRIBE":"Return the table definition", "COMMIT":"Make the transaction's changes permanent", "ROLLBACK":"Undo uncommitted transaction changes", "START TRANSACTION":"Begin a transaction boundary"}.get(keyword, "Change or inspect the named database object"))]
         caption = f"{keyword.title()} acts on the object named in this statement"
+    elif upper.startswith("SOURCE "):
+        stages = [("Locate script", compact_sql(raw)), ("Run statements", "Execute the SQL file from top to bottom"), ("Select project database", "Use metromart_project for the build-along queries")]
+        caption = "SOURCE runs the MetroMart setup script"
     else:
         stages = [("Apply clause", compact_sql(raw)), ("Affect the query", "This fragment belongs inside a complete SQL statement")]
         caption = "This clause changes the surrounding query"
@@ -957,6 +960,8 @@ def statement_outcome(sql, segment_number):
                 result = "Creates the table definition; the new table initially has zero rows."
             elif statement_upper.startswith("CREATE INDEX"):
                 result = "Creates the index; verify its columns with SHOW INDEX."
+            elif statement_upper.startswith("SOURCE "):
+                result = "Runs the setup file from top to bottom. If your editor does not support SOURCE, open the SQL file and execute the full script manually."
             elif statement_upper.startswith("INSERT INTO"):
                 result = f"Inserts the VALUES rows; this script contains {insert_rows} row group{'s' if insert_rows != 1 else ''}."
             elif statement_upper.startswith("DESCRIBE"):
@@ -1012,6 +1017,8 @@ def statement_outcome(sql, segment_number):
         return expected_card("Uncommitted changes undone", "<p>No result grid is returned. The product rows return to their values from before START TRANSACTION.</p>")
     if re.match(r"(?is)^COMMIT", raw):
         return expected_card("Transaction changes made permanent", "<p>No result grid is returned. A later ROLLBACK cannot undo the committed changes.</p>")
+    if re.match(r"(?is)^SOURCE\s+", raw):
+        return expected_card("Project setup script executed", "<p>MySQL runs the statements inside <code>project_data/retail_project_setup.sql</code>. The script creates and loads <code>metromart_project</code>; run row-count checks afterward to confirm the load.</p>")
     if re.match(r"(?is)^EXPLAIN\b", raw):
         return expected_card("Execution plan to inspect", "<p>MySQL returns plan columns such as table, access type, possible keys, chosen key, estimated rows, and Extra. Use this plan as performance evidence, then run the SELECT itself to verify the business result.</p>")
     if re.match(r"(?is)^SHOW\s+INDEX\b", raw):
@@ -1464,6 +1471,8 @@ PROJECT_BUILD_ALONG = [
     {
         "title": "Project build-along: Start the MetroMart assignment",
         "brief": "Open the final project dataset early and use basic SELECT skills to orient yourself like an analyst receiving a new data extract.",
+        "setup": """SOURCE project_data/retail_project_setup.sql;
+USE metromart_project;""",
         "grain": "One output row per order returned by the filter.",
         "sql": """SELECT
     order_id,
@@ -1734,6 +1743,19 @@ def add_project_build_along(segments):
     if len(segments) != len(PROJECT_BUILD_ALONG):
         raise ValueError("Every chapter needs one MetroMart build-along task")
     for chapter_number, (segment, task) in enumerate(zip(segments, PROJECT_BUILD_ALONG), 1):
+        setup_html = ""
+        if task.get("setup"):
+            setup_html = (
+                '<div class="project-brief setup-brief"><strong>Do this before the first project query</strong>'
+                '<p>The MetroMart build-along uses a separate project database. Run the setup script once before continuing.</p>'
+                '<ol>'
+                '<li>Open MySQL from the folder that contains this course repository, or open the file manually in MySQL Workbench.</li>'
+                '<li>Run the setup command below. If your tool does not support <code>SOURCE</code>, open <code>project_data/retail_project_setup.sql</code>, select the whole file, and execute it.</li>'
+                '<li>After the script finishes, keep using <code>metromart_project</code> for every project build-along query.</li>'
+                '</ol></div>'
+                '<div class="code-block"><div class="code-label"><span>PROJECT SETUP</span><button data-copy>Copy setup</button></div>'
+                f'<pre><code>{html.escape(task["setup"])}</code></pre></div>'
+            )
         lesson = {
             "title": task["title"],
             "time": 18,
@@ -1746,6 +1768,7 @@ def add_project_build_along(segments):
                 f'<section class="textbook-subsection" data-source-title="{html.escape(task["title"], quote=True)}">'
                 '<h3>Build the project while you learn</h3>'
                 '<p>Run this against the MetroMart project database. This is one piece of the final analyst walkthrough, introduced now so the capstone grows with the course.</p>'
+                f'{setup_html}'
                 f'<div class="project-brief"><strong>Analyst task</strong><p>{html.escape(task["brief"])}</p></div>'
                 f'<p><strong>Result grain:</strong> {html.escape(task["grain"])}</p>'
                 '<div class="code-block"><div class="code-label"><span>PROJECT SQL</span><button data-copy>Copy query</button></div>'

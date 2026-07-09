@@ -57,7 +57,7 @@ for si, segment in enumerate(segments, 1):
             if re.search(pattern, body, re.I): errors.append(f"{label}: {message}")
         if "<th></th>" in body:
             errors.append(f"{label}: table contains an unlabeled header")
-        valid_sql_start = re.compile(r"^(SELECT|WITH|EXPLAIN|SHOW\s+INDEX|CREATE|ALTER|UPDATE|DELETE\s+FROM|START|COMMIT|ROLLBACK|USE|DROP|INSERT|VALUES|DESCRIBE|WHERE\s+[a-z_]|GROUP BY\s+[a-z_]|ORDER BY\s+[a-z_]|LIMIT\s+\d|SUM\(|AVG\(|COUNT\()", re.I)
+        valid_sql_start = re.compile(r"^(SELECT|WITH|EXPLAIN|SHOW\s+INDEX|CREATE|ALTER|UPDATE|DELETE\s+FROM|START|COMMIT|ROLLBACK|SOURCE\s+|USE|DROP|INSERT|VALUES|DESCRIBE|WHERE\s+[a-z_]|GROUP BY\s+[a-z_]|ORDER BY\s+[a-z_]|LIMIT\s+\d|SUM\(|AVG\(|COUNT\()", re.I)
         for code in re.findall(r"<pre><code>(.*?)</code></pre>", body, re.S):
             if not valid_sql_start.match(unescape(code).strip()):
                 errors.append(f"{label}: non-SQL prose is incorrectly formatted as a code block")
@@ -167,6 +167,10 @@ for segment_number, segment in enumerate(segments, 1):
         for required in ("Build the project while you learn", "MetroMart project database", "PROJECT SQL", "Result grain:", "Validation habit:"):
             if required not in build_body:
                 errors.append(f"S{segment_number}: MetroMart build-along is missing {required}")
+        if segment_number == 1:
+            for required in ("Do this before the first project query", "SOURCE project_data/retail_project_setup.sql", "USE metromart_project", "If your tool does not support"):
+                if required not in build_body:
+                    errors.append(f"S1: first MetroMart build-along is missing setup instruction {required}")
     if len(projects) != 1:
         errors.append(f"S{segment_number}: expected one mini-project, found {len(projects)}")
     else:
