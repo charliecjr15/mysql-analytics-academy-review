@@ -143,7 +143,7 @@ def render_block(block):
             remainder = "\n".join(lines[split_at:]).strip()
             return result + (render_block(remainder) if remainder else "")
     if any(x in block for x in ("│", "┌", "├", "└", "↓", "→", "✅", "❌")):
-        return f'<pre class="diagram">{html.escape(block)}</pre>'
+        return f'<pre class="diagram">{html.escape(block.expandtabs(4))}</pre>'
     lines = block.splitlines()
     if lines[0].strip().lower() in ("sql:", "sql says:") and len(lines) > 1:
         label = html.escape(lines[0].strip())
@@ -169,7 +169,7 @@ def render_block(block):
         return f'<div class="code-block"><div class="code-label"><span>SQL</span><button data-copy>Copy query</button></div><pre><code>{html.escape(block)}</code></pre></div>'
     if len(block.splitlines()) > 1 and all(x.startswith("- ") for x in block.splitlines()):
         return "<ul>" + "".join(f"<li>{html.escape(x[2:])}</li>" for x in block.splitlines()) + "</ul>"
-    return f'<p>{html.escape(block).replace(chr(10), "<br>")}</p>'
+    return f'<p>{html.escape(block.expandtabs(4)).replace(chr(10), "<br>")}</p>'
 
 def make_body(number, title, text):
     blocks = [x.strip() for x in re.split(r"\n\s*\n", text.strip()) if x.strip()]
