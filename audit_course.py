@@ -31,12 +31,12 @@ class LessonParser(HTMLParser):
 
 assertions = [
     (len(segments) == 13, "course must contain exactly thirteen segments"),
-    ([s["title"] for s in segments] == ["MySQL Basics", "Build the Database", "Orders & KPIs", "GROUP BY", "HAVING", "JOINS", "Keys & Database Design", "Subqueries & CTEs", "Window Functions", "CASE, Dates & Text", "Data Cleaning", "Views & Reporting", "Query Performance"], "segment order is incorrect"),
+    ([s["title"] for s in segments] == ["MySQL Basics", "Build the Database", "Keys & Database Design", "Data Cleaning", "CASE, Dates & Text", "Orders & KPIs", "JOINS", "GROUP BY", "HAVING", "Views & Reporting", "Subqueries & CTEs", "Window Functions", "Query Performance"], "segment order is incorrect"),
 ]
 for passed, message in assertions:
     if not passed: errors.append(message)
 
-expected_lessons = {1: 7, 2: 8, 3: 9, 4: 7, 5: 7, 6: 10, 7: 9, 8: 8, 9: 8, 10: 6, 11: 7, 12: 6, 13: 6}
+expected_lessons = {1: 7, 2: 8, 3: 9, 4: 7, 5: 6, 6: 9, 7: 10, 8: 7, 9: 7, 10: 6, 11: 8, 12: 8, 13: 6}
 
 for si, segment in enumerate(segments, 1):
     if not segment["lessons"]: errors.append(f"S{si}: no lessons")
@@ -169,7 +169,7 @@ for segment_number, segment in enumerate(segments, 1):
         if '<details class="project-solution">' not in project_body:
             errors.append(f"S{segment_number}: project solution is not deliberately hidden")
 
-expected_practices = {1: 6, 2: 7, 3: 10, 4: 4, 5: 4, 6: 5, 7: 6, 8: 4, 9: 5, 10: 4, 11: 6, 12: 4, 13: 5}
+expected_practices = {1: 6, 2: 7, 3: 6, 4: 6, 5: 4, 6: 10, 7: 5, 8: 4, 9: 4, 10: 4, 11: 4, 12: 5, 13: 5}
 for segment_number, expected_count in expected_practices.items():
     practice_topics = [title for lesson in segments[segment_number - 1]["lessons"] for title in lesson.get("source_titles", []) if title.startswith("Practice ")]
     if len(practice_topics) != expected_count:

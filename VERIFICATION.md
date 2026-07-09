@@ -16,7 +16,7 @@ COURSE AUDIT PASSED: 13 chapters, 98 textbook sections
 
 The audit proves:
 
-- exact section ordering and expected lesson counts;
+- exact workflow-based chapter ordering and expected lesson counts;
 - one accessible overview visual and visual learning material per lesson;
 - 68 source practice exercises;
 - three interactive questions and one rubric-based mini-project per section;
@@ -112,7 +112,7 @@ and responsive mobile curriculum navigation.
 Chromium checks at 1440×1000 and 390×844 verified the overview and real lesson
 layouts. A hydrated DOM test confirmed 13 curriculum groups, exactly one expanded
 section, lesson-outline links, syntax highlighting, expected results, and retained
-lesson SQL. All 353 original/enriched teaching topics are preserved inside 98 connected
+lesson SQL. All 357 original/enriched teaching topics plus the three course supplements are preserved inside 98 connected
 textbook sections. The 397 SQL/result pairs, quizzes, projects, progress, career
 center, and assessment gates remain intact.
 
@@ -122,5 +122,13 @@ The former 369-screen micro-lesson structure and repeated generated teaching
 panels were removed. Each chapter is now divided into connected reading sections
 with an authored introduction, logically ordered subsections, worked SQL examples,
 adjacent expected results, practice sets, a chapter knowledge check, and a project.
-Automated checks enforce the 98-section map, preserve all 353 original/enriched topics,
-and reject the retired template panels if they reappear.
+Automated checks enforce the 98-section map, preserve 357 original/enriched topics
+plus two join supplements and one setup supplement, and reject the retired
+template panels if they reappear.
+
+The visible chapter order is now workflow-first: foundations and setup, schema
+design, data cleaning, transformations and metric definitions, KPI queries,
+joins, grouped reporting, HAVING thresholds, trusted views, CTEs, windows, and
+performance tuning. The builder preserves original source numbers internally so
+captured MySQL expected results still attach to the correct SQL examples after
+the visible reorder.

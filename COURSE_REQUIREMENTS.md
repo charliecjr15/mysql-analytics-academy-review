@@ -14,18 +14,19 @@ present portfolio work during an entry-level analyst interview.
 
 1. SQL and relational database foundations
 2. MySQL setup, database creation, tables, data types, and data loading
-3. SELECT, aliases, expressions, NULL, DISTINCT, filtering, sorting, and limits
-4. Aggregate functions, KPIs, GROUP BY, and HAVING
-5. INNER, LEFT, RIGHT, CROSS, self joins, unions, and join validation
-6. Primary keys, foreign keys, constraints, normalization, and schema design
-7. Subqueries, correlated subqueries, EXISTS, and CTEs
-8. Window functions, partitions, frames, ranking, and period comparisons
-9. CASE, date functions, text functions, and NULL handling
-10. Data profiling, cleaning, deduplication, validation, and safe updates
-11. Views, reusable reporting layers, and report quality checks
-12. Transactions, permissions, security basics, and responsible data handling
+3. Primary keys, foreign keys, constraints, normalization, and schema design
+4. Data profiling, cleaning, deduplication, validation, and safe updates
+5. CASE, date functions, text functions, NULL handling, and metric definitions
+6. SELECT, aliases, expressions, aggregates, KPIs, filtering, sorting, and limits
+7. INNER, LEFT, RIGHT, CROSS, self joins, unions, and join validation
+8. GROUP BY report grain and summary reports
+9. HAVING and grouped business thresholds
+10. Views, reusable reporting layers, and report quality checks
+11. Subqueries, correlated subqueries, EXISTS, and CTEs
+12. Window functions, partitions, frames, ranking, and period comparisons
 13. EXPLAIN, indexes, sargability, query rewrites, and performance tradeoffs
-14. Workplace workflow: requirements, metric definitions, QA, documentation,
+14. Transactions, permissions, security basics, and responsible data handling
+15. Workplace workflow: requirements, metric definitions, QA, documentation,
     version control, communicating findings, interviews, and portfolio delivery
 
 MySQL is the teaching dialect. Lessons must identify important portability
@@ -99,7 +100,7 @@ Completion requires all of the following:
 
 ## Current-state audit — 2026-07-05
 
-The browser build now contains 13 segments and 98 generated textbook sections.
+The browser build now contains 13 workflow-ordered chapters and 98 generated textbook sections.
 Each section ends with three interactive knowledge checks and one rubric-based
 mini-project with a deliberately hidden reference solution. The repository also
 contains reproducible baseline setup/reset SQL, a learner data dictionary, three
@@ -107,6 +108,12 @@ cumulative assessments, a larger imperfect capstone dataset and reference
 solution, five timed interview prompts, portfolio guidance, an application
 readiness gate, and a workplace guide covering requirements, permissions,
 parameterization, transactions, set operations, and dialect differences.
+
+The visible chapter order now follows an analyst workday: orient to tables and
+setup, understand schema design, profile and correct data, define business
+rules and metrics, join related facts, summarize results, filter grouped
+reports, package trusted views, build multi-step and windowed analysis, then
+tune performance.
 
 The course shell also links a learner-facing `sql-mastery-guide.html` page,
 created from the themes in the saved long-form SQL/data analyst videos. It

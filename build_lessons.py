@@ -33,6 +33,22 @@ META = [
     ("Views & Reporting", "Package trusted SQL logic into reusable reporting views."),
     ("Query Performance", "Read execution plans, design indexes, and reduce unnecessary query work."),
 ]
+ORIGINAL_TITLES = [title for title, _ in META]
+WORKFLOW_ORDER = [
+    "MySQL Basics",
+    "Build the Database",
+    "Keys & Database Design",
+    "Data Cleaning",
+    "CASE, Dates & Text",
+    "Orders & KPIs",
+    "JOINS",
+    "GROUP BY",
+    "HAVING",
+    "Views & Reporting",
+    "Subqueries & CTEs",
+    "Window Functions",
+    "Query Performance",
+]
 SECTION = re.compile(r"^(\d+)\.\s+(.+)$", re.M)
 PRACTICE = re.compile(r"^(?:Practice|Question)\s+(\d+)(?::\s*([^\n]+))?$", re.M | re.I)
 SQL_START = re.compile(r"^(WITH\s+[a-z_][\w]*\s+AS\s*\(|EXPLAIN\b|SHOW\s+INDEX\b|SELECT\b|FROM\s+[a-z_]|WHERE\s+[a-z_]|GROUP BY\s+[a-z_]+(?:,\s*[a-z_]+)*(?:;|$)|ORDER BY\s+[a-z_]|LIMIT\s+\d|CREATE\b|ALTER\b|UPDATE\s+[a-z_]|DELETE\s+FROM\b|START\s+TRANSACTION\b|COMMIT\b|ROLLBACK\b|USE\s+[a-z_]|DROP\b|INSERT\s+INTO\b|VALUES\s*\(|DESCRIBE\s+[a-z_]|ROUND\(|SUM\(|AVG\(|COUNT\()", re.I)
@@ -281,6 +297,40 @@ def add_segment_visuals(segments):
             f'</figure>'
         )
         segment["lessons"][0]["body"] += figure
+
+def reorder_for_workflow(segments):
+    """Present the same source lessons in the order an analyst uses them at work."""
+    global ENRICHMENTS, VISUALS, SEGMENT_RELEVANCE, SEGMENT_CONCEPTS
+    by_title = {segment["title"]: segment for segment in segments}
+    missing = [title for title in WORKFLOW_ORDER if title not in by_title]
+    if missing:
+        raise ValueError(f"Workflow order references unknown segments: {missing}")
+    original_index = {title: index for index, title in enumerate(ORIGINAL_TITLES)}
+    for source_number, segment in enumerate(segments, 1):
+        segment["source_number"] = source_number
+    ENRICHMENTS = [ENRICHMENTS[original_index[title]] for title in WORKFLOW_ORDER]
+    VISUALS = [VISUALS[original_index[title]] for title in WORKFLOW_ORDER]
+    SEGMENT_RELEVANCE = [SEGMENT_RELEVANCE[original_index[title]] for title in WORKFLOW_ORDER]
+    SEGMENT_CONCEPTS = [SEGMENT_CONCEPTS[original_index[title]] for title in WORKFLOW_ORDER]
+    reordered = [by_title[title] for title in WORKFLOW_ORDER]
+    for workflow_number, segment in enumerate(reordered, 1):
+        segment["workflow_number"] = workflow_number
+    return reordered
+
+def relabel_workflow_chapters(segments):
+    """Keep visible chapter labels aligned with the workflow order."""
+    for chapter_number, segment in enumerate(segments, 1):
+        section_number = 0
+        for lesson in segment["lessons"]:
+            if lesson["title"] == "Section knowledge check" or lesson["title"].startswith("Mini-project:"):
+                continue
+            section_number += 1
+            lesson["body"] = re.sub(
+                r'<p class="chapter-label">CHAPTER \d+ · SECTION \d+</p>',
+                f'<p class="chapter-label">CHAPTER {chapter_number} · SECTION {section_number}</p>',
+                lesson["body"],
+                count=1,
+            )
 
 def visual_flow(stages, caption):
     cards = "".join(
@@ -762,7 +812,7 @@ def add_assessments_and_projects(segments):
     if len(segments) != len(ENRICHMENTS):
         raise ValueError("Every segment must have one enrichment definition")
     for segment_number, (segment, enrichment) in enumerate(zip(segments, ENRICHMENTS), 1):
-        if segment_number == 6:
+        if segment["title"] == "JOINS":
             segment["lessons"].extend([
                 {
                     "title": "RIGHT JOIN and readable join direction",
@@ -796,7 +846,7 @@ def add_assessments_and_projects(segments):
             for section_number, lesson in enumerate(segment["lessons"][-2:], len(segment["lessons"])-1):
                 original_body = strip_micro_heading(lesson["body"])
                 lesson["body"] = (
-                    f'<p class="chapter-label">CHAPTER 6 · SECTION {section_number}</p>'
+                    f'<p class="chapter-label">CHAPTER {segment_number} · SECTION {section_number}</p>'
                     f'<h2>{html.escape(lesson["title"])}</h2>'
                     '<p class="chapter-lead">This join pattern extends the chapter model. Read the relationship in words, identify which rows must survive, and then verify the output grain.</p>'
                     f'<div class="chapter-reading"><section class="textbook-subsection" data-source-title="{html.escape(lesson["title"], quote=True)}">'
@@ -972,8 +1022,9 @@ def add_expected_results(segments):
     """Place an expected result or explicit outcome after every SQL block."""
     pattern = re.compile(r"(<div class=\"code-block\">.*?<pre><code>(.*?)</code></pre></div>)", re.S)
     for segment_number, segment in enumerate(segments, 1):
+        result_segment_number = segment.get("source_number", segment_number)
         for lesson in segment["lessons"]:
-            lesson["body"] = pattern.sub(lambda match: match.group(1) + statement_outcome(match.group(2), segment_number), lesson["body"])
+            lesson["body"] = pattern.sub(lambda match: match.group(1) + statement_outcome(match.group(2), result_segment_number), lesson["body"])
 
 SEGMENT_RELEVANCE = [
     "Analysts turn business questions into columns, rows, filters, and sorted results every day.",
@@ -1404,8 +1455,10 @@ def add_walkthrough_bridge_notes(segments):
 segments = [parse_source(path, transcript, *meta) for path, transcript, meta in zip(SOURCES, TRANSCRIPTS,META)]
 segments = consolidate_textbook_units(segments)
 add_walkthrough_bridge_notes(segments)
+segments = reorder_for_workflow(segments)
 add_segment_visuals(segments)
 add_assessments_and_projects(segments)
+relabel_workflow_chapters(segments)
 add_expected_results(segments)
 add_instructional_context(segments)
 (ROOT / "source-lessons.js").write_text("window.SOURCE_SEGMENTS = " + json.dumps(segments, ensure_ascii=False) + ";\n", encoding="utf-8")
