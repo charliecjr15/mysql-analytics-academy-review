@@ -276,13 +276,30 @@ product_name\titems_sold\trevenue\tamount_above_average
 Iced Latte\t6\t16.500\t8.867
 Cold Brew\t3\t9.000\t1.367
 
-17. Common mistakes
+17. Writing findings and recommendations
+
+An analyst report is not only SQL output. It turns verified query results into a short decision-ready explanation.
+
+Use this structure:
+
+Section\tWhat to write
+Business question\tWhat the stakeholder asked
+Data used\tTables or views queried
+Key definitions\tGrain, filters, metric formulas, and time period
+Quality notes\tKnown data issues and how you handled them
+Main findings\tThe strongest result-backed observations
+Recommendation\tOne action supported by the evidence
+Limitations\tWhat should be confirmed before production use
+
+Good findings are specific and tied to query evidence. Avoid vague statements such as "sales changed." Prefer "June revenue was lower than May because completed orders fell while revenue per order stayed stable," then cite the query result that proves it.
+
+18. Common mistakes
 
 Common errors include returning several rows from a scalar subquery, forgetting an alias for a derived table, referencing a CTE after its statement ends, using NOT IN without considering NULL, and losing track of the grain of an intermediate result.
 
 Debug complex SQL one layer at a time. Run each inner query or CTE independently and verify its columns, row count, and grain before adding the next step.
 
-18. Practice Questions
+19. Practice Questions
 
 Practice 1: Products above average price
 
@@ -379,7 +396,7 @@ JOIN category_sales AS cs
     ON cs.category = ps.category
 ORDER BY ps.category, ps.product_revenue DESC;
 
-19. Segment 8 cheat sheet
+20. Segment 8 cheat sheet
 
 Core patterns:
 

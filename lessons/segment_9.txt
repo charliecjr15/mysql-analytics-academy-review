@@ -242,7 +242,37 @@ ORDER BY order_date;
 
 This is a three-row average, not necessarily a three-calendar-day average if dates are missing.
 
-14. Percentage of total
+14. Peer averages with AVG OVER
+
+An aggregate window can compare each row with its peer group while keeping every row visible.
+
+WITH product_month AS (
+    SELECT
+        p.category,
+        p.product_name,
+        DATE_FORMAT(o.order_date, '%Y-%m') AS sales_month,
+        SUM(o.quantity * o.unit_price) AS revenue
+    FROM products AS p
+    JOIN orders AS o ON o.product_id = p.product_id
+    GROUP BY p.category, p.product_id, p.product_name, DATE_FORMAT(o.order_date, '%Y-%m')
+)
+SELECT
+    category,
+    product_name,
+    sales_month,
+    revenue,
+    ROUND(AVG(revenue) OVER (
+        PARTITION BY category, sales_month
+    ), 3) AS category_month_average,
+    ROUND(revenue - AVG(revenue) OVER (
+        PARTITION BY category, sales_month
+    ), 3) AS difference_from_category_average
+FROM product_month
+ORDER BY sales_month, category, difference_from_category_average;
+
+This is the same pattern as a store-versus-region comparison. First create one row per business entity and period. Then use AVG(...) OVER (PARTITION BY peer_group, period) to attach the peer average beside each row.
+
+15. Percentage of total
 
 Divide a row or grouped value by a window total.
 
@@ -263,7 +293,7 @@ ORDER BY revenue DESC;
 
 The percentages should total approximately 100, allowing for rounding.
 
-15. Window ORDER BY versus result ORDER BY
+16. Window ORDER BY versus result ORDER BY
 
 ORDER BY inside OVER controls the calculation. ORDER BY at the end controls how rows are displayed.
 
@@ -276,7 +306,7 @@ ORDER BY product_name;
 
 Ranks are based on descending price even though the final rows are displayed alphabetically.
 
-16. Combining grouping and windows
+17. Combining grouping and windows
 
 SQL can aggregate first and then apply a window function to the grouped result.
 
@@ -298,13 +328,13 @@ order_date\tdaily_revenue\trevenue_rank
 2026-06-21\t12.050\t3
 2026-06-23\t8.250\t4
 
-17. Common mistakes
+18. Common mistakes
 
-Common errors include expecting window functions to collapse rows, filtering a window alias in WHERE, omitting a deterministic tiebreaker, confusing calculation order with display order, and assuming a row frame represents uninterrupted calendar time.
+Common errors include expecting window functions to collapse rows, filtering a window alias in WHERE, omitting a deterministic tiebreaker, confusing calculation order with display order, partitioning by the wrong peer group, and assuming a row frame represents uninterrupted calendar time.
 
 Always state the result grain, partition, ordering, and frame in plain language before trusting a window calculation.
 
-18. Final analyst report
+19. Final analyst report
 
 Build a daily performance report containing revenue, running revenue, previous revenue, daily change, and revenue rank.
 
@@ -337,7 +367,7 @@ SELECT
 FROM daily_windows
 ORDER BY order_date;
 
-19. Practice Questions
+20. Practice Questions
 
 Practice 1: Rank products by revenue
 
@@ -462,11 +492,12 @@ SELECT
 FROM daily_windows
 ORDER BY order_date;
 
-20. Segment 9 cheat sheet
+21. Segment 9 cheat sheet
 
 Goal\tWindow pattern
 Keep detail plus a total\tSUM(value) OVER ()
 Restart by group\tPARTITION BY
+Compare against peers\tAVG(value) OVER (PARTITION BY peer_group)
 Unique sequence\tROW_NUMBER()
 Ranking with ties\tRANK() or DENSE_RANK()
 Previous value\tLAG()
