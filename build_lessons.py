@@ -144,6 +144,8 @@ def render_block(block):
             return result + (render_block(remainder) if remainder else "")
     if any(x in block for x in ("│", "┌", "├", "└", "↓", "→", "✅", "❌")):
         return f'<pre class="diagram">{html.escape(block.expandtabs(4))}</pre>'
+    if "+---" in block or "+----------" in block:
+        return f'<pre class="diagram">{html.escape(block.expandtabs(4))}</pre>'
     lines = block.splitlines()
     if lines[0].strip().lower() in ("sql:", "sql says:") and len(lines) > 1:
         label = html.escape(lines[0].strip())
@@ -198,7 +200,7 @@ def make_body(number, title, text):
         else:
             grouped.append(current); index += 1
     visual_grouped = []; index = 0
-    diagram_tokens = ("│", "┌", "├", "└", "↓", "→", "✅", "❌")
+    diagram_tokens = ("│", "┌", "├", "└", "↓", "→", "✅", "❌", "+---", "+----------")
     while index < len(grouped):
         if any(token in grouped[index] for token in diagram_tokens):
             visual = [grouped[index]]; index += 1
@@ -229,6 +231,23 @@ def parse_source(path, transcript, title, desc):
         raw = raw.replace("Total orders", "Total order rows")
     if title == "JOINS":
         raw = raw.replace("These should usually match.", "In this fixed teaching dataset, these should match. In real sales data they may differ because of discounts or price changes.")
+    if title == "Keys & Database Design":
+        raw = raw.replace(
+            "You’ve now learned how to query data.\n\nNow we’re going to learn how to design tables properly so your queries are safer, cleaner, and more professional.",
+            "You have learned how to create tables, load rows, and run basic queries.\n\nBefore we build bigger reports, we’re going to learn how to design tables properly so your queries are safer, cleaner, and more professional.",
+        )
+        raw = raw.replace("This segment is a big step toward thinking like a real data analyst.", "This chapter is a big step toward thinking like a real data analyst.")
+        raw = raw.replace(
+            "Right now, our orders table looks like this:",
+            "In the temporary practice design, an orders table can look like this:",
+        )
+        raw = raw.replace("Current beginner design:", "Temporary beginner design used for learning:")
+        raw = raw.replace("Segment 7 Practice Questions", "Chapter 3 Practice Questions")
+        raw = raw.replace("Segment 7 Final Mental Model", "Chapter 3 Final Mental Model")
+        raw = raw.replace("Before Segment 7", "Before this redesign")
+        raw = raw.replace("After Segment 7", "After this redesign")
+        raw = raw.replace("Clean Segment 7 Full Script", "Clean Chapter 3 Full Script")
+        raw = raw.replace("Segment 7 Summary", "Chapter 3 Summary")
     pipeline_step = re.compile(r"^(FROM|WHERE|GROUP BY|HAVING|SELECT|ORDER BY|LIMIT)\s{2,}", re.I)
     candidates = [match for match in SECTION.finditer(raw) if not pipeline_step.match(match.group(2))]
     matches = []; expected = 1
@@ -1019,6 +1038,8 @@ def statement_outcome(sql, segment_number):
         return expected_card("Transaction changes made permanent", "<p>No result grid is returned. A later ROLLBACK cannot undo the committed changes.</p>")
     if re.match(r"(?is)^SOURCE\s+", raw):
         return expected_card("Project setup script executed", "<p>MySQL runs the statements inside <code>project_data/retail_project_setup.sql</code>. The script creates and loads <code>metromart_project</code>; run row-count checks afterward to confirm the load.</p>")
+    if re.match(r"(?is)^(WHERE|GROUP\s+BY|ORDER\s+BY|LIMIT|VALUES|SELECT\s*$)", raw):
+        return expected_card("Clause fragment", "<p>This is not a complete standalone statement. Its expected effect is demonstrated in the nearest complete query in this lesson.</p>")
     if re.match(r"(?is)^EXPLAIN\b", raw):
         return expected_card("Execution plan to inspect", "<p>MySQL returns plan columns such as table, access type, possible keys, chosen key, estimated rows, and Extra. Use this plan as performance evidence, then run the SELECT itself to verify the business result.</p>")
     if re.match(r"(?is)^SHOW\s+INDEX\b", raw):
@@ -1027,8 +1048,6 @@ def statement_outcome(sql, segment_number):
         return expected_card("Table definition to inspect", "<p>MySQL returns one metadata row per column. Use Field, Type, Null, Key, Default, and Extra to verify the table structure.</p>")
     if re.match(r"(?is)^(SELECT|WITH)\b", raw):
         return expected_card("Analysis result to verify", "<p>Run the query against the MetroMart project database. Verify the result grain, row count, key columns, NULL behavior, and at least one hand-checked metric before using the answer in the final walkthrough.</p>")
-    if re.match(r"(?is)^(WHERE|GROUP\s+BY|ORDER\s+BY|LIMIT|VALUES|SELECT\s*$)", raw):
-        return expected_card("Clause fragment", "<p>This is not a complete standalone statement. Its expected effect is demonstrated in the nearest complete query in this lesson.</p>")
     if ";" in raw:
         return expected_card("Script outcome", "<p>Run the statements in order. Structure-changing statements report success without rows; the final verification SELECT displays the resulting records.</p>")
     return expected_card("Teaching fragment", "<p>This block illustrates SQL syntax but is not complete enough to execute by itself.</p>")
@@ -1467,6 +1486,30 @@ def add_walkthrough_bridge_notes(segments):
     target["body"] = target["body"].replace("</div>", setup_note + "</div>", 1)
     target.setdefault("source_titles", []).append("Running a complete setup script")
 
+def add_keys_chapter_orientation(segments):
+    """Clarify why database design appears before the heavier analysis chapters."""
+    target = next((segment for segment in segments if segment["title"] == "Keys & Database Design"), None)
+    if not target or not target["lessons"]:
+        return
+    lesson = target["lessons"][0]
+    orientation = (
+        '<section class="textbook-subsection" data-source-title="Why this chapter comes now">'
+        '<h3>Why this chapter comes now</h3>'
+        '<p>This chapter changes gears from writing basic queries to deciding how tables should be structured. '
+        'That can feel different at first, because you are thinking about the database before writing the final report.</p>'
+        '<p>The key idea is simple: do not store the same descriptive fact in many places. Store the product once in '
+        '<code>products</code>, store the sale event in <code>orders</code>, and connect them with <code>product_id</code>.</p>'
+        '<div class="table-scroll"><table class="data-table"><thead><tr><th>Question</th><th>Beginner design</th><th>Professional design</th></tr></thead><tbody>'
+        '<tr><td>Where is the product name stored?</td><td>Repeated inside each order row</td><td>Stored once in <code>products</code></td></tr>'
+        '<tr><td>What does the order store?</td><td>Product name text</td><td>The stable <code>product_id</code></td></tr>'
+        '<tr><td>Why does it matter?</td><td>Typos and updates can break reports</td><td>Keys protect joins and historical sales</td></tr>'
+        '</tbody></table></div>'
+        '<p>Later chapters will use these relationships for joins, KPIs, grouping, views, and performance. For now, focus on which table owns each fact and what one row represents.</p>'
+        '</section>'
+    )
+    lesson["body"] = lesson["body"].replace('<div class="chapter-reading">', '<div class="chapter-reading">' + orientation, 1)
+    lesson.setdefault("source_titles", []).insert(0, "Why this chapter comes now")
+
 PROJECT_BUILD_ALONG = [
     {
         "title": "Project build-along: Start the MetroMart assignment",
@@ -1784,6 +1827,7 @@ segments = [parse_source(path, transcript, *meta) for path, transcript, meta in 
 segments = consolidate_textbook_units(segments)
 add_walkthrough_bridge_notes(segments)
 segments = reorder_for_workflow(segments)
+add_keys_chapter_orientation(segments)
 add_segment_visuals(segments)
 add_assessments_and_projects(segments)
 add_project_build_along(segments)

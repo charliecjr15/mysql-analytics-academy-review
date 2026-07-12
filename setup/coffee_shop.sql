@@ -21,8 +21,8 @@ INSERT INTO products (product_id, product_name, category, price) VALUES
     (5, 'Matcha Latte', 'Tea', 2.900),
     (6, 'Americano', 'Coffee', 1.250);
 
--- This baseline intentionally repeats product attributes. Sections 6 and 7
--- explain the risk and migrate the relationship to stable product IDs.
+-- This baseline intentionally repeats product attributes. Chapter 3 explains
+-- the risk and migrates the relationship to stable product IDs.
 CREATE TABLE orders (
     order_id INT NOT NULL,
     product_name VARCHAR(100) NOT NULL,

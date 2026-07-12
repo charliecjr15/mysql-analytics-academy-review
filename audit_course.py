@@ -115,8 +115,8 @@ for segment_number, segment in enumerate(segments, 1):
         source_topic_total += len(titles)
         if body.count('class="textbook-subsection"') != len(titles):
             errors.append(f"S{segment_number}L{lesson_number}: source-topic count does not match rendered subsections")
-if source_topic_total != 375:
-    errors.append(f"expected 359 original/enriched topics plus two join supplements, one setup supplement, and 13 MetroMart build-along topics, found {source_topic_total}")
+if source_topic_total != 376:
+    errors.append(f"expected 359 original/enriched topics plus two join supplements, one setup supplement, one Chapter 3 orientation, and 13 MetroMart build-along topics, found {source_topic_total}")
 if teaching_context_count != lesson_total:
     errors.append(f"expected learning context on all {lesson_total} lessons, found {teaching_context_count}")
 if query_teaching_count < 60:
@@ -313,6 +313,17 @@ else:
 
 for required in ("RIGHT JOIN", "A self join", "NOT EXISTS", "CROSS JOIN", "WITH product_sales", "ROW_NUMBER()", "DENSE_RANK()", "LAG(", "LEAD(", "AVG(revenue) OVER", "ROWS BETWEEN UNBOUNDED PRECEDING", "TIMESTAMPDIFF", "NULLIF", "Net revenue", "Writing findings and recommendations"):
     if required not in all_html: errors.append(f"required advanced concept {required} is missing")
+
+chapter_three = segments[2]
+chapter_three_html = unescape("\n".join(lesson["body"] for lesson in chapter_three["lessons"]))
+for required in ("Why this chapter comes now", "Beginner design", "Professional design", "which table owns each fact"):
+    if required not in chapter_three_html:
+        errors.append(f"Chapter 3 is missing orientation text: {required}")
+for forbidden in ("Segment 7", "Before Segment 7", "After Segment 7", "This segment is a big step"):
+    if forbidden in chapter_three_html:
+        errors.append(f"Chapter 3 contains stale workflow label: {forbidden}")
+if "+------------+--------------+----------+-------+" in chapter_three_html and '<pre class="diagram">' not in chapter_three["lessons"][0]["body"]:
+    errors.append("Chapter 3 ASCII schema diagram is not rendered as a diagram")
 
 walkthrough_coverage = {
     "SOURCE setup command": ("SOURCE ",),
